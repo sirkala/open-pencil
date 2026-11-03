@@ -104,6 +104,11 @@ export const MCP_HTTP_PORT = Number(
 )
 /** Unset keeps the MCP server's own platform folder (`packages/mcp/src/transport/paths.ts`). */
 export const MCP_RUNTIME_FOLDER = import.meta.env.VITE_OPENPENCIL_MCP_FOLDER || null
+/**
+ * The Tauri sidecar of a build that ships its own MCP server, so it starts that one at its own
+ * version and needs none installed; unset, the app starts the `@open-pencil/mcp` on the PATH.
+ */
+export const MCP_SIDECAR = import.meta.env.VITE_OPENPENCIL_MCP_SIDECAR || null
 
 /** Where the desktop app's installers are published. */
 export const DESKTOP_DOWNLOAD_URL = 'https://github.com/open-pencil/open-pencil/releases/latest'

@@ -15,6 +15,7 @@ import {
 import { MCP_EXECUTABLE, MCP_INSTALL_TARGET, MCP_PACKAGE_NAME } from '@/app/automation/mcp/failure'
 import { restartMCPRuntime } from '@/app/automation/mcp/runtime'
 import { detectUserAgent } from '@/app/tauri/command'
+import { MCP_SIDECAR } from '@/constants'
 
 import {
   companionPackageManager,
@@ -84,11 +85,13 @@ export function createAgentDiscovery(options: {
   /** A lookup has finished, so a later rescan can keep showing its results. */
   const checked = computed(() => snapshot.value !== null)
   // Checks read through functions so they see the snapshot of a rescan that just finished.
+  // A build that ships its own MCP server needs none installed, at any version.
   function hasBridge(): boolean {
-    return Boolean(snapshot.value?.executables[MCP_EXECUTABLE])
+    return MCP_SIDECAR !== null || Boolean(snapshot.value?.executables[MCP_EXECUTABLE])
   }
   /** An installed MCP server whose version does not match the app. */
   function bridgeOutdated(): boolean {
+    if (MCP_SIDECAR) return false
     return hasBridge() && isOutdatedCompanion(snapshot.value?.versions[MCP_PACKAGE_NAME])
   }
   function canInstallWith(manager: PackageManager): boolean {

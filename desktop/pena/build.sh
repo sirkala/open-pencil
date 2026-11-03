@@ -7,9 +7,12 @@ cd "$(dirname "$0")/../.."
 export VITE_OPENPENCIL_LINK_SCHEME=pena
 export VITE_OPENPENCIL_MCP_PORT=7610
 export VITE_OPENPENCIL_MCP_FOLDER=Pena
+export VITE_OPENPENCIL_MCP_SIDECAR=pena/bin/pena-mcp-http
 export APPLE_SIGNING_IDENTITY=-
 
 target=aarch64-apple-darwin
+# Tauri bundles the sidecar named for the target it builds.
+bun desktop/pena/mcp.ts "$target" "desktop/pena/bin/pena-mcp-http-$target"
 bun run tauri build -c desktop/pena/tauri.conf.json --target "$target" "$@"
 
 bundle="desktop/target/$target/release/bundle"

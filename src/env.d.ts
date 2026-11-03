@@ -11,6 +11,8 @@ interface ImportMetaEnv {
   readonly VITE_OPENPENCIL_MCP_PORT?: string
   /** Folder name for the MCP server's discovery file and socket of such a build. */
   readonly VITE_OPENPENCIL_MCP_FOLDER?: string
+  /** Tauri sidecar of a build that ships its own MCP server. */
+  readonly VITE_OPENPENCIL_MCP_SIDECAR?: string
 }
 
 declare const __OPENPENCIL_APP_VERSION__: string

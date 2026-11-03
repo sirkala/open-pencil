@@ -18,7 +18,7 @@ import { APP_VERSION } from '@/app/runtime/version'
 import { decodeTauriStderr } from '@/app/shell/ui'
 import { resolvePlatformCommand } from '@/app/tauri/command'
 import { isTauri } from '@/app/tauri/env'
-import { MCP_HTTP_PORT, MCP_RUNTIME_FOLDER } from '@/constants'
+import { MCP_HTTP_PORT, MCP_RUNTIME_FOLDER, MCP_SIDECAR } from '@/constants'
 
 import { DEV_MCP_RESTART_PATH, type DevMCPConfiguration } from './dev-control'
 import {
@@ -533,8 +533,10 @@ async function startMCPIfNeeded(timing: MCPStartupTiming): Promise<AutomationSer
     return existing
   }
 
-  const lookup = await invoke<MCPLookup>('mcp_lookup')
-  if (!lookup.available) return rememberStartupError(missingMCPError(lookup.searched))
+  if (!MCP_SIDECAR) {
+    const lookup = await invoke<MCPLookup>('mcp_lookup')
+    if (!lookup.available) return rememberStartupError(missingMCPError(lookup.searched))
+  }
 
   const authToken = mcpAuthenticationEnabled.value ? randomHex(32) : null
   // Cache only after MCP startup is confirmed healthy.
@@ -543,9 +545,8 @@ async function startMCPIfNeeded(timing: MCPStartupTiming): Promise<AutomationSer
   // The app bundle directory (Tauri executableDir) is read-only and cannot be
   // used as a safe fallback for open_file, save_file, or export tools.
   const mcpRoot = mcpRootDirectory.value.trim() || (await resolveTauriHomeDir())
-  const resolved = resolvePlatformCommand(MCP_EXECUTABLE)
   const runtimeEnvironment = await mcpRuntimeEnvironment()
-  const command = Command.create(resolved.command, resolved.args, {
+  const options = {
     env: {
       ...runtimeEnvironment,
       PORT: String(MCP_HTTP_PORT),
@@ -560,7 +561,11 @@ async function startMCPIfNeeded(timing: MCPStartupTiming): Promise<AutomationSer
       OPENPENCIL_MCP_DISABLED_TOOLS: serializeDisabledTools(disabledMCPTools.value),
       OPENPENCIL_MCP_SCOPE: mcpScope()
     }
-  })
+  }
+  const resolved = resolvePlatformCommand(MCP_EXECUTABLE)
+  const command = MCP_SIDECAR
+    ? Command.sidecar(MCP_SIDECAR, [], options)
+    : Command.create(resolved.command, resolved.args, options)
 
   let startupStderr = ''
   command.stderr.on('data', (raw: Uint8Array | number[] | string) => {
