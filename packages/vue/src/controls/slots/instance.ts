@@ -8,6 +8,7 @@ import {
 } from '@open-pencil/scene-graph/slots'
 
 import { useEditor } from '#vue/editor/context'
+import { readSoleSelectedNode } from '#vue/editor/selection-state/nodes'
 import { useSceneComputed } from '#vue/internal/scene-computed/use'
 
 /** One configured limit of a slot and whether the instance's content meets it. */
@@ -102,8 +103,8 @@ export function slotInstanceOptions(
 export function useSlotProperties() {
   const editor = useEditor()
   const instance = useSceneComputed(() => {
-    const node = editor.getSelectedNode()
-    return node?.type === 'INSTANCE' ? node : undefined
+    const node = readSoleSelectedNode(editor)
+    return node?.type === 'INSTANCE' ? { ...node } : undefined
   })
   const definitions = useSceneComputed(() =>
     instance.value

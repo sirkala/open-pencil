@@ -28,6 +28,21 @@ export function readSelectedNodes(editor: Editor): readonly Readonly<SceneNode>[
 }
 
 /**
+ * The one selected layer the graph holds, as `getSelectedNodes()` would list it alone: a
+ * selection that still names a layer deleted under it counts only the layers that remain.
+ */
+export function readSoleSelectedNode(editor: Editor): Readonly<SceneNode> | undefined {
+  let sole: SceneNode | undefined
+  for (const id of editor.state.selectedIds) {
+    const node = editor.graph.getNode(id)
+    if (!node) continue
+    if (sole) return undefined
+    sole = node
+  }
+  return sole
+}
+
+/**
  * The selected layers as the panel shows them: text has the style of its first character, or of
  * its selected characters while it is edited, which the panel then edits. Layers without a text
  * style are the graph's own, so callers copy before they keep or change them.
@@ -64,7 +79,7 @@ export function createSelectedNodeState(
   const node = computed<SceneNode | null>((previous) => {
     if (active?.value === false && previous !== undefined) return previous
     void revision.value
-    if (editor.state.selectedIds.size !== 1) return null
+    if (!readSoleSelectedNode(editor)) return null
     return nodes.value.length === 1 ? nodes.value[0] : null
   })
 

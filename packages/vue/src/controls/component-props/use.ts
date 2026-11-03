@@ -14,7 +14,7 @@ import {
 import { MIXED } from '#vue/controls/node-props/helpers'
 import { useUndoBatch } from '#vue/controls/undo-batch/use'
 import { useEditor } from '#vue/editor/context'
-import { readSelectedNodes } from '#vue/editor/selection-state/nodes'
+import { readSelectedNodes, readSoleSelectedNode } from '#vue/editor/selection-state/nodes'
 import { useSceneComputed } from '#vue/internal/scene-computed/use'
 import { useRetainedActivity } from '#vue/lifecycle/retention/context'
 
@@ -165,7 +165,7 @@ export function useComponentProperties(targets?: () => SceneNode[]) {
 export function useExposedInstances() {
   const editor = useEditor()
   return useSceneComputed(() => {
-    const selected = editor.getSelectedNode()
+    const selected = readSoleSelectedNode(editor)
     if (selected?.type !== 'INSTANCE') return []
     return exposedInstances(editor.graph, selected).map((node) => ({
       id: node.id,

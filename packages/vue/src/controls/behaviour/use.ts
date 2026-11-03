@@ -21,6 +21,7 @@ import {
 
 import type { VariantDefinitionControl } from '#vue/controls/variants'
 import { useEditor } from '#vue/editor/context'
+import { readSoleSelectedNode } from '#vue/editor/selection-state/nodes'
 import { useSceneComputed } from '#vue/internal/scene-computed/use'
 
 import type { BehaviourControl, BehaviourValueControl } from './types'
@@ -32,8 +33,8 @@ import type { BehaviourControl, BehaviourValueControl } from './types'
 export function useBehaviour() {
   const editor = useEditor()
   const owner = useSceneComputed(() => {
-    const node = editor.getSelectedNode()
-    return node ? behaviourOwner(editor.graph, node) : undefined
+    const node = readSoleSelectedNode(editor)
+    return node ? behaviourOwner(editor.graph, { ...node }) : undefined
   })
   const behaviour = useSceneComputed(() => (owner.value ? readBehaviour(owner.value) : null))
 

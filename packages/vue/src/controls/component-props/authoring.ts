@@ -5,6 +5,7 @@ import type { ComponentPropertyType } from '@open-pencil/scene-graph'
 import { instanceExposureIssue } from '@open-pencil/scene-graph/components'
 
 import { useEditor } from '#vue/editor/context'
+import { readSoleSelectedNode } from '#vue/editor/selection-state/nodes'
 import { useSceneComputed } from '#vue/internal/scene-computed/use'
 
 import { groupComponentBindings } from './bindings'
@@ -16,7 +17,7 @@ const AUTHORED_TYPES = new Set<ComponentPropertyType>(['TEXT', 'BOOLEAN', 'INSTA
 export function useComponentPropertyAuthoring() {
   const editor = useEditor()
   const context = useSceneComputed(() => {
-    const selected = editor.getSelectedNode()
+    const selected = readSoleSelectedNode(editor)
     return selected ? editor.getComponentPropertyAuthoring(selected.id) : null
   })
   /** A set's variants may own properties of their own besides the shared ones. */

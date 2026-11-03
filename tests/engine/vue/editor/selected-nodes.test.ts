@@ -276,6 +276,20 @@ describe('selected-node preview projections', () => {
     }
   })
 
+  test('answers the one layer left when another selected layer is deleted', () => {
+    const fixture = setup()
+    const { editor, first, second, selection } = fixture
+    try {
+      editor.select([first.id, second.id])
+      expect(selection.node.value).toBeNull()
+      editor.graph.deleteNode(second.id)
+      expect(editor.state.selectedIds.size).toBe(2)
+      expect(selection.node.value?.id).toBe(first.id)
+    } finally {
+      fixture.dispose()
+    }
+  })
+
   test('shares one projection between consumers until the last one is disposed', () => {
     const fixture = setup()
     const { editor, first } = fixture
