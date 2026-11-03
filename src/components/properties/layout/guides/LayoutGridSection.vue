@@ -5,6 +5,7 @@ import { computed, ref } from 'vue'
 import type { LayoutGrid, SceneNode } from '@open-pencil/scene-graph'
 import { AUTO_LAYOUT_GRID_COUNT, layoutGridCount } from '@open-pencil/scene-graph/layout'
 import { useEditor } from '@open-pencil/vue'
+import { readSelectedNodes } from '@open-pencil/vue/editor/selection-state'
 import { useI18n } from '@open-pencil/vue/i18n'
 import { useSceneComputed } from '@open-pencil/vue/internal/scene-computed'
 
@@ -24,7 +25,7 @@ const { panels } = useI18n()
 
 // Every selected frame's guides, as Figma edits several frames at once: the panel lists them
 // while the frames' guides match, and offers only Add, which replaces them, while they differ.
-const targets = useSceneComputed(() => editor.getSelectedNodes())
+const targets = useSceneComputed(() => readSelectedNodes(editor))
 const mixed = computed(() => {
   const [first, ...rest] = targets.value
   return !!first && rest.some((node) => !isEqual(node.layoutGrids, first.layoutGrids))

@@ -8,7 +8,7 @@ import {
 } from '@open-pencil/scene-graph/slots'
 
 import { useEditor } from '#vue/editor/context'
-import { useSelectedNodeState } from '#vue/editor/selection-state/nodes'
+import { readSelectedNodes, useSelectedNodeState } from '#vue/editor/selection-state/nodes'
 import { useSceneComputed } from '#vue/internal/scene-computed/use'
 
 /**
@@ -32,7 +32,7 @@ export function useSelectionState() {
 
   const isInstance = computed(() => selectedNodeType.value === 'INSTANCE')
   /** Whether the selection holds an icon, which can be detached into plain artwork. */
-  const isIcon = useSceneComputed(() => editor.getSelectedNodes().some((node) => readIcon(node)))
+  const isIcon = useSceneComputed(() => readSelectedNodes(editor).some((node) => readIcon(node)))
   const isComponent = computed(() => selectedNodeType.value === 'COMPONENT')
   const isGroup = computed(() => selectedNodeType.value === 'GROUP')
 
@@ -46,7 +46,7 @@ export function useSelectionState() {
 
   // A frame of a main component becomes a slot; other sibling layers there are wrapped in one.
   const canCreateSlot = useSceneComputed(() => {
-    const nodes = editor.getSelectedNodes()
+    const nodes = readSelectedNodes(editor)
     const first = nodes.at(0)
     if (!first || nodes.some((node) => node.parentId !== first.parentId || slotPropertyId(node)))
       return false

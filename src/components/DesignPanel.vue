@@ -5,7 +5,7 @@ import { getNodeEditCapability } from '@open-pencil/core'
 import { isGeneratedFrame, layerResizes } from '@open-pencil/scene-graph/generated'
 import { readIcon } from '@open-pencil/scene-graph/icons'
 import { useEditorCommands } from '@open-pencil/vue/editor/commands'
-import { useSelectionState } from '@open-pencil/vue/editor/selection-state'
+import { readSelectedNodes, useSelectionState } from '@open-pencil/vue/editor/selection-state'
 import { useI18n } from '@open-pencil/vue/i18n'
 import { useSceneComputed } from '@open-pencil/vue/internal/scene-computed'
 
@@ -91,13 +91,13 @@ function openSelectedInstanceReview() {
 const LAYOUT_GUIDE_TYPES = new Set(['FRAME', 'COMPONENT', 'COMPONENT_SET', 'INSTANCE'])
 // Figma offers layout guides while every selected layer is a frame.
 const supportsLayoutGuides = useSceneComputed(() => {
-  const nodes = store.getSelectedNodes()
+  const nodes = readSelectedNodes(store)
   return nodes.length > 0 && nodes.every((selected) => LAYOUT_GUIDE_TYPES.has(selected.type))
 })
 // Sticky notes, shapes, and connectors keep FigJam's fixed choices, which their own sections
 // offer, so a selection holding one offers no free-form appearance, type, fill, stroke, or effects.
 const freeStyle = useSceneComputed(() =>
-  store.getSelectedNodes().every((selected) => !isGeneratedFrame(selected))
+  readSelectedNodes(store).every((selected) => !isGeneratedFrame(selected))
 )
 const { panels } = useI18n()
 </script>

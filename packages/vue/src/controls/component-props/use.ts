@@ -14,6 +14,7 @@ import {
 import { MIXED } from '#vue/controls/node-props/helpers'
 import { useUndoBatch } from '#vue/controls/undo-batch/use'
 import { useEditor } from '#vue/editor/context'
+import { readSelectedNodes } from '#vue/editor/selection-state/nodes'
 import { useSceneComputed } from '#vue/internal/scene-computed/use'
 import { useRetainedActivity } from '#vue/lifecycle/retention/context'
 
@@ -49,8 +50,13 @@ export function useComponentProperties(targets?: () => SceneNode[]) {
       { flush: 'sync' }
     )
   }
-  const instances = useSceneComputed(() =>
-    (targets ? targets() : editor.getSelectedNodes()).filter((node) => node.type === 'INSTANCE')
+  // Only the instances are copied: a large selection of other layers is read in place.
+  const instances = useSceneComputed<SceneNode[]>(() =>
+    targets
+      ? targets().filter((node) => node.type === 'INSTANCE')
+      : readSelectedNodes(editor)
+          .filter((node) => node.type === 'INSTANCE')
+          .map((node) => ({ ...node }))
   )
   const selectedCount = computed(() => editor.state.selectedIds.size)
   const allSelectedAreInstances = computed(
@@ -159,9 +165,9 @@ export function useComponentProperties(targets?: () => SceneNode[]) {
 export function useExposedInstances() {
   const editor = useEditor()
   return useSceneComputed(() => {
-    const selected = editor.getSelectedNodes()
-    if (selected.length !== 1 || selected[0].type !== 'INSTANCE') return []
-    return exposedInstances(editor.graph, selected[0]).map((node) => ({
+    const selected = editor.getSelectedNode()
+    if (selected?.type !== 'INSTANCE') return []
+    return exposedInstances(editor.graph, selected).map((node) => ({
       id: node.id,
       name: node.name
     }))

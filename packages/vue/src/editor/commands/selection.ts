@@ -1,12 +1,17 @@
 import type { SceneNode } from '@open-pencil/scene-graph'
 import { readIcon } from '@open-pencil/scene-graph/icons'
 
+import { readSelectedNodes } from '#vue/editor/selection-state/nodes'
+
 import type { EditorCommandMapOptions } from './context'
 import type { EditorCommand, EditorCommandId } from './types'
 
 type SelectionCommandId = Extract<EditorCommandId, `selection.${string}`>
 
-function selectedMaskTarget(nodes: SceneNode[], editor: EditorCommandMapOptions['editor']) {
+function selectedMaskTarget(
+  nodes: readonly Readonly<SceneNode>[],
+  editor: EditorCommandMapOptions['editor']
+) {
   if (nodes.length === 0) return null
   if (nodes.length === 1) return nodes[0]
 
@@ -211,7 +216,8 @@ export function createSelectionCommands({
     'selection.toggleMask': {
       id: 'selection.toggleMask',
       get label() {
-        const target = selectedMaskTarget(editor.getSelectedNodes(), editor)
+        // Menus read every label on each scene change, so it reads the selection in place.
+        const target = selectedMaskTarget(readSelectedNodes(editor), editor)
         return target?.isMask ? t.value.removeMask : t.value.useAsMask
       },
       enabled: capabilities.canToggleMask,

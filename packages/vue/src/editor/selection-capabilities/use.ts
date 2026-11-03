@@ -3,6 +3,7 @@ import { computed, shallowRef } from 'vue'
 import { canMakeBooleanSourceNode, layersToOutline } from '@open-pencil/core/canvas'
 
 import { useEditorEvent } from '#vue/editor/events/use'
+import { readSelectedNodes } from '#vue/editor/selection-state/nodes'
 import { useSelectionState } from '#vue/editor/selection-state/use'
 import { useSceneComputed } from '#vue/internal/scene-computed/use'
 
@@ -24,7 +25,7 @@ export function useSelectionCapabilities() {
   })
 
   const selectedNodesCanFlatten = useSceneComputed(() => {
-    const nodes = editor.getSelectedNodes()
+    const nodes = readSelectedNodes(editor)
     return nodes.length > 0 && nodes.every((node) => canMakeBooleanSourceNode(node, editor.graph))
   })
 
@@ -60,14 +61,14 @@ export function useSelectionCapabilities() {
     canBooleanOperation: computed(() => selectedCount.value >= 2 && selectedNodesCanFlatten.value),
     canFlatten: computed(() => selectedNodesCanFlatten.value),
     canOutlineText: useSceneComputed(() => {
-      const nodes = editor.getSelectedNodes()
+      const nodes = readSelectedNodes(editor)
       return (
         nodes.length > 0 &&
         nodes.every((node) => node.type === 'TEXT' && canMakeBooleanSourceNode(node, editor.graph))
       )
     }),
     canOutlineStroke: useSceneComputed(
-      () => layersToOutline(editor.getSelectedNodes(), editor.graph).length > 0
+      () => layersToOutline(readSelectedNodes(editor), editor.graph).length > 0
     ),
     canGoToMainComponent: computed(() => selection.isInstance.value),
     canCreateInstance: computed(() => selectedNode.value?.type === 'COMPONENT'),

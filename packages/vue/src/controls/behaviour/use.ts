@@ -32,8 +32,8 @@ import type { BehaviourControl, BehaviourValueControl } from './types'
 export function useBehaviour() {
   const editor = useEditor()
   const owner = useSceneComputed(() => {
-    const nodes = editor.getSelectedNodes()
-    return nodes.length === 1 ? behaviourOwner(editor.graph, nodes[0]) : undefined
+    const node = editor.getSelectedNode()
+    return node ? behaviourOwner(editor.graph, node) : undefined
   })
   const behaviour = useSceneComputed(() => (owner.value ? readBehaviour(owner.value) : null))
 

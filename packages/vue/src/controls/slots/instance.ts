@@ -102,8 +102,8 @@ export function slotInstanceOptions(
 export function useSlotProperties() {
   const editor = useEditor()
   const instance = useSceneComputed(() => {
-    const nodes = editor.getSelectedNodes()
-    return nodes.length === 1 && nodes[0].type === 'INSTANCE' ? nodes[0] : undefined
+    const node = editor.getSelectedNode()
+    return node?.type === 'INSTANCE' ? node : undefined
   })
   const definitions = useSceneComputed(() =>
     instance.value

@@ -16,8 +16,8 @@ const AUTHORED_TYPES = new Set<ComponentPropertyType>(['TEXT', 'BOOLEAN', 'INSTA
 export function useComponentPropertyAuthoring() {
   const editor = useEditor()
   const context = useSceneComputed(() => {
-    const selected = editor.getSelectedNodes()
-    return selected.length === 1 ? editor.getComponentPropertyAuthoring(selected[0].id) : null
+    const selected = editor.getSelectedNode()
+    return selected ? editor.getComponentPropertyAuthoring(selected.id) : null
   })
   /** A set's variants may own properties of their own besides the shared ones. */
   const variants = useSceneComputed(() => {

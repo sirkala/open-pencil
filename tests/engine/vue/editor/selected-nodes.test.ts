@@ -252,6 +252,62 @@ describe('selected-node preview projections', () => {
     }
   })
 
+  test('answers the single node without projecting a larger selection', () => {
+    const fixture = setup()
+    const { editor, first, second, selection } = fixture
+    const shown = editor.getTextSelectionStyle
+    let projected = 0
+    editor.getTextSelectionStyle = (node) => {
+      projected++
+      return shown(node)
+    }
+    try {
+      editor.select([first.id, second.id])
+      expect(selection.node.value).toBeNull()
+      editor.updateNodeWithUndo(first.id, { x: 40 }, 'Move')
+      expect(selection.node.value).toBeNull()
+      expect(projected).toBe(0)
+      editor.select([second.id])
+      expect(selection.node.value?.id).toBe(second.id)
+      expect(projected).toBe(1)
+    } finally {
+      editor.getTextSelectionStyle = shown
+      fixture.dispose()
+    }
+  })
+
+  test('shares one projection between consumers until the last one is disposed', () => {
+    const fixture = setup()
+    const { editor, first } = fixture
+    const app = createApp({ render: () => null })
+    const firstScope = effectScope()
+    const secondScope = effectScope()
+    try {
+      const a = app.runWithContext(() => firstScope.run(() => useSelectedNodeState(editor)))
+      const b = app.runWithContext(() => secondScope.run(() => useSelectedNodeState(editor)))
+      if (!a || !b) throw new Error('Missing selection state')
+      expect(a.nodes.value).toBe(b.nodes.value)
+
+      firstScope.stop()
+      editor.graph.updateNodePreview(first.id, { x: 80 })
+      expect(b.node.value?.x).toBe(80)
+
+      const last = b.node.value
+      secondScope.stop()
+      editor.graph.updateNodePreview(first.id, { x: 120 })
+      expect(last?.x).toBe(80)
+
+      const next = app.runWithContext(() => effectScope().run(() => useSelectedNodeState(editor)))
+      expect(next?.node.value?.x).toBe(120)
+      expect(next?.node.value).not.toBe(last)
+      next?.dispose()
+    } finally {
+      firstScope.stop()
+      secondScope.stop()
+      fixture.dispose()
+    }
+  })
+
   test('releases preview subscriptions with the consuming scope', () => {
     const fixture = setup()
     const { editor, first } = fixture
