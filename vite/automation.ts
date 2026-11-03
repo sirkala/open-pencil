@@ -17,7 +17,11 @@ export function automationCORSOrigin(host: string | undefined): string {
 }
 
 export function localAutomationRoute(host: string | undefined) {
-  const port = Number(process.env.OPENPENCIL_DEV_MCP_PORT ?? AUTOMATION_HTTP_PORT)
+  // A build installed beside OpenPencil names its own port (`src/constants.ts`, MCP_HTTP_PORT).
+  const port = Number(
+    process.env.OPENPENCIL_DEV_MCP_PORT ??
+      (process.env.VITE_OPENPENCIL_MCP_PORT || AUTOMATION_HTTP_PORT)
+  )
   if (!Number.isInteger(port) || port < 1024 || port > 65535) {
     throw new Error('OPENPENCIL_DEV_MCP_PORT must be an integer between 1024 and 65535')
   }
@@ -26,7 +30,10 @@ export function localAutomationRoute(host: string | undefined) {
   if (!['http:', 'https:'].includes(url.protocol) || url.origin !== origin) {
     throw new Error('OPENPENCIL_DEV_ORIGIN must be an HTTP(S) origin')
   }
-  return { ...devAutomationRoute(process.env.PORTLESS_URL, port, origin), httpPort: port }
+  return {
+    ...devAutomationRoute(process.env.PORTLESS_URL, port, origin),
+    httpPort: port
+  }
 }
 
 export function openPencilAutomationPlugin(command: string, host: string | undefined) {

@@ -32,6 +32,11 @@
     }
   },
   "plugins": {
+    "deep-link": {
+      "desktop": {
+        "schemes": ["pena"]
+      }
+    },
     "updater": {
       "endpoints": []
     }

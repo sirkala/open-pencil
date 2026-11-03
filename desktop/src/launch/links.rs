@@ -2,6 +2,13 @@
 
 use url::Url;
 
+/// The scheme this build answers: OpenPencil's, or the one a build installed beside it names in
+/// `VITE_OPENPENCIL_LINK_SCHEME` (`src/constants.ts`), matching its deep-link config.
+pub const SCHEME: &str = match option_env!("VITE_OPENPENCIL_LINK_SCHEME") {
+    Some(scheme) if !scheme.is_empty() => scheme,
+    _ => "openpencil",
+};
+
 #[derive(Debug, PartialEq, Eq)]
 pub struct DeepLinkOpen {
     pub file: String,

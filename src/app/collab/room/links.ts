@@ -1,13 +1,14 @@
 import * as v from 'valibot'
 
 import { bindDesktopLinkQueue } from '@/app/tauri/link-queue'
+import { DESKTOP_LINK_SCHEME } from '@/constants'
 
 /** Desktop events and commands for `openpencil://join?room=<id>` links (`desktop/src/launch/mod.rs`). */
 export const ROOM_LINKS_EVENT = 'open-room-links'
 const TAKE_PENDING_ROOMS = 'take_pending_rooms'
 
 export function roomLinkURL(roomId: string): string {
-  return `openpencil://join?room=${encodeURIComponent(roomId)}`
+  return `${DESKTOP_LINK_SCHEME}://join?room=${encodeURIComponent(roomId)}`
 }
 
 /**

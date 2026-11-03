@@ -5,6 +5,12 @@
 interface ImportMetaEnv {
   /** `on` only in official release builds; without it the app sends no pings or usage stats. */
   readonly VITE_OPENPENCIL_FEEDBACK?: string
+  /** Desktop link scheme of a build installed beside OpenPencil (`src/constants.ts`). */
+  readonly VITE_OPENPENCIL_LINK_SCHEME?: string
+  /** MCP server port of a build installed beside OpenPencil. */
+  readonly VITE_OPENPENCIL_MCP_PORT?: string
+  /** Folder name for the MCP server's discovery file and socket of such a build. */
+  readonly VITE_OPENPENCIL_MCP_FOLDER?: string
 }
 
 declare const __OPENPENCIL_APP_VERSION__: string
