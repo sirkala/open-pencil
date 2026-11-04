@@ -51,3 +51,17 @@ export async function writeNativeFile(path: string, text: string): Promise<strin
     text
   )
 }
+
+/** Invoke a command with a binary body, as Tauri sends a `Uint8Array`, and return its raw bytes. */
+export async function invokeNativeWithBody(command: string, body: Uint8Array): Promise<number[]> {
+  return browser.execute(
+    async (command, body) => {
+      const core = window.__TAURI__?.core
+      if (!core) throw new Error('Native test requires app.withGlobalTauri')
+      const data = await core.invoke<ArrayBuffer>(command, new Uint8Array(body))
+      return Array.from(new Uint8Array(data))
+    },
+    command,
+    Array.from(body)
+  )
+}

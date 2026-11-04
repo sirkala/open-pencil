@@ -1,0 +1,1 @@
+- Saving a large `.fig` file in the desktop app no longer freezes the window for seconds or takes gigabytes of memory before compression starts.
