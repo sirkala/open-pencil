@@ -78,15 +78,22 @@ fn read_fig_file(body: &[u8]) -> Result<FigFile<'_>, String> {
     })
 }
 
+/// The request's bytes: raw over Tauri's `ipc://` protocol, or a JSON array of numbers once a
+/// webview that blocks that protocol has made Tauri fall back to `postMessage`. They are copied
+/// because the request is borrowed and the blocking thread needs them for as long as it runs.
+fn request_bytes(body: &InvokeBody) -> Result<Vec<u8>, String> {
+    match body {
+        InvokeBody::Raw(bytes) => Ok(bytes.clone()),
+        InvokeBody::Json(value) => Vec::<u8>::deserialize(value)
+            .map_err(|_| "build_fig_file expects the request body as bytes".to_string()),
+    }
+}
+
 /// Writes the `.fig` or `.jam` archive on a blocking thread: high zstd levels take seconds on
 /// large documents, which would otherwise stall the window.
 #[tauri::command]
 pub async fn build_fig_file(request: Request<'_>) -> Result<tauri::ipc::Response, String> {
-    let InvokeBody::Raw(body) = request.body() else {
-        return Err("build_fig_file expects a binary request body".into());
-    };
-    // The request is borrowed, and the blocking thread needs the bytes for as long as it runs.
-    let body = body.clone();
+    let body = request_bytes(request.body())?;
     tauri::async_runtime::spawn_blocking(move || write_fig_file(read_fig_file(&body)?))
         .await
         .map_err(|e| e.to_string())?
@@ -196,6 +203,16 @@ mod tests {
         assert!(read_fig_file(&request_body(MANIFEST, &[b"sc", b"kiw", b"t", b"i"])).is_err());
         assert!(read_fig_file(&request_body(MANIFEST, &[b"sc", b"kiw", b"t", b"im!"])).is_err());
         assert!(read_fig_file(&[1, 0]).is_err());
+    }
+
+    #[test]
+    fn reads_the_bytes_of_a_postmessage_fallback_body() {
+        let body = request_body(MANIFEST, &[b"sc", b"kiw", b"t", b"im"]);
+        let json = InvokeBody::Json(serde_json::json!(body));
+        assert_eq!(request_bytes(&json).unwrap(), body);
+        assert_eq!(request_bytes(&InvokeBody::Raw(body.clone())).unwrap(), body);
+        assert!(request_bytes(&InvokeBody::Json(serde_json::json!([1, 256]))).is_err());
+        assert!(request_bytes(&InvokeBody::Json(serde_json::json!({ "kiwiData": [1] }))).is_err());
     }
 
     #[test]

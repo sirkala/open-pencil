@@ -42,11 +42,14 @@ function encodeFigArchiveRequest(parts: FigArchiveParts): Uint8Array {
 
 /**
  * The desktop app packs every `.fig` it writes in Rust, on a blocking thread, since high
- * compression levels take seconds (`build_fig_file`, `desktop/AGENTS.md`).
+ * compression levels take seconds (`build_fig_file`, `desktop/AGENTS.md`). The archive comes
+ * back as an `ArrayBuffer`, or as an array of numbers once Tauri has fallen back to `postMessage`.
  */
 export function installNativeFigArchives(): void {
   setFigArchiveAssembler(
     async (parts) =>
-      new Uint8Array(await invoke<ArrayBuffer>('build_fig_file', encodeFigArchiveRequest(parts)))
+      new Uint8Array(
+        await invoke<ArrayBuffer | number[]>('build_fig_file', encodeFigArchiveRequest(parts))
+      )
   )
 }
