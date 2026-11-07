@@ -78,6 +78,9 @@ export async function createTestService() {
     TURNSTILE_SECRET: 'turnstile-secret',
     TURNSTILE_HOSTNAMES: 'openpencil.dev,app.openpencil.dev',
     EMAIL_FROM: 'hello@openpencil.dev',
+    // GitHub Actions sets GITHUB_REPOSITORY to the repository running the job, which Wrangler
+    // lets replace the configured var; a fork's CI would otherwise ask about the fork.
+    GITHUB_REPOSITORY: 'open-pencil/open-pencil',
     GITHUB_TOKEN: 'github-token',
     CLOUDFLARE_ANALYTICS_TOKEN: 'cloudflare-token',
     ACCESS_TEAM_DOMAIN: 'https://openpencil.cloudflareaccess.com',
