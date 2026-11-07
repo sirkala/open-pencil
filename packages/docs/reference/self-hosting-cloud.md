@@ -1,11 +1,11 @@
 ---
-title: Self-hosting OpenPencil Cloud
-description: Run your own OpenPencil Cloud server with PostgreSQL and an S3-compatible bucket, as a Node process or on Cloudflare Workers.
+title: Self-hosting Pena Cloud
+description: Run your own Pena Cloud server with PostgreSQL and an S3-compatible bucket, as a Node process or on Cloudflare Workers.
 ---
 
-# Self-hosting OpenPencil Cloud
+# Self-hosting Pena Cloud
 
-OpenPencil Cloud is one Node 22+ process in front of PostgreSQL 15 or later and an S3-compatible object store, with optional SMTP for email. The same process serves the API, the collaboration relay, the editor, and the server's own pages for signing in, account security, and administration. It also runs on [Cloudflare Workers](#cloudflare-workers) with the same configuration. People connect to it from the editor as described in [OpenPencil Cloud](/user-guide/openpencil-cloud).
+Pena Cloud is one Node 22+ process in front of PostgreSQL 15 or later and an S3-compatible object store, with optional SMTP for email. The same process serves the API, the collaboration relay, the editor, and the server's own pages for signing in, account security, and administration. It also runs on [Cloudflare Workers](#cloudflare-workers) with the same configuration. People connect to it from the editor as described in [Pena Cloud](/user-guide/openpencil-cloud).
 
 ## Install
 
@@ -135,7 +135,7 @@ Set `email.transport = "smtp"` with an `[email.smtp]` table, `"cloudflare"` on C
 
 ## Storage
 
-Any S3-compatible store works; the project tests against SeaweedFS and Garage. Keep `object_storage.checksum_verification = "metadata"` for stores without native SHA-256 checksums: OpenPencil stores each document's digest as object metadata and verifies it before committing a revision. For Garage, set `region = "garage"` and `force_path_style = true`, and leave server-side encryption unset. For Cloudflare R2, use the endpoint `https://<account ID>.r2.cloudflarestorage.com` with `region = "auto"` and `force_path_style = false`.
+Any S3-compatible store works; the project tests against SeaweedFS and Garage. Keep `object_storage.checksum_verification = "metadata"` for stores without native SHA-256 checksums: Pena stores each document's digest as object metadata and verifies it before committing a revision. For Garage, set `region = "garage"` and `force_path_style = true`, and leave server-side encryption unset. For Cloudflare R2, use the endpoint `https://<account ID>.r2.cloudflarestorage.com` with `region = "auto"` and `force_path_style = false`.
 
 Revision keys are immutable, so bucket versioning isn't needed, but it isn't a backup either. Size `[workers.cleanup]` for your upload volume and retention, or set `enabled = false` and run `cleanup` from a scheduler.
 

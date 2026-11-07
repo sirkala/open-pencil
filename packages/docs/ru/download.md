@@ -3,8 +3,8 @@ layout: page
 landing: true
 sidebar: false
 aside: false
-title: Скачать OpenPencil
-description: Скачайте настольное приложение OpenPencil для macOS, Windows и Linux или установите его через Homebrew.
+title: Скачать Pena
+description: Скачайте настольное приложение Pena для macOS, Windows и Linux или установите его через Homebrew.
 ---
 
 <script setup>

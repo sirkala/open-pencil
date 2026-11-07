@@ -280,7 +280,7 @@ describe('derived text reader', () => {
     expect(saved.glyphs?.at(-1)?.advance).toBe(0.5)
   })
 
-  test('drops one-line glyphs an earlier OpenPencil wrote without shaping (#914)', () => {
+  test('drops one-line glyphs an earlier Pena wrote without shaping (#914)', () => {
     const characters = 'A sentence long enough that it has to wrap onto a second line.'
 
     expect(
@@ -296,7 +296,7 @@ describe('derived text reader', () => {
     expect(convertFigmaDerivedTextGlyphs(data, blobs, characters)).toHaveLength(characters.length)
   })
 
-  test('keeps Figma glyphs an earlier OpenPencil carried over', () => {
+  test('keeps Figma glyphs an earlier Pena carried over', () => {
     const characters = 'Table item'
     const data = earlierOpenPencilData(characters, 20)
     for (const glyph of data.glyphs ?? []) glyph.position.y = 15.09

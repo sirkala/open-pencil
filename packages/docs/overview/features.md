@@ -4,7 +4,7 @@
 
 Open and save native Figma files directly. The import/export pipeline uses the same Kiwi binary codec as Figma — 194 schema definitions, ~390 fields per node. Save with <kbd>⌘</kbd><kbd>S</kbd>, Save As with <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd>.
 
-**Copy & paste with Figma** — select nodes in Figma, <kbd>⌘</kbd><kbd>C</kbd>, switch to OpenPencil, <kbd>⌘</kbd><kbd>V</kbd>. Fills, strokes, auto-layout, text, effects, corner radii, and vector networks are preserved. Works both ways.
+**Copy & paste with Figma** — select nodes in Figma, <kbd>⌘</kbd><kbd>C</kbd>, switch to Pena, <kbd>⌘</kbd><kbd>V</kbd>. Fills, strokes, auto-layout, text, effects, corner radii, and vector networks are preserved. Works both ways.
 
 ## Drawing & Editing
 
@@ -69,7 +69,7 @@ CLI: `openpencil export design.fig -f jsx --style tailwind`
 
 ## AI Chat
 
-Press <kbd>⌘</kbd><kbd>J</kbd> to open the AI assistant. 90+ tools that can create shapes, set styles, manage layout, work with components and variables, run boolean operations, analyze design tokens, and export assets. Connect Anthropic, OpenAI, Google AI, OpenRouter, any compatible endpoint, or the AI your [OpenPencil Cloud](/user-guide/openpencil-cloud#ai-on-cloud) plan includes.
+Press <kbd>⌘</kbd><kbd>J</kbd> to open the AI assistant. 90+ tools that can create shapes, set styles, manage layout, work with components and variables, run boolean operations, analyze design tokens, and export assets. Connect Anthropic, OpenAI, Google AI, OpenRouter, any compatible endpoint, or the AI your [Pena Cloud](/user-guide/openpencil-cloud#ai-on-cloud) plan includes.
 
 Tool calls display as collapsible timeline entries. Visual verification — the assistant renders its work and checks it against your request. Full undo support for all AI mutations.
 
@@ -142,4 +142,4 @@ brew install --cask openpencil
 
 ## Google Fonts Fallback
 
-When a font isn't available locally, OpenPencil fetches it from Google Fonts automatically. No manual installation needed when opening .fig files with unfamiliar fonts.
+When a font isn't available locally, Pena fetches it from Google Fonts automatically. No manual installation needed when opening .fig files with unfamiliar fonts.

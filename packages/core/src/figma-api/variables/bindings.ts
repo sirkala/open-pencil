@@ -198,7 +198,7 @@ export function setEmptyTextBinding(
 ): void {
   if (!LAYER_TEXT_FIELDS.has(field)) {
     throw new Error(
-      `in setBoundVariable: OpenPencil binds ${field} only on text that has characters`
+      `in setBoundVariable: Pena binds ${field} only on text that has characters`
     )
   }
   if (variable) graph.bindVariable(node.id, field, variable.id)

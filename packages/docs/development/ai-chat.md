@@ -40,7 +40,7 @@ The chat's agent is one presence entry per document (`presence/registry.ts`). It
 
 ## A tool call
 
-Every call of an OpenPencil tool, from the chat, a coding agent through MCP, or WebMCP, runs through `runEditorTool` (`tools/runner.ts`); `tools/index.ts` passes the chat's calls with their reply:
+Every call of a Pena tool, from the chat, a coding agent through MCP, or WebMCP, runs through `runEditorTool` (`tools/runner.ts`); `tools/index.ts` passes the chat's calls with their reply:
 
 - Calls that change a document take its lock in turn, since whole-page snapshots must not interleave. A reply's call that gets the lock after the reply ended changes nothing and returns an error.
 - The document change is captured and pushed as one undo step. A reply's call labels it `aiUndoLabel(tool)` and records it on the call's own run, the one it started in, even if a later reply has begun; another client's call is labelled by its source, such as `Agent` or `WebMCP`.
@@ -77,7 +77,7 @@ A reply that finished or failed on its own, rather than one you stopped or one c
 
 ## An ACP reply
 
-An ACP agent calls OpenPencil's tools through the MCP server, and its replies keep their edits the same way. The ACP transport (`transports/acp.ts`) starts a run for each reply with `startAgentRun`, without the built-in chat's agent presence, since the agent shows through its MCP session, and ends it however the reply ends. Each MCP tool call carries the chat id from the agent's `x-openpencil-chat` header and the call's id in the agent's conversation, which Codex sends as `_meta.callId` and Claude Code as `_meta["claudecode/toolUseId"]`. While the reply goes on, a call that edits the chat's own document joins the run through `runEditorTool`, which `automation/bridge/tool-handlers.ts` calls with the reply, so Revert, Restore, and the undone marks work as for a provider model.
+An ACP agent calls Pena's tools through the MCP server, and its replies keep their edits the same way. The ACP transport (`transports/acp.ts`) starts a run for each reply with `startAgentRun`, without the built-in chat's agent presence, since the agent shows through its MCP session, and ends it however the reply ends. Each MCP tool call carries the chat id from the agent's `x-openpencil-chat` header and the call's id in the agent's conversation, which Codex sends as `_meta.callId` and Claude Code as `_meta["claudecode/toolUseId"]`. While the reply goes on, a call that edits the chat's own document joins the run through `runEditorTool`, which `automation/bridge/tool-handlers.ts` calls with the reply, so Revert, Restore, and the undone marks work as for a provider model.
 
 Each request while the agent starts must answer within `AGENT_START_TIMEOUT_MS`, and Stop stops an agent that is still starting, so a message never waits on an agent that does not answer; either way the agent never gets the message.
 

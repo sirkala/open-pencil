@@ -39,9 +39,9 @@ public static class NativeInput {
 
 const FOREGROUND_SCRIPT = String.raw`
 $process = Get-Process OpenPencil -ErrorAction Stop |
-  Where-Object { $_.MainWindowTitle -eq 'OpenPencil Native Test' } |
+  Where-Object { $_.MainWindowTitle -eq 'Pena Native Test' } |
   Select-Object -First 1
-if (-not $process) { throw 'OpenPencil Native Test window not found' }
+if (-not $process) { throw 'Pena Native Test window not found' }
 [NativeInput]::SetProcessDpiAwarenessContext([IntPtr](-4)) | Out-Null
 [NativeInput]::ShowWindow($process.MainWindowHandle, 9) | Out-Null
 [NativeInput]::SetForegroundWindow($process.MainWindowHandle) | Out-Null

@@ -100,7 +100,7 @@ export function decorationColorFills(method: string, value: unknown): Fill[] {
 export function textCaseValue(method: string, value: unknown, property = 'value'): TextCase {
   const textCase = parseFigma(v.picklist([...TEXT_CASES, ...SMALL_CAPS]), value, method, property)
   if (textCase === 'SMALL_CAPS' || textCase === 'SMALL_CAPS_FORCED') {
-    throw new Error(`in ${method}: OpenPencil does not support the ${textCase} text case`)
+    throw new Error(`in ${method}: Pena does not support the ${textCase} text case`)
   }
   return textCase
 }

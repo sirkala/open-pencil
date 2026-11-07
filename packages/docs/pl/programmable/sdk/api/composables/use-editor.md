@@ -1,11 +1,11 @@
 ---
 title: useEditor
-description: Dostęp do instancji edytora OpenPencil przekazanej przez provideEditor.
+description: Dostęp do instancji edytora Pena przekazanej przez provideEditor.
 ---
 
 # useEditor
 
-`useEditor()` zwraca instancję edytora OpenPencil przekazaną przez najbliższe wywołanie `provideEditor()`.
+`useEditor()` zwraca instancję edytora Pena przekazaną przez najbliższe wywołanie `provideEditor()`.
 
 To główny punkt wejścia dla composables i komponentów bez narzuconego wyglądu wymagających dostępu do edytora.
 

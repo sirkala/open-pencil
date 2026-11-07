@@ -3,7 +3,7 @@ import { i18n } from '#vue/i18n/create'
 export const recoveryMessageDefaults = {
   sectionTitle: 'Unsaved work',
   sectionDescription:
-    'Unsaved changes kept from documents closed without saving or open when OpenPencil quit. Open one to keep working on it.',
+    'Unsaved changes kept from documents closed without saving or open when Pena quit. Open one to keep working on it.',
   crashNote: 'Kept after a crash',
   restoreFailed: 'Could not restore this document.',
   discardFailed: 'Could not discard this copy.',

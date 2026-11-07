@@ -4,9 +4,9 @@
 
 Please do not report security vulnerabilities through public GitHub issues or pull requests.
 
-If you believe you have found a security issue in OpenPencil, report it privately using GitHub Security Advisories:
+If you believe you have found a security issue in Pena, report it privately using GitHub Security Advisories:
 
-https://github.com/open-pencil/open-pencil/security/advisories/new
+https://github.com/sirkala/pena/security/advisories/new
 
 Please include as much detail as possible:
 

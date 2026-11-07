@@ -3,8 +3,8 @@ layout: page
 landing: true
 sidebar: false
 aside: false
-title: Télécharger OpenPencil
-description: Téléchargez l’app de bureau OpenPencil pour macOS, Windows et Linux, ou installez-la avec Homebrew.
+title: Télécharger Pena
+description: Téléchargez l’app de bureau Pena pour macOS, Windows et Linux, ou installez-la avec Homebrew.
 ---
 
 <script setup>

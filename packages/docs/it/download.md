@@ -3,8 +3,8 @@ layout: page
 landing: true
 sidebar: false
 aside: false
-title: Scarica OpenPencil
-description: Scarica l’app desktop di OpenPencil per macOS, Windows e Linux, o installala con Homebrew.
+title: Scarica Pena
+description: Scarica l’app desktop di Pena per macOS, Windows e Linux, o installala con Homebrew.
 ---
 
 <script setup>

@@ -201,7 +201,7 @@ describe('design token import', () => {
     expect(graph.getNode(layer.id)).toMatchObject({ fontSize: 40, textStyleId: style.id })
   })
 
-  test('a style token as OpenPencil wrote it keeps the exact fields its value cannot hold', () => {
+  test('a style token as Pena wrote it keeps the exact fields its value cannot hold', () => {
     const graph = new SceneGraph()
     const source = designSystem()
     const [heading] = getSharedStyles(source, 'text')

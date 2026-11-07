@@ -5,7 +5,7 @@ description: Crear una interfaz con provideEditor, CanvasRoot, Menús, Paneles y
 
 # Interfaz de edición propia
 
-Una aplicación de OpenPencil basada en Vue suele tener tres capas:
+Una aplicación de Pena basada en Vue suele tener tres capas:
 
 1. `@open-pencil/core` crea el Editor;
 2. `@open-pencil/vue` lo conecta con composables y componentes sin estilos de Vue;
@@ -13,7 +13,7 @@ Una aplicación de OpenPencil basada en Vue suele tener tres capas:
 
 ## Casos de uso
 
-La aplicación de OpenPencil es solo una interfaz posible. El SDK permite crear un editor integrado en otro producto, una herramienta interna para recursos, un editor de plantillas, una interfaz de anotación o un editor especializado con asistencia de AI.
+La aplicación de Pena es solo una interfaz posible. El SDK permite crear un editor integrado en otro producto, una herramienta interna para recursos, un editor de plantillas, una interfaz de anotación o un editor especializado con asistencia de AI.
 
 ## Estructura recomendada
 

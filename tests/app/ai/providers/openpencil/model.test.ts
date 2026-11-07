@@ -13,7 +13,7 @@ function languageModelInstance(model: LanguageModel): Exclude<LanguageModel, str
   return model
 }
 
-describe('OpenPencil Cloud models', () => {
+describe('Pena Cloud models', () => {
   test('send chat completions to the service with the Cloud token, not a key', async () => {
     const requests: Request[] = []
     const client = createCloudAIClient({

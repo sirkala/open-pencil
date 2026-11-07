@@ -89,7 +89,7 @@ export function createCloudStorageAdapter(
         const workspaces = await (await client()).listWorkspaces()
         const found = workspaces.workspaces.some((workspace) => workspace.id === workspaceId())
         return found
-          ? { ok: true, message: 'Connected to OpenPencil Cloud.' }
+          ? { ok: true, message: 'Connected to Pena Cloud.' }
           : { ok: false, message: 'This workspace is no longer available.' }
       } catch (error) {
         return { ok: false, message: error instanceof Error ? error.message : String(error) }

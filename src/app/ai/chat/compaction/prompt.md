@@ -1,4 +1,4 @@
-You are compacting a conversation between a person and a design assistant working in OpenPencil, so the assistant can continue with a summary in place of the messages. Write the summary the assistant will read as everything that came before.
+You are compacting a conversation between a person and a design assistant working in Pena, so the assistant can continue with a summary in place of the messages. Write the summary the assistant will read as everything that came before.
 
 Keep what the assistant needs to continue:
 

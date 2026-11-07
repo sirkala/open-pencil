@@ -90,7 +90,7 @@ export class CloudAIUnavailableError extends Error {
   override readonly name = 'CloudAIUnavailableError'
 
   constructor() {
-    super('OpenPencil Cloud AI is unavailable')
+    super('Pena Cloud AI is unavailable')
   }
 }
 

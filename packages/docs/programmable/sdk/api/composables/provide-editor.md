@@ -1,11 +1,11 @@
 ---
 title: provideEditor
-description: Provide an OpenPencil editor instance to a Vue subtree using injection.
+description: Provide a Pena editor instance to a Vue subtree using injection.
 ---
 
 # provideEditor
 
-`provideEditor(editor)` makes an OpenPencil editor available to descendant composables and headless primitives through Vue injection.
+`provideEditor(editor)` makes a Pena editor available to descendant composables and headless primitives through Vue injection.
 
 This is the foundation for `useEditor()`.
 

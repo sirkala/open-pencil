@@ -5,7 +5,7 @@ description: Execute JavaScript with a Figma-compatible Plugin API to query, bat
 
 # Scripting
 
-`openpencil eval` runs JavaScript against an OpenPencil document with a Figma-compatible `figma` global. Use it for headless batch edits, inspection, fixture setup, and automation without opening the editor UI.
+`openpencil eval` runs JavaScript against a Pena document with a Figma-compatible `figma` global. Use it for headless batch edits, inspection, fixture setup, and automation without opening the editor UI.
 
 ## Basic usage
 
@@ -40,7 +40,7 @@ References use variable names or `{Collection::variable}` and are stored as stab
 
 ## Variable bindings
 
-Figma's `node.setBoundVariable(field, variable)` binds with Figma's field names and type rules. Use `openpencil.bindVariable(node, field, variable)` to bind a layer field to a variable from `figma.variables` the way the layer panel does, and `openpencil.unbindVariable(node, field)` to let it go; the field keeps the value the variable last gave it. Fields use OpenPencil's names, such as `text`, `visible`, `opacity`, `paddingLeft`, `fills/0/color` or `effects/0/radius`. Bindings follow the layer panel, which takes more than Figma's `setBoundVariable`: text content takes a text or number variable, a number shown as text, and visibility a boolean or a text variable that shows the layer unless it is empty or reads `false`, `no` or `off`.
+Figma's `node.setBoundVariable(field, variable)` binds with Figma's field names and type rules. Use `openpencil.bindVariable(node, field, variable)` to bind a layer field to a variable from `figma.variables` the way the layer panel does, and `openpencil.unbindVariable(node, field)` to let it go; the field keeps the value the variable last gave it. Fields use Pena's names, such as `text`, `visible`, `opacity`, `paddingLeft`, `fills/0/color` or `effects/0/radius`. Bindings follow the layer panel, which takes more than Figma's `setBoundVariable`: text content takes a text or number variable, a number shown as text, and visibility a boolean or a text variable that shows the layer unless it is empty or reads `false`, `no` or `off`.
 
 ```js
 const [price] = figma.variables.getLocalVariables('FLOAT')
@@ -109,7 +109,7 @@ Use `--quiet` / `-q` to suppress output when only writing a file.
 
 ## The `openpencil` API
 
-Next to `figma`, scripts get `openpencil`: what OpenPencil adds to the Figma Plugin API, in the same style. The same global is available to the `eval` tool and the running app's automation.
+Next to `figma`, scripts get `openpencil`: what Pena adds to the Figma Plugin API, in the same style. The same global is available to the `eval` tool and the running app's automation.
 
 A main component or component set can [behave as a Reka UI control](/user-guide/components#behaviours-and-preview). Bind it by its own property and slot names:
 
@@ -180,7 +180,7 @@ Layer features Figma's API has no member for:
 
 ## Supported API surface
 
-The API is intentionally close to Figma's Plugin API, but it maps to OpenPencil's scene graph and file format.
+The API is intentionally close to Figma's Plugin API, but it maps to Pena's scene graph and file format.
 
 ### Document and pages
 
@@ -249,18 +249,18 @@ The API is intentionally close to Figma's Plugin API, but it maps to OpenPencil'
 
 ### Export
 
-- `node.exportAsync(settings?)` on layers and pages writes `PNG` and `JPG` (sized by a `SCALE`, `WIDTH`, or `HEIGHT` constraint, cropped to the layer's box with `useAbsoluteBounds`), `SVG` as bytes, `SVG_STRING` as a string (with layer names as element ids when `svgIdAttribute` is set), and `PDF`. PNG and JPG need a renderer: the desktop app, the browser app, and `open-pencil eval` have one. SVG text stays `<text>` whatever `svgOutlineText` says, colour profiles are not applied, and `contentsOnly: false` exports the layer alone. A hidden or empty layer is refused with `The layer draws nothing to export`, where Figma exports a 1×1 image. OpenPencil also refuses an image at less than 0.01 or more than 1024 times the layer's size, or larger than 8192 by 8192 pixels. `JSON_REST_V1` and video formats are refused
+- `node.exportAsync(settings?)` on layers and pages writes `PNG` and `JPG` (sized by a `SCALE`, `WIDTH`, or `HEIGHT` constraint, cropped to the layer's box with `useAbsoluteBounds`), `SVG` as bytes, `SVG_STRING` as a string (with layer names as element ids when `svgIdAttribute` is set), and `PDF`. PNG and JPG need a renderer: the desktop app, the browser app, and `open-pencil eval` have one. SVG text stays `<text>` whatever `svgOutlineText` says, colour profiles are not applied, and `contentsOnly: false` exports the layer alone. A hidden or empty layer is refused with `The layer draws nothing to export`, where Figma exports a 1×1 image. Pena also refuses an image at less than 0.01 or more than 1024 times the layer's size, or larger than 8192 by 8192 pixels. `JSON_REST_V1` and video formats are refused
 - `node.exportSettings` reads and sets the exports a layer keeps, with Figma's options and defaults; exports in formats Figma has no setting for, such as WebP or PowerPoint, are left out
 
 ### Geometry
 
-- `node.fillGeometry` and `node.strokeGeometry` on shapes, text, frames, components, instances, and boolean operations give Figma's `VectorPaths` in the layer's own box. `fillGeometry` is the outline of the layer's shape whatever its fills, and empty for lines and open vectors. `strokeGeometry` is the band every visible stroke covers, centred on the edge and twice the weight wide for inside and outside strokes, with dashes and per-side weights. It covers the same area as Figma's, though Figma writes a stroke as a piece per edge and corner where OpenPencil writes its outline
+- `node.fillGeometry` and `node.strokeGeometry` on shapes, text, frames, components, instances, and boolean operations give Figma's `VectorPaths` in the layer's own box. `fillGeometry` is the outline of the layer's shape whatever its fills, and empty for lines and open vectors. `strokeGeometry` is the band every visible stroke covers, centred on the edge and twice the weight wide for inside and outside strokes, with dashes and per-side weights. It covers the same area as Figma's, though Figma writes a stroke as a piece per edge and corner where Pena writes its outline
 - `node.outlineStroke()` adds the layer's stroke as a vector filled with the stroke's paints, named `<name> (Stroke)` (a group of glyph vectors for text), at the end of the page at the layer's position in its parent, as Figma does, and keeps the layer. It returns `null` without a visible stroke
 - These measure with a renderer: the canvas's in the desktop and browser apps, and a headless one in `open-pencil eval`. Before a document's canvas is ready, or on a host without a renderer, they throw `This host has no renderer to measure geometry with`
 
 ### CSS
 
-- `node.getCSSAsync()` resolves to the CSS OpenPencil's HTML export writes for a layer, as a record of property names and values: its size, auto layout and its place in its parent's, its fills as `background-color` and `background-image` (gradients, and colours stacked above another fill, top first), borders, corner radius, effects, and for text its font and colour. Like the HTML export, it leaves out diamond gradients, draws a rotated elliptical radial gradient unrotated, since CSS cannot turn one, and leaves out an image fill, which the export draws as an `<img>` element that covers any fill above it. Bound variables are written as the custom properties of OpenPencil's token stylesheet, such as `var(--color-brand-primary)`. A hidden layer gives the CSS it would show, and pages and the document give `{}`. The values describe the same layer as Figma's Dev Mode, but are not written in its exact format
+- `node.getCSSAsync()` resolves to the CSS Pena's HTML export writes for a layer, as a record of property names and values: its size, auto layout and its place in its parent's, its fills as `background-color` and `background-image` (gradients, and colours stacked above another fill, top first), borders, corner radius, effects, and for text its font and colour. Like the HTML export, it leaves out diamond gradients, draws a rotated elliptical radial gradient unrotated, since CSS cannot turn one, and leaves out an image fill, which the export draws as an `<img>` element that covers any fill above it. Bound variables are written as the custom properties of Pena's token stylesheet, such as `var(--color-brand-primary)`. A hidden layer gives the CSS it would show, and pages and the document give `{}`. The values describe the same layer as Figma's Dev Mode, but are not written in its exact format
 
 ### Properties
 
@@ -303,8 +303,8 @@ Common node properties are readable/writable through the proxy, including:
 
 These Figma APIs are not exposed as compatible helpers yet:
 
-- `figma.util.normalizeMarkdown()`, which fails because OpenPencil has no rich-text descriptions or annotations to normalize for
+- `figma.util.normalizeMarkdown()`, which fails because Pena has no rich-text descriptions or annotations to normalize for
 - Library variables, extended collections, and variable bindings on layout grids
 - Full vector boolean operation parity
 
-Use OpenPencil CLI export commands, core tools, or direct scene-graph helpers where available.
+Use Pena CLI export commands, core tools, or direct scene-graph helpers where available.

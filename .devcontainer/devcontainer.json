@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.base.schema.json",
-  "name": "OpenPencil",
+  "name": "Pena",
   "build": {
     "dockerfile": "Dockerfile",
     "context": "."
@@ -33,7 +33,7 @@
   "forwardPorts": [1420],
   "portsAttributes": {
     "1420": {
-      "label": "OpenPencil web editor",
+      "label": "Pena web editor",
       "onAutoForward": "notify"
     }
   }

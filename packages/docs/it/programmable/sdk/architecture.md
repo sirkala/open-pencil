@@ -113,7 +113,7 @@ Passa allo spazio soltanto le proprietà necessarie oppure usa direttamente il c
 
 ## Regola generale
 
-Se del codice può essere riutilizzato in un altro editor basato su OpenPencil senza trascinare con sé lo stile dell'applicazione, probabilmente dovrebbe far parte di `@open-pencil/vue`.
+Se del codice può essere riutilizzato in un altro editor basato su Pena senza trascinare con sé lo stile dell'applicazione, probabilmente dovrebbe far parte di `@open-pencil/vue`.
 
 ## Vedi anche
 

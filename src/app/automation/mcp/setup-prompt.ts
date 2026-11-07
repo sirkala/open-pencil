@@ -20,16 +20,16 @@ export function mcpServerSetupPrompt(
 ): string {
   const found =
     failure.code === 'outdated'
-      ? `OpenPencil found version ${failure.detail ?? 'an older version'} installed, which does not match the app.`
-      : 'OpenPencil could not find the `openpencil-mcp-http` command.'
+      ? `Pena found version ${failure.detail ?? 'an older version'} installed, which does not match the app.`
+      : 'Pena could not find the `openpencil-mcp-http` command.'
   return dedent`
-    Help me set up OpenPencil's MCP server so you can work on my designs in OpenPencil, an open-source design editor. The server is a separate npm package, kept out of the app to keep its download small, and its version must match the app. ${found}
+    Help me set up Pena's MCP server so you can work on my designs in Pena, an open-source design editor. The server is a separate npm package, kept out of the app to keep its download small, and its version must match the app. ${found}
 
     Please do this for me:
 
     1. Install the version that matches my app: \`${installCommand}\`. If Node.js or npm is missing, tell me how to install it. If npm fails with a permission error (EACCES), set up a global npm folder in my home directory (for example \`npm config set prefix ~/.npm-global\` and add \`~/.npm-global/bin\` to my PATH) and install again; use sudo only if I agree.
     2. Confirm that \`openpencil-mcp-http --version\` prints ${APP_VERSION}. If the command is not found, check that the global npm or Bun folder is on my PATH and tell me how to add it.
 
-    Then tell me what you did. I will press "Restart MCP server" in OpenPencil's Settings → MCP afterwards.
+    Then tell me what you did. I will press "Restart MCP server" in Pena's Settings → MCP afterwards.
   `
 }

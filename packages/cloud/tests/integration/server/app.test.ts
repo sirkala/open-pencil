@@ -308,7 +308,7 @@ describe('createCloudApp', () => {
     }
   })
 
-  test('keeps Better Auth routes outside the OpenPencil rate limiter', async () => {
+  test('keeps Better Auth routes outside the Pena rate limiter', async () => {
     const runtime = await createCloudTestDatabase()
     let authCalls = 0
     try {

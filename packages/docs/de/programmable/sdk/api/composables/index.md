@@ -5,7 +5,7 @@ description: Zentrale Composable-APIs aus @open-pencil/vue.
 
 # Composables
 
-Diese Composables liefern Zustand und Aktionen, die eigene OpenPencil-Oberflächen typischerweise benötigen.
+Diese Composables liefern Zustand und Aktionen, die eigene Pena-Oberflächen typischerweise benötigen.
 
 ## Kontext und Arbeitsfläche
 

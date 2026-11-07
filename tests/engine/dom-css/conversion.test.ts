@@ -172,7 +172,7 @@ describe('@open-pencil/dom-css conversion', () => {
   it('converts Tailwind HTML through generated CSS to a scene graph', async () => {
     const classes = [...tailwindCardClasses]
     const graph = await tailwindHTMLToSceneGraph(
-      `<article class="${classes.join(' ')}"><h1>OpenPencil</h1></article>`,
+      `<article class="${classes.join(' ')}"><h1>Pena</h1></article>`,
       classes,
       { runtime: createHeadlessCSSRuntime() }
     )
@@ -203,7 +203,7 @@ describe('@open-pencil/dom-css conversion', () => {
 
     const title = card ? graph.getChildren(card.id)[0] : undefined
     expect(title?.type).toBe('TEXT')
-    expect(title?.text).toBe('OpenPencil')
+    expect(title?.text).toBe('Pena')
     expect(title?.fontSize).toBe(24)
     expect(title?.fontWeight).toBe(700)
   })
@@ -240,7 +240,7 @@ describe('@open-pencil/dom-css conversion', () => {
 
     const roundTrip = sceneGraphToDesignDocument(graph)
     const html = serializeHTML(roundTrip)
-    expect(html).toContain('OpenPencil')
+    expect(html).toContain('Pena')
     expect(html).toContain('Design with code-shaped CSS.')
     expect(html).toContain('box-shadow')
   })
@@ -517,7 +517,7 @@ describe('@open-pencil/dom-css conversion', () => {
     const document = await runtime.computeStyles(
       runtime.parseHTML(`
         <nav class="${navClasses.join(' ')}">
-          <span>OpenPencil</span>
+          <span>Pena</span>
           <span class="${badgeClasses.join(' ')}">Beta</span>
         </nav>
         <input class="${inputClasses.join(' ')}" value="https://openpencil.dev" />
@@ -557,7 +557,7 @@ describe('@open-pencil/dom-css conversion', () => {
     const runtime = createHeadlessCSSRuntime()
     const classes = [...tailwindCardClasses]
     const document = await runtime.computeStyles(
-      runtime.parseHTML(`<article class="${classes.join(' ')}"><h1>OpenPencil</h1></article>`),
+      runtime.parseHTML(`<article class="${classes.join(' ')}"><h1>Pena</h1></article>`),
       await compileTailwindCSS(classes)
     )
     const graph = designDocumentToSceneGraph(document)

@@ -39,7 +39,7 @@ const llmsPlugin = llmstxt({
   generateLLMFriendlyDocsForEachPage: !fastBuild,
   injectLLMHint: false,
   customTemplateVariables: {
-    title: 'OpenPencil',
+    title: 'Pena',
     description:
       'Open-source, AI-native design editor and toolkit. Opens Figma .fig files, provides a programmable scene graph, CLI, MCP server, and Vue SDK for custom editor shells.',
     details:
@@ -48,7 +48,7 @@ const llmsPlugin = llmstxt({
 })
 
 export default defineConfig({
-  title: 'OpenPencil',
+  title: 'Pena',
   description:
     'Open-source, AI-native design editor. Figma alternative built from scratch with full .fig file compatibility.',
   cleanUrls: true,

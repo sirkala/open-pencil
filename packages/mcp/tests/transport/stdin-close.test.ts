@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
 const ENTRY = Bun.resolveSync('#mcp/index', import.meta.dir)
-const READY = 'OpenPencil MCP server'
+const READY = 'Pena MCP server'
 
 const cleanups: Array<() => void> = []
 

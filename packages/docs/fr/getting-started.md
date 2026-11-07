@@ -2,9 +2,9 @@
 
 ## Version web
 
-OpenPencil fonctionne directement dans le navigateur et ne nécessite aucune installation. Ouvrez [app.openpencil.dev](https://app.openpencil.dev) pour commencer à créer.
+Pena fonctionne directement dans le navigateur et ne nécessite aucune installation. Ouvrez [app.openpencil.dev](https://app.openpencil.dev) pour commencer à créer.
 
-Si vous souhaitez développer votre propre produit avec OpenPencil plutôt que vous limiter à l'application par défaut, consultez la section [Automatisation](/programmable/) et la documentation du [Vue SDK](/programmable/sdk/).
+Si vous souhaitez développer votre propre produit avec Pena plutôt que vous limiter à l'application par défaut, consultez la section [Automatisation](/programmable/) et la documentation du [Vue SDK](/programmable/sdk/).
 
 ## Application de bureau
 
@@ -20,7 +20,7 @@ Les versions prêtes à l'emploi pour macOS, Windows et Linux sont disponibles s
 
 ## Configuration requise {#system-requirements}
 
-OpenPencil affiche le rendu avec CanvasKit sur WebGL et s’appuie sur des fonctionnalités récentes de la plateforme web ; il faut donc un moteur de navigateur récent. L’application web prend en charge Chrome 111, Edge 111, Firefox 128 et Safari 16.4 ou version ultérieure ; les navigateurs basés sur Chromium, comme Brave et Opera, suivent leur version de Chrome. L’application de bureau s’affiche dans la WebView du système : le minimum dépend donc du moteur du système d’exploitation.
+Pena affiche le rendu avec CanvasKit sur WebGL et s’appuie sur des fonctionnalités récentes de la plateforme web ; il faut donc un moteur de navigateur récent. L’application web prend en charge Chrome 111, Edge 111, Firefox 128 et Safari 16.4 ou version ultérieure ; les navigateurs basés sur Chromium, comme Brave et Opera, suivent leur version de Chrome. L’application de bureau s’affiche dans la WebView du système : le minimum dépend donc du moteur du système d’exploitation.
 
 | Plateforme | Configuration requise |
 | ---------- | --------------------- |
@@ -28,7 +28,7 @@ OpenPencil affiche le rendu avec CanvasKit sur WebGL et s’appuie sur des fonct
 | Windows | Windows 10 ou version ultérieure, avec le runtime Evergreen de Microsoft Edge WebView2, qui se met à jour seul. |
 | Linux | WebKitGTK 2.40 ou version ultérieure (`webkit2gtk-4.1`). |
 
-Lorsque le moteur est trop ancien, OpenPencil indique ce qu’il faut mettre à jour au lieu d’afficher une fenêtre vide. Si cet avis apparaît sur un système conforme, utilisez son lien « Report a problem », qui préremplit les informations sur le navigateur et le moteur.
+Lorsque le moteur est trop ancien, Pena indique ce qu’il faut mettre à jour au lieu d’afficher une fenêtre vide. Si cet avis apparaît sur un système conforme, utilisez son lien « Report a problem », qui préremplit les informations sur le navigateur et le moteur.
 
 ## Installation sous macOS avec Homebrew
 

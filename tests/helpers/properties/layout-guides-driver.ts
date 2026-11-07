@@ -9,7 +9,7 @@ export function layoutGuidesDriver(page: () => Page) {
     build(guides: LayoutGrid[][]) {
       return page().evaluate((guides) => {
         const store = window.openPencil?.getStore?.()
-        if (!store) throw new Error('OpenPencil store not initialized')
+        if (!store) throw new Error('Pena store not initialized')
         const frames = guides.map((layoutGrids, index) => {
           const id = store.createShape('FRAME', 100 + index * 260, 100, 200, 150)
           store.updateNode(id, { layoutGrids })

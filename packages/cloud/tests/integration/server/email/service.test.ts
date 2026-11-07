@@ -18,7 +18,7 @@ describe('transactional email outbox', () => {
     try {
       const email = createTransactionalEmailService(runtime.database, {
         encryptionSecret: secret,
-        from: 'OpenPencil <cloud@example.com>'
+        from: 'Pena <cloud@example.com>'
       })
       const input = {
         idempotencyKey: 'document-invitation/invitation-id',
@@ -46,7 +46,7 @@ describe('transactional email outbox', () => {
     try {
       const email = createTransactionalEmailService(runtime.database, {
         encryptionSecret: secret,
-        from: 'OpenPencil <cloud@example.com>',
+        from: 'Pena <cloud@example.com>',
         transport: {
           id: 'memory',
           async send(message) {
@@ -96,7 +96,7 @@ describe('transactional email outbox', () => {
     try {
       const email = createTransactionalEmailService(runtime.database, {
         encryptionSecret: secret,
-        from: 'OpenPencil <cloud@example.com>',
+        from: 'Pena <cloud@example.com>',
         transport: {
           id: 'memory',
           async send() {

@@ -1,6 +1,6 @@
 ---
 title: useI18n
-description: Lokalisierte Labels von OpenPencil lesen und das aktive SDK locale ändern.
+description: Lokalisierte Labels von Pena lesen und das aktive SDK locale ändern.
 ---
 
 # useI18n

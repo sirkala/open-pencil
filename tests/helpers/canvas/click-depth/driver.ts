@@ -14,7 +14,7 @@ export function clickDepthDriver(page: () => Page) {
   function build<Name extends SceneName>(name: Name) {
     return page().evaluate(async (scene) => {
       const store = window.openPencil?.getStore?.()
-      if (!store) throw new Error('OpenPencil store not initialized')
+      if (!store) throw new Error('Pena store not initialized')
       const fixtureURL = '/tests/helpers/canvas/click-depth/scene.ts'
       const scenes: typeof ClickDepthScenes = await import(fixtureURL)
       const ids = scenes[scene](store.graph, store.state.currentPageId)
@@ -35,7 +35,7 @@ export function clickDepthDriver(page: () => Page) {
       await page().evaluate(
         (leaves) => {
           const store = window.openPencil?.getStore?.()
-          if (!store) throw new Error('OpenPencil store not initialized')
+          if (!store) throw new Error('Pena store not initialized')
           store.select(leaves)
           store.clearSelection()
         },
@@ -48,7 +48,7 @@ export function clickDepthDriver(page: () => Page) {
     zoomTo(zoom: number) {
       return page().evaluate((level) => {
         const store = window.openPencil?.getStore?.()
-        if (!store) throw new Error('OpenPencil store not initialized')
+        if (!store) throw new Error('Pena store not initialized')
         store.state.zoom = level
         store.state.panX = 0
         store.state.panY = 0
@@ -61,7 +61,7 @@ export function clickDepthDriver(page: () => Page) {
       return page().evaluate(
         ({ id, dx, dy }) => {
           const store = window.openPencil?.getStore?.()
-          if (!store) throw new Error('OpenPencil store not initialized')
+          if (!store) throw new Error('Pena store not initialized')
           const abs = store.graph.getAbsolutePosition(id)
           const { zoom, panX, panY } = store.state
           return { x: (abs.x + dx) * zoom + panX, y: (abs.y + dy) * zoom + panY }
@@ -73,7 +73,7 @@ export function clickDepthDriver(page: () => Page) {
     state() {
       return page().evaluate(() => {
         const store = window.openPencil?.getStore?.()
-        if (!store) throw new Error('OpenPencil store not initialized')
+        if (!store) throw new Error('Pena store not initialized')
         return {
           selected: [...store.state.selectedIds],
           hovered: store.state.hoveredNodeId,

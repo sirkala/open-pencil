@@ -11,7 +11,7 @@ description: Connectez @open-pencil/vue, créez un éditeur et configurez la zon
 bun add @open-pencil/core @open-pencil/vue canvaskit-wasm
 ```
 
-Le SDK se trouve dans le monorepo OpenPencil et est publié sous forme de package `@open-pencil/vue`.
+Le SDK se trouve dans le monorepo Pena et est publié sous forme de package `@open-pencil/vue`.
 
 ```ts
 import { createEditor } from '@open-pencil/core'

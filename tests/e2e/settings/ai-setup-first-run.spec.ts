@@ -10,7 +10,7 @@ test('a fresh install offers guided AI setup once and remembers skipping it', as
   await page.goto('/')
   // The offer is made while the workspace starts, over Home, where a first run begins.
   const setup = page.getByTestId('ai-setup-dialog')
-  await expect(setup.getByRole('heading', { name: 'Welcome to OpenPencil' })).toBeVisible()
+  await expect(setup.getByRole('heading', { name: 'Welcome to Pena' })).toBeVisible()
   await expect(page.getByTestId('recent-files-home')).toBeVisible()
   await setup.getByRole('button', { name: 'Start designing' }).click()
   await expect(setup).toHaveCount(0)
@@ -26,7 +26,7 @@ test('a first visit to the demo offers the welcome without pointing to the tour'
   await page.goto('/demo')
   await waitForDemo(page)
   const setup = page.getByTestId('ai-setup-dialog')
-  await expect(setup.getByRole('heading', { name: 'Welcome to OpenPencil' })).toBeVisible()
+  await expect(setup.getByRole('heading', { name: 'Welcome to Pena' })).toBeVisible()
   await expect(setup.getByTestId('ai-setup-tour')).toHaveCount(0)
 })
 

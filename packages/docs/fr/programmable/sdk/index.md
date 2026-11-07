@@ -1,15 +1,15 @@
 ---
 title: Vue SDK
-description: Créez des éditeurs basés sur OpenPencil avec des composants sans styles et des composables Vue.
+description: Créez des éditeurs basés sur Pena avec des composants sans styles et des composables Vue.
 ---
 
 # Vue SDK
 
-`@open-pencil/vue` permet d'utiliser OpenPencil autrement que comme une application de design autonome.
+`@open-pencil/vue` permet d'utiliser Pena autrement que comme une application de design autonome.
 
-Vous pouvez intégrer OpenPencil à un autre produit, à un outil interne ou à un éditeur spécialisé, sans reprendre l'interface par défaut de l'application.
+Vous pouvez intégrer Pena à un autre produit, à un outil interne ou à un éditeur spécialisé, sans reprendre l'interface par défaut de l'application.
 
-L'application OpenPencil n'est qu'une des interfaces créées avec cette boîte à outils. Le SDK vous permet de construire la vôtre.
+L'application Pena n'est qu'une des interfaces créées avec cette boîte à outils. Le SDK vous permet de construire la vôtre.
 
 Le SDK fournit :
 

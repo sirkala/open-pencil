@@ -5,7 +5,7 @@ description: Flags réactifs Mobile et Desktop pour une interface d’édition p
 
 # useViewportKind
 
-`useViewportKind()` renvoie une classification simplifiée de la Viewport size utilisée par l’UI responsive d’OpenPencil.
+`useViewportKind()` renvoie une classification simplifiée de la Viewport size utilisée par l’UI responsive de Pena.
 
 Utilisez le composable lorsqu’il suffit de distinguer Mobile et Desktop sans configurer directement `useBreakpoints()`.
 

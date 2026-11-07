@@ -45,7 +45,7 @@ async function openGoldPreview(): Promise<{ bytes: ArrayBuffer; graph: SceneGrap
   return { bytes, graph: await parseFigFile(bytes.slice(0), { populate: 'first-page' }) }
 }
 
-test('an edit rewrites only the fields it changed, keeping those OpenPencil does not model', async () => {
+test('an edit rewrites only the fields it changed, keeping those Pena does not model', async () => {
   const { bytes, graph } = await openGoldPreview()
   const list = expectDefined([...graph.nodes.values()].find((node) => node.name === 'Checked List'))
   const [instance] = graph.getChildren(list.id)

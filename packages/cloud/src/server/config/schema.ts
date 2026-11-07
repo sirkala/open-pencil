@@ -89,7 +89,7 @@ const rawCloudServerConfigSchema = v.object({
   passkeysEnabled: v.optional(v.boolean(), false),
   recoveryCodesEnabled: v.optional(v.boolean(), false),
   mfaTrustedDeviceDays: v.optional(v.pipe(v.number(), v.integer(), v.minValue(0)), 14),
-  passkeyRPName: v.optional(v.pipe(v.string(), v.trim(), v.minLength(1)), 'OpenPencil Cloud'),
+  passkeyRPName: v.optional(v.pipe(v.string(), v.trim(), v.minLength(1)), 'Pena Cloud'),
   captchaProvider: v.optional(v.literal('cloudflare-turnstile')),
   captchaSiteKey: optionalTextSchema,
   captchaSecretKey: optionalTextSchema,
@@ -415,9 +415,9 @@ export const cloudDeploymentConfigSchema = v.strictObject({
     passkeys: v.optional(
       v.strictObject({
         enabled: v.optional(v.boolean(), false),
-        rp_name: v.optional(textSchema, 'OpenPencil Cloud')
+        rp_name: v.optional(textSchema, 'Pena Cloud')
       }),
-      { enabled: false, rp_name: 'OpenPencil Cloud' }
+      { enabled: false, rp_name: 'Pena Cloud' }
     ),
     captcha: v.optional(
       v.strictObject({

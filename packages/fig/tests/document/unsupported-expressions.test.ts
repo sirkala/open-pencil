@@ -149,7 +149,7 @@ test.each([
   expect(value).toMatchObject({ expression: 'UNSUPPORTED', function: 'TERNARY' })
 })
 
-test('formulas OpenPencil evaluates are not kept opaque', () => {
+test('formulas Pena evaluates are not kept opaque', () => {
   const sum = expression('ADDITION', [
     { dataType: 'FLOAT', value: { floatValue: 2 } },
     { dataType: 'FLOAT', value: { floatValue: 3 } }

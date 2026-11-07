@@ -43,7 +43,7 @@ if (!readiness.ok || readiness.checksumVerification !== 'metadata') {
   throw new Error(`Unexpected object-store readiness: ${JSON.stringify(readiness)}`)
 }
 
-const singleBytes = new TextEncoder().encode(`OpenPencil Cloud ${provider} smoke`)
+const singleBytes = new TextEncoder().encode(`Pena Cloud ${provider} smoke`)
 const singleChecksum = createHash('sha256').update(singleBytes).digest('base64')
 const singleKey = `smoke/${crypto.randomUUID()}-single.fig`
 const singleUpload = await store.createUpload({

@@ -85,7 +85,7 @@ describe('HTML export asset paths', () => {
 })
 
 describe('Tailwind JSX export format', () => {
-  test('is a registered export next to OpenPencil JSX', async () => {
+  test('is a registered export next to Pena JSX', async () => {
     const { graph, card } = cardGraph()
     const result = await io.exportContent('tailwind-jsx', {
       graph,

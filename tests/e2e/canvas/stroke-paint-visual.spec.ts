@@ -14,7 +14,7 @@ const gradientLines = strokeSceneDriver(() => editor.page, 'createGradientLinesS
 test('gradient strokes', async () => {
   await editor.page.evaluate(() => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     const pageId = store.state.currentPageId
     const stops = [
       { color: { r: 0.96, g: 0.35, b: 0.12, a: 1 }, position: 0 },

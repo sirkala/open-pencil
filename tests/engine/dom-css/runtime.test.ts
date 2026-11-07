@@ -8,7 +8,7 @@ import { DOM_CSS_COLORS, simpleCardDocument } from '#tests/helpers/dom-css'
 describe('@open-pencil/dom-css', () => {
   it('serializes DesignDOM as HTML', () => {
     expect(serializeHTML(simpleCardDocument)).toBe(
-      '<div class="card" data-id="node-1">OpenPencil</div>'
+      '<div class="card" data-id="node-1">Pena</div>'
     )
   })
 
@@ -27,14 +27,14 @@ describe('@open-pencil/dom-css', () => {
               gap: '8px',
               'background-color': 'white'
             },
-            children: [{ type: 'text', text: 'OpenPencil' }]
+            children: [{ type: 'text', text: 'Pena' }]
           }
         ]
       },
       { style: 'tailwind' }
     )
 
-    expect(html).toBe('<section class="card flex p-4 gap-2 bg-white">OpenPencil</section>')
+    expect(html).toBe('<section class="card flex p-4 gap-2 bg-white">Pena</section>')
   })
 
   it('exports standalone HTML documents when requested', async () => {
@@ -43,7 +43,7 @@ describe('@open-pencil/dom-css', () => {
 
     expect(html).toContain('<!doctype html>')
     expect(html).toContain('data-open-pencil-html="standalone"')
-    expect(html).toContain('OpenPencil')
+    expect(html).toContain('Pena')
     expect(html).not.toContain('@tailwindcss/browser@4')
   })
 
@@ -63,14 +63,14 @@ describe('@open-pencil/dom-css', () => {
 
     expect(runtime.kind).toBe('headless')
     expect(runtime.serializeHTML(simpleCardDocument)).toBe(
-      '<div class="card" data-id="node-1">OpenPencil</div>'
+      '<div class="card" data-id="node-1">Pena</div>'
     )
   })
 
   it('parses HTML with the headless runtime', () => {
     const runtime = createHeadlessCSSRuntime()
     const document = runtime.parseHTML(
-      '<section class="card" style="width: 320px; color: rgb(17, 24, 39)">OpenPencil</section>'
+      '<section class="card" style="width: 320px; color: rgb(17, 24, 39)">Pena</section>'
     )
     const section = document.children[0]
 
@@ -80,7 +80,7 @@ describe('@open-pencil/dom-css', () => {
     expect(section.attrs.class).toBe('card')
     expect(section.inlineStyle?.width).toBe('320px')
     expect(section.inlineStyle?.color).toBe('rgb(17, 24, 39)')
-    expect(section.children[0]).toEqual({ type: 'text', text: 'OpenPencil' })
+    expect(section.children[0]).toEqual({ type: 'text', text: 'Pena' })
   })
 
   it('computes simple headless styles from CSSOM rules', async () => {
@@ -101,7 +101,7 @@ describe('@open-pencil/dom-css', () => {
     const runtime = createHeadlessCSSRuntime()
     const parsed = runtime.parseHTML(`
       <article id="hero" class="card featured">
-        <header><h1 class="title">OpenPencil</h1></header>
+        <header><h1 class="title">Pena</h1></header>
       </article>
     `)
     const document = await runtime.computeStyles(

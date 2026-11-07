@@ -1,6 +1,6 @@
 ---
 title: useCanvas
-description: Podłączenie renderer opartego na CanvasKit do elementu canvas edytora OpenPencil.
+description: Podłączenie renderer opartego na CanvasKit do elementu canvas edytora Pena.
 ---
 
 # useCanvas

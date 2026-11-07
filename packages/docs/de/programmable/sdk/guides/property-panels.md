@@ -35,7 +35,7 @@ Kann ein Feld an eine Variable oder ein externes Designtoken gebunden werden, so
 - Eine ausdrückliche Aktion zum Entfernen der Bindung gehört besser in die Auswahl als in einen leicht versehentlich auslösbaren Button neben dem Feld.
 - Bindungswechsel, Lösen während der Bearbeitung und Änderungen an mehreren Objekten in einer gemeinsamen Anbieter-Operation zusammenfassen.
 
-Die OpenPencil-App zeigt den Variablennamen im Ruhezustand violett an. Sobald die Bearbeitung beginnt, zeigt `NumberField` den berechneten numerischen Wert. Eine eigene Oberfläche kann denselben Zustand anders darstellen.
+Die Pena-App zeigt den Variablennamen im Ruhezustand violett an. Sobald die Bearbeitung beginnt, zeigt `NumberField` den berechneten numerischen Wert. Eine eigene Oberfläche kann denselben Zustand anders darstellen.
 
 ## Beispiel: Position und Größe
 

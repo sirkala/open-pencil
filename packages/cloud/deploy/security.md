@@ -1,6 +1,6 @@
 # Backend security checks
 
-OpenPencil Cloud handles authentication, bearer capabilities, database writes, and object-storage
+Pena Cloud handles authentication, bearer capabilities, database writes, and object-storage
 credentials, so it is held to stricter checks than the rest of the repository. They complement code
 review; they do not replace authorization and abuse-case testing.
 

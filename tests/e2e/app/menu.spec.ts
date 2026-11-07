@@ -64,7 +64,7 @@ test('Object menu shows Group/Ungroup/Component', async () => {
 function getStoreStateNumber(key: 'selectedIds' | 'zoom') {
   return editor.page.evaluate((stateKey) => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     if (stateKey === 'selectedIds') return store.state.selectedIds.size
     return store.state.zoom
   }, key)
@@ -73,7 +73,7 @@ function getStoreStateNumber(key: 'selectedIds' | 'zoom') {
 test('Move to page is disabled without a selection', async () => {
   await editor.page.evaluate(() => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     store.addPage('Second page')
     store.switchPage(store.graph.getPages()[0].id)
   })
@@ -91,7 +91,7 @@ test('Move to page is disabled without a selection', async () => {
   await editor.page.keyboard.press('Escape')
   await editor.page.evaluate(() => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     for (const id of store.state.selectedIds) store.graph.deleteNode(id)
     store.clearSelection()
     store.undo.clear()
@@ -122,7 +122,7 @@ test('Duplicate via Edit menu works', async () => {
 
   const countBefore = await editor.page.evaluate(() => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     return store.graph.getChildren(store.state.currentPageId).length
   })
 
@@ -132,7 +132,7 @@ test('Duplicate via Edit menu works', async () => {
 
   const countAfter = await editor.page.evaluate(() => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     return store.graph.getChildren(store.state.currentPageId).length
   })
 

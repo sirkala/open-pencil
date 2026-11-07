@@ -2,9 +2,9 @@
 
 ## Fichiers Figma
 
-OpenPencil ouvre et enregistre directement les fichiers `.fig`. L’import et l’export utilisent le même codec binaire Kiwi que Figma : 194 définitions de schéma et environ 390 champs par objet. Enregistrer : <kbd>⌘</kbd><kbd>S</kbd>. Enregistrer sous : <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd>.
+Pena ouvre et enregistre directement les fichiers `.fig`. L’import et l’export utilisent le même codec binaire Kiwi que Figma : 194 définitions de schéma et environ 390 champs par objet. Enregistrer : <kbd>⌘</kbd><kbd>S</kbd>. Enregistrer sous : <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd>.
 
-**Copier et coller avec Figma :** sélectionnez des objets dans Figma, appuyez sur <kbd>⌘</kbd><kbd>C</kbd>, passez à OpenPencil puis utilisez <kbd>⌘</kbd><kbd>V</kbd>. Remplissages, contours, disposition automatique, texte, effets, rayons des coins et réseaux vectoriels sont conservés dans les deux sens.
+**Copier et coller avec Figma :** sélectionnez des objets dans Figma, appuyez sur <kbd>⌘</kbd><kbd>C</kbd>, passez à Pena puis utilisez <kbd>⌘</kbd><kbd>V</kbd>. Remplissages, contours, disposition automatique, texte, effets, rayons des coins et réseaux vectoriels sont conservés dans les deux sens.
 
 ## Dessin et édition
 
@@ -33,7 +33,7 @@ Les onglets Design, Code, IA et Vérifier s’adaptent à la sélection :
 
 ## Rendu
 
-OpenPencil utilise Skia via CanvasKit WASM, le même moteur graphique que Figma :
+Pena utilise Skia via CanvasKit WASM, le même moteur graphique que Figma :
 
 - dégradés linéaires, radiaux, angulaires et diamant ;
 - remplissages d’image avec plusieurs modes d’échelle ;
@@ -104,4 +104,4 @@ La collaboration fonctionne directement entre participants via WebRTC et ne néc
 
 ## Chargement de secours depuis Google Fonts
 
-Si une police n’est pas disponible localement, OpenPencil la télécharge automatiquement depuis Google Fonts. Aucune installation manuelle n’est nécessaire.
+Si une police n’est pas disponible localement, Pena la télécharge automatiquement depuis Google Fonts. Aucune installation manuelle n’est nécessaire.

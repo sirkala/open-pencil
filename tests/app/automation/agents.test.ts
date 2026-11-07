@@ -157,7 +157,7 @@ describe("the app's own ACP and Pi chats", () => {
   })
 })
 
-describe("a chat's agent reaching OpenPencil's tools", () => {
+describe("a chat's agent reaching Pena's tools", () => {
   test('the chat goes on once the server says its own agent opened a session', async () => {
     const watch = watchChatAgent('0123456789abcdef')
     let connected = false

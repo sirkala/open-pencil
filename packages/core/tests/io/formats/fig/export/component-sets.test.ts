@@ -140,7 +140,7 @@ function savedVariants(bytes: Uint8Array) {
 
 // Without the flag Figma (desktop 126) reads the set as a plain frame of loose components, and
 // an instance of one variant has no properties; it lists the values in the saved order.
-test('a set made in OpenPencil is written as a set Figma reads', async () => {
+test('a set made in Pena is written as a set Figma reads', async () => {
   await initCodec()
   const graph = new SceneGraph()
   const figma = new FigmaAPI(graph)

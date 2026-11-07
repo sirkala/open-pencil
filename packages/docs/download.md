@@ -3,8 +3,8 @@ layout: page
 landing: true
 sidebar: false
 aside: false
-title: Download OpenPencil
-description: Download the OpenPencil desktop app for macOS, Windows, and Linux, or install it with Homebrew.
+title: Download Pena
+description: Download the Pena desktop app for macOS, Windows, and Linux, or install it with Homebrew.
 ---
 
 <script setup>

@@ -1,11 +1,11 @@
 ---
 title: provideEditor
-description: Udostępnianie instancji edytora OpenPencil komponentom potomnym przez dependency injection.
+description: Udostępnianie instancji edytora Pena komponentom potomnym przez dependency injection.
 ---
 
 # provideEditor
 
-`provideEditor(editor)` udostępnia edytor OpenPencil funkcjom composable i komponentom bez narzuconych stylów znajdującym się niżej w drzewie Vue.
+`provideEditor(editor)` udostępnia edytor Pena funkcjom composable i komponentom bez narzuconych stylów znajdującym się niżej w drzewie Vue.
 
 Na tej funkcji opiera się `useEditor()`.
 

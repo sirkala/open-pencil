@@ -1,6 +1,6 @@
-# Deploying OpenPencil Cloud
+# Deploying Pena Cloud
 
-OpenPencil Cloud runs as one Node 22+ process in front of PostgreSQL and an S3-compatible object
+Pena Cloud runs as one Node 22+ process in front of PostgreSQL and an S3-compatible object
 store, with optional SMTP for email, or on Cloudflare Workers by copying [`cloudflare/`](./cloudflare). The project's own deployments
 live in [`openpencil/`](./openpencil). See
 [security.md](./security.md) for hardening checks.
@@ -11,7 +11,7 @@ From the repository root, with Docker running:
 
 ```sh
 bun run cloud:dev
-# OpenPencil Cloud: https://<branch>.cloud.open-pencil.localhost
+# Pena Cloud: https://<branch>.cloud.open-pencil.localhost
 # Captured email:  https://<branch>.mail.open-pencil.localhost
 ```
 

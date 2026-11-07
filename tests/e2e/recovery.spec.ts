@@ -13,7 +13,7 @@ test('keeps recovery independent from cancelling an unsaved-document close', asy
 
   await page.evaluate(async () => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     const id = store.createShape('RECTANGLE', 120, 120, 240, 140)
     await store.persistRecoveryNow()
     store.updateNode(id, { name: 'Retained recovery rectangle' })
@@ -65,7 +65,7 @@ test('lists the unsaved work of a window that crashed on Home', async ({ browser
   await new CanvasHelper(crashing).waitForInit()
   await crashing.evaluate(async () => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     const id = store.createShape('RECTANGLE', 120, 120, 240, 140)
     store.updateNode(id, { name: 'Crashed recovery rectangle' })
     await store.persistRecoveryNow()

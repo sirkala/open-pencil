@@ -170,8 +170,8 @@ describe('acp-permission', () => {
   })
 })
 
-describe('permission for OpenPencil’s own tools', () => {
-  test('a call to OpenPencil’s server is allowed once without asking', () => {
+describe('permission for Pena’s own tools', () => {
+  test('a call to Pena’s server is allowed once without asking', () => {
     const approval = createOwnToolApproval()
     approval.noteUpdate({
       sessionUpdate: 'tool_call_update',
@@ -183,7 +183,7 @@ describe('permission for OpenPencil’s own tools', () => {
     })
   })
 
-  test('Grok Build’s calls to OpenPencil’s server are allowed once without asking', () => {
+  test('Grok Build’s calls to Pena’s server are allowed once without asking', () => {
     const approval = createOwnToolApproval()
     approval.noteUpdate({
       sessionUpdate: 'tool_call',

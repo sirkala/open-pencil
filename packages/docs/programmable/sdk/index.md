@@ -1,15 +1,15 @@
 ---
 title: Vue SDK
-description: Build OpenPencil-powered editors with headless Vue composables and primitives.
+description: Build Pena-powered editors with headless Vue composables and primitives.
 ---
 
 # Vue SDK
 
-`@open-pencil/vue` exists so OpenPencil can be more than a standalone design app.
+`@open-pencil/vue` exists so Pena can be more than a standalone design app.
 
-The goal is to make OpenPencil a toolkit you can embed into other products, internal tools, and workflow-specific editors — not just a single default UI.
+The goal is to make Pena a toolkit you can embed into other products, internal tools, and workflow-specific editors — not just a single default UI.
 
-The OpenPencil app is one composition of that toolkit. The SDK is how you build a different one.
+The Pena app is one composition of that toolkit. The SDK is how you build a different one.
 
 It gives you:
 

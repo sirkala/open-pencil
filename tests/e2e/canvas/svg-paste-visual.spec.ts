@@ -35,7 +35,7 @@ test('pasted SVG text measures and draws as Figma lays it out', async () => {
   await editor.canvas.pasteSVG(TEXT_SVG, 220, 160)
   const layers = await editor.page.evaluate(() => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     return [...store.graph.getAllNodes()]
       .filter((node) => node.type === 'TEXT')
       .map(({ text, x, width, height }) => ({ text, x, width, height }))

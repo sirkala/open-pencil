@@ -139,7 +139,7 @@ function convertValue(value: unknown, handles: Handles): unknown {
 
 function convertTree(value: unknown, handles: Handles, lineOffset?: number): TreeNode {
   if (!isSerializedElement(value)) {
-    throw new Error('Design JSX must return an OpenPencil element.')
+    throw new Error('Design JSX must return a Pena element.')
   }
   const children = value.children.map((child): TreeNode | string => {
     if (typeof child === 'string') return child

@@ -11,10 +11,10 @@ const ConfirmationEmail = defineComponent({
   setup(props) {
     return () =>
       emailLayout({
-        preview: 'One click to join the OpenPencil Cloud waitlist.',
+        preview: 'One click to join the Pena Cloud waitlist.',
         heading: 'Confirm your email',
         message:
-          'Thanks for your interest in OpenPencil Cloud. Confirm this address to join the waitlist, and we will write once, when Cloud is ready for you.',
+          'Thanks for your interest in Pena Cloud. Confirm this address to join the waitlist, and we will write once, when Cloud is ready for you.',
         actionLabel: 'Join the waitlist',
         actionURL: props.confirmURL,
         note: {
@@ -31,5 +31,5 @@ export async function confirmationEmail(links: { confirmURL: string; leaveURL: s
     render(ConfirmationEmail, links),
     render(ConfirmationEmail, links, { plainText: true })
   ])
-  return { subject: 'Confirm your place on the OpenPencil Cloud waitlist', html, text }
+  return { subject: 'Confirm your place on the Pena Cloud waitlist', html, text }
 }

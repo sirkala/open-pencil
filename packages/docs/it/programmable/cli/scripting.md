@@ -13,7 +13,7 @@ description: Eseguire JavaScript con un’API compatibile con i plugin Figma per
 openpencil eval design.fig -c "return figma.currentPage.children.length"
 ```
 
-`-c` accetta JavaScript. Se il codice non inizia con `return`, OpenPencil lo esegue in una funzione asincrona e restituisce l’eventuale risultato.
+`-c` accetta JavaScript. Se il codice non inizia con `return`, Pena lo esegue in una funzione asincrona e restituisce l’eventuale risultato.
 
 ## Interrogare oggetti
 
@@ -41,7 +41,7 @@ In un ambiente non interattivo, `eval` usa JSON per impostazione predefinita. `-
 
 ## API compatibile
 
-L’API segue il modello di Figma Plugin API, ma opera su SceneGraph e sui formati OpenPencil. Copre documento, pagine, creazione di oggetti, operazioni sull’albero, componenti, variabili e proprietà comuni.
+L’API segue il modello di Figma Plugin API, ma opera su SceneGraph e sui formati Pena. Copre documento, pagine, creazione di oggetti, operazioni sull’albero, componenti, variabili e proprietà comuni.
 
 Gli identificatori esatti come `figma.currentPage`, `createFrame`, `appendChild`, `fills`, `fontSize`, `layoutMode` e `strokeWeight` restano invariati.
 

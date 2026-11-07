@@ -5,7 +5,7 @@ description: Eine eigene Oberfläche mit provideEditor, CanvasRoot, Menüs, Pane
 
 # Eigene Editor-Oberfläche
 
-Eine OpenPencil-Anwendung mit Vue besteht typischerweise aus drei Schichten:
+Eine Pena-Anwendung mit Vue besteht typischerweise aus drei Schichten:
 
 1. `@open-pencil/core` erstellt den Editor;
 2. `@open-pencil/vue` verbindet ihn mit Vue Composables und Komponenten ohne vorgegebenes Erscheinungsbild;
@@ -13,7 +13,7 @@ Eine OpenPencil-Anwendung mit Vue besteht typischerweise aus drei Schichten:
 
 ## Mögliche Anwendungen
 
-Die fertige OpenPencil-App ist nur eine mögliche Oberfläche. Mit dem SDK können beispielsweise ein in ein anderes Produkt eingebetteter Editor, ein internes Asset tool, ein Template editor, eine Annotation UI oder ein spezialisierter AI-assisted editor entwickelt werden.
+Die fertige Pena-App ist nur eine mögliche Oberfläche. Mit dem SDK können beispielsweise ein in ein anderes Produkt eingebetteter Editor, ein internes Asset tool, ein Template editor, eine Annotation UI oder ein spezialisierter AI-assisted editor entwickelt werden.
 
 ## Empfohlene Struktur
 

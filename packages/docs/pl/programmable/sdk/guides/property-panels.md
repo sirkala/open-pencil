@@ -35,7 +35,7 @@ Jeśli wartość pola można powiązać ze zmienną albo zewnętrznym tokenem pr
 - Osobne działanie usunięcia powiązania lepiej umieścić w oknie wyboru niż w łatwej do przypadkowego użycia ikonie obok pola.
 - Zmianę powiązania, jego usunięcie podczas edycji i zmianę wielu obiektów wykonuj w jednej operacji zbiorczej dostawcy.
 
-Aplikacja OpenPencil pokazuje nazwę zmiennej na fioletowym tle, gdy pole nie jest edytowane. Po rozpoczęciu edycji `NumberField` pokazuje obliczoną wartość liczbową. Własny interfejs może przedstawić ten sam stan inaczej.
+Aplikacja Pena pokazuje nazwę zmiennej na fioletowym tle, gdy pole nie jest edytowane. Po rozpoczęciu edycji `NumberField` pokazuje obliczoną wartość liczbową. Własny interfejs może przedstawić ten sam stan inaczej.
 
 ## Przykład: położenie i rozmiar
 

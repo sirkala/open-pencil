@@ -7,7 +7,7 @@ if (process.argv.includes('--help') || process.argv.includes('-h')) {
   console.log(dedent`
     Usage: openpencil-cloud
 
-    Runs OpenPencil Cloud. Settings come from the environment:
+    Runs Pena Cloud. Settings come from the environment:
       OPENPENCIL_CLOUD_CONFIG    the deployment TOML file (required)
       OPENPENCIL_CLOUD_SITE_DIR  the editor and portal build to serve
       OPENPENCIL_CLOUD_DEV_SITE_URL
@@ -19,7 +19,7 @@ if (process.argv.includes('--help') || process.argv.includes('-h')) {
 }
 
 const cloud = await startNodeCloudServer()
-console.log(`OpenPencil Cloud listening on ${cloud.url}`)
+console.log(`Pena Cloud listening on ${cloud.url}`)
 
 function shutdown() {
   void cloud.stop().then(() => process.exit(0))

@@ -35,7 +35,7 @@ Cuando un campo pueda vincularse a una variable o un token de diseño externo, c
 - Es preferible incluir una acción explícita para eliminar el enlace dentro del selector que un botón fácil de pulsar por accidente junto al campo.
 - Agrupa cambios de enlace, separación durante la edición y actualizaciones de varios objetos en una sola operación por lotes del proveedor.
 
-La aplicación de OpenPencil muestra el nombre de la variable en morado cuando el campo está inactivo. Al empezar a editar, `NumberField` muestra el valor numérico calculado. Una interfaz propia puede presentar el mismo estado de otra forma.
+La aplicación de Pena muestra el nombre de la variable en morado cuando el campo está inactivo. Al empezar a editar, `NumberField` muestra el valor numérico calculado. Una interfaz propia puede presentar el mismo estado de otra forma.
 
 ## Ejemplo: posición y tamaño
 

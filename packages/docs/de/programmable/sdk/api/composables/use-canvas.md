@@ -1,6 +1,6 @@
 ---
 title: useCanvas
-description: Den CanvasKit renderer mit einem Canvas element und einem OpenPencil-Editor verbinden.
+description: Den CanvasKit renderer mit einem Canvas element und einem Pena-Editor verbinden.
 ---
 
 # useCanvas

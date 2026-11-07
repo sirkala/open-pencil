@@ -107,7 +107,7 @@ export class FigmaVariablesAPI {
   ): FigmaVariable {
     const type = assertType('createVariable', resolvedType)
     if (!isModelledType(type))
-      throw new Error(`in createVariable: OpenPencil does not support ${type} variables`)
+      throw new Error(`in createVariable: Pena does not support ${type} variables`)
     const collectionId = typeof collection === 'string' ? collection : collection.id
     if (!this.#graph.variableCollections.has(collectionId)) {
       throw new Error('in createVariable: Could not find variable collection')

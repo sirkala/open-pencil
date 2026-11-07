@@ -5,7 +5,7 @@ description: Wykonywanie JavaScript przez API zgodne z Figma Plugin API do wyszu
 
 # Skrypty
 
-`openpencil eval` wykonuje JavaScript dla dokumentu OpenPencil i udostępnia globalny obiekt `figma` zgodny z Figma Plugin API. Polecenie nadaje się do zmian zbiorczych, sprawdzania dokumentów, przygotowywania danych testowych i automatyzacji bez interfejsu edytora.
+`openpencil eval` wykonuje JavaScript dla dokumentu Pena i udostępnia globalny obiekt `figma` zgodny z Figma Plugin API. Polecenie nadaje się do zmian zbiorczych, sprawdzania dokumentów, przygotowywania danych testowych i automatyzacji bez interfejsu edytora.
 
 ## Pierwsze wywołanie
 
@@ -13,7 +13,7 @@ description: Wykonywanie JavaScript przez API zgodne z Figma Plugin API do wyszu
 openpencil eval design.fig -c "return figma.currentPage.children.length"
 ```
 
-Opcja `-c` przyjmuje JavaScript. Jeśli kod nie zaczyna się od `return`, OpenPencil umieszcza go w funkcji asynchronicznej i zwraca jej wynik, jeśli istnieje.
+Opcja `-c` przyjmuje JavaScript. Jeśli kod nie zaczyna się od `return`, Pena umieszcza go w funkcji asynchronicznej i zwraca jej wynik, jeśli istnieje.
 
 ## Wyszukiwanie obiektów
 
@@ -45,7 +45,7 @@ Po przekierowaniu wyjścia domyślnie używany jest JSON. Opcja `--json` włącz
 
 ## Dostępne API
 
-API jest celowo zbliżone do Figma Plugin API, ale pracuje z SceneGraph i formatami plików OpenPencil.
+API jest celowo zbliżone do Figma Plugin API, ale pracuje z SceneGraph i formatami plików Pena.
 
 ### Dokument i strony
 

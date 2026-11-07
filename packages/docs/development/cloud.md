@@ -1,6 +1,6 @@
 # Cloud Architecture
 
-OpenPencil Cloud is an optional, self-hostable backend for storing, sharing, and collaborating on
+Pena Cloud is an optional, self-hostable backend for storing, sharing, and collaborating on
 documents. The editor stays local-first: opening, editing, and saving local files never needs this
 package, a network connection, or an account.
 
@@ -106,7 +106,7 @@ keeps on its own, and versions someone named (`document_version`, one per revisi
 ## Authentication and authorization
 
 Better Auth owns users, sessions, social sign-in, email and password, passkeys, TOTP, and recovery
-codes. OpenPencil owns workspace and document authorization. For clients that cannot host a browser
+codes. Pena owns workspace and document authorization. For clients that cannot host a browser
 redirect, such as the desktop app, the server supports the OAuth device authorization flow and
 accepts the resulting bearer token.
 
@@ -368,9 +368,9 @@ writer is down.
 
 ## Rate limiting
 
-OpenPencil routes use `hono-rate-limiter` with one PostgreSQL store that atomically increments
+Pena routes use `hono-rate-limiter` with one PostgreSQL store that atomically increments
 hashed, namespaced keys, so limits hold across instances. Better Auth keeps its own limiter for
-`/api/auth/**`; those routes mount before OpenPencil middleware and are never counted twice.
+`/api/auth/**`; those routes mount before Pena middleware and are never counted twice.
 
 ## Transactional email
 
@@ -447,7 +447,7 @@ the person may still open elsewhere.
 with the person, and the storage bucket are separate places in a sidebar, so Cloud does not crowd
 the local file list and one server's workspaces show at a time.
 
-**2026-10 · Cloud entry points wait for the official server's listing.** Settings → OpenPencil Cloud
+**2026-10 · Cloud entry points wait for the official server's listing.** Settings → Pena Cloud
 and Save to Cloud stay hidden until `cloud.openpencil.dev` answers discovery with a `listing` whose
 minimum editor version this editor meets, a server is already connected on the device, or someone
 opened the editor with `?cloud=preview`. Launching, or pulling back, is a change to that server's
@@ -550,7 +550,7 @@ viewer's address and a hash of each person's email to a third party, which a sel
 should not do by default; copying a linked Google picture instead of linking to it follows the
 same rule.
 
-**2026-10 · Tables are named for what they hold.** OpenPencil's tables beside Better Auth's had a
+**2026-10 · Tables are named for what they hold.** Pena's tables beside Better Auth's had a
 `cloud_` prefix the rest never had; they lose it, and only a name Better Auth already uses gets a
 qualifier (`api_rate_limit` beside its `rate_limit`). Migrations that shipped before the rename
 type their queries against the names they ran with, so their SQL never changes.

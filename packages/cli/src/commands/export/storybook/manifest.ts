@@ -55,7 +55,7 @@ export async function readManifest(outputDir: string): Promise<StoryManifest> {
   const result = v.safeParse(v.pipe(v.string(), v.parseJson(), manifestSchema), text)
   if (!result.success)
     throw new Error(
-      `${path} is not a valid OpenPencil stories manifest; remove it together with the stories it listed, then export again.`
+      `${path} is not a valid Pena stories manifest; remove it together with the stories it listed, then export again.`
     )
   return result.output
 }

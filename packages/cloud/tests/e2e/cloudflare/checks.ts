@@ -141,9 +141,9 @@ for (const path of ['/health', '/ready', '/.well-known/openpencil']) {
   check(response.ok, `${path} answered HTTP ${response.status}`)
 }
 for (const [path, title] of [
-  ['/auth/sign-in', 'OpenPencil Cloud'],
-  ['/', 'OpenPencil'],
-  ['/documents/missing', 'OpenPencil']
+  ['/auth/sign-in', 'Pena Cloud'],
+  ['/', 'Pena'],
+  ['/documents/missing', 'Pena']
 ]) {
   const page = await fetch(`${base}${path}`, { headers: { Accept: 'text/html' } })
   check(

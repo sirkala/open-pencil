@@ -1,12 +1,12 @@
 ---
 layout: doc
 title: AI i automatyzacja
-description: Czat AI, CLI, JSX, serwer MCP i inne narzędzia automatyzacji oparte na silniku OpenPencil.
+description: Czat AI, CLI, JSX, serwer MCP i inne narzędzia automatyzacji oparte na silniku Pena.
 ---
 
 # AI i automatyzacja
 
-OpenPencil pozwala traktować pliki projektowe jak dane. Wszystkie operacje edytora — tworzenie figur, ustawianie zalewów, zarządzanie automatycznym układem i eksport zasobów — są dostępne także z terminala, dla agentów AI i z kodu.
+Pena pozwala traktować pliki projektowe jak dane. Wszystkie operacje edytora — tworzenie figur, ustawianie zalewów, zarządzanie automatycznym układem i eksport zasobów — są dostępne także z terminala, dla agentów AI i z kodu.
 
 Interfejs edytora i narzędzia automatyzacji korzystają z tego samego silnika. Każde działanie dostępne w interfejsie można również wykonać ze skryptu.
 
@@ -24,7 +24,7 @@ Dokument jest synchronizowany bezpośrednio między uczestnikami przez WebRTC. C
 
 ## Vue SDK
 
-Twórz edytory oparte na OpenPencil za pomocą tego samego Vue SDK, którego używa aplikacja. SDK udostępnia kontekst edytora, podłączenie obszaru roboczego, stan zaznaczenia, modele poleceń, composables dla paneli właściwości i komponenty bez narzuconego wyglądu.
+Twórz edytory oparte na Pena za pomocą tego samego Vue SDK, którego używa aplikacja. SDK udostępnia kontekst edytora, podłączenie obszaru roboczego, stan zaznaczenia, modele poleceń, composables dla paneli właściwości i komponenty bez narzuconego wyglądu.
 
 [Vue SDK →](./sdk/)
 
@@ -32,7 +32,7 @@ Twórz edytory oparte na OpenPencil za pomocą tego samego Vue SDK, którego uż
 
 Opisuj interfejs za pomocą JSX. Jedno wywołanie może utworzyć drzewo komponentów zawierające ramki, tekst, automatyczny układ, zalewy i obwiednie.
 
-W drugą stronę OpenPencil eksportuje zaznaczenie jako JSX albo HTML z klasami Tailwind. Wynik może służyć jako podstawa implementacji, przeglądu kodu lub kolejnego kroku z AI.
+W drugą stronę Pena eksportuje zaznaczenie jako JSX albo HTML z klasami Tailwind. Wynik może służyć jako podstawa implementacji, przeglądu kodu lub kolejnego kroku z AI.
 
 [JSX →](./jsx-renderer)
 
@@ -78,4 +78,4 @@ W macOS schemat należy do zainstalowanego pakietu aplikacji, więc odnośniki t
 
 ## Otwarta platforma
 
-OpenPencil jest udostępniany na licencji MIT, przechowuje dokumenty lokalnie i zapewnia programowy dostęp do operacji. Pliki `.fig` można sprawdzać, przekształcać, przetwarzać w CI i przekazywać modelowi językowemu bez zależności od konkretnego dostawcy hostingu.
+Pena jest udostępniany na licencji MIT, przechowuje dokumenty lokalnie i zapewnia programowy dostęp do operacji. Pliki `.fig` można sprawdzać, przekształcać, przetwarzać w CI i przekazywać modelowi językowemu bez zależności od konkretnego dostawcy hostingu.

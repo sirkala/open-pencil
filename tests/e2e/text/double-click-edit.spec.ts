@@ -6,7 +6,7 @@ import { getEditingTextId } from '#tests/helpers/store'
 async function addTwoTopLevelTexts(page: Page) {
   return page.evaluate(() => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     store.state.zoom = 1
     store.state.panX = 0
     store.state.panY = 0
@@ -23,7 +23,7 @@ async function addTwoTopLevelTexts(page: Page) {
 async function addTopLevelText(page: Page) {
   return page.evaluate(() => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     store.state.zoom = 1
     store.state.panX = 0
     store.state.panY = 0
@@ -44,7 +44,7 @@ async function addFrameWithNestedText(page: Page, inner = false) {
   return page.evaluate(
     ({ inner, white }) => {
       const store = window.openPencil?.getStore?.()
-      if (!store) throw new Error('OpenPencil store not initialized')
+      if (!store) throw new Error('Pena store not initialized')
       store.state.zoom = 1
       store.state.panX = 0
       store.state.panY = 0
@@ -89,7 +89,7 @@ async function addFrameWithNestedText(page: Page, inner = false) {
 const selectedIds = (page: Page) =>
   page.evaluate(() => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     return [...store.state.selectedIds]
   })
 

@@ -1,6 +1,6 @@
 ---
 title: Privacy and Usage Stats
-description: What OpenPencil sends over the network, why it sends anonymous usage stats, and how to turn every part of it off.
+description: What Pena sends over the network, why it sends anonymous usage stats, and how to turn every part of it off.
 ---
 
 <script setup>
@@ -40,7 +40,7 @@ const reportRows = rows(describeReportFields(), 'Free-form')
 
 ## Why we collect anything
 
-OpenPencil is built by a small team. We need to know which platforms, file formats, and features people use so we can decide what to build next. We also need to show that OpenPencil is used, because that is what keeps the project funded. A count of active installs and a picture of which features matter answer both questions without knowing anything about you or your work.
+Pena is built by a small team. We need to know which platforms, file formats, and features people use so we can decide what to build next. We also need to show that Pena is used, because that is what keeps the project funded. A count of active installs and a picture of which features matter answer both questions without knowing anything about you or your work.
 
 ## The daily ping
 
@@ -60,7 +60,7 @@ The ping is on by default. Turn it off in **Settings → Privacy**.
 
 ## Usage stats
 
-Usage stats are off until you agree. OpenPencil asks once, in a small prompt that appears after the welcome screen on first launch, or on a later launch if you have not answered, with two equal choices: **No thanks** and **Share stats**. Nothing is selected for you, and you can change your answer later in **Settings → Privacy**.
+Usage stats are off until you agree. Pena asks once, in a small prompt that appears after the welcome screen on first launch, or on a later launch if you have not answered, with two equal choices: **No thanks** and **Share stats**. Nothing is selected for you, and you can change your answer later in **Settings → Privacy**.
 
 When you agree, the app creates a random install ID on your device. It is not linked to an account, an email address, or anything else about you. Usage events are sent with it, together with the build fields above (<code>{{ buildFields }}</code>). When you stop sharing, the app deletes the ID; agreeing again creates a new one.
 
@@ -76,9 +76,9 @@ Accepted events go to [PostHog](https://posthog.com), a product analytics servic
 
 ## Error and problem reports
 
-When OpenPencil's own code throws an unexpected error, an official build adds **Report…** to the error notice; errors from browser extensions or without a stack trace get none. If OpenPencil closed unexpectedly after an error, or the desktop app hit an internal error, the next launch offers the same, once. **File → Report a problem…** is always there. Both open a form, and nothing is sent until you choose **Send report**. **What will be sent** shows the exact report before it goes. It has:
+When Pena's own code throws an unexpected error, an official build adds **Report…** to the error notice; errors from browser extensions or without a stack trace get none. If Pena closed unexpectedly after an error, or the desktop app hit an internal error, the next launch offers the same, once. **File → Report a problem…** is always there. Both open a form, and nothing is sent until you choose **Send report**. **What will be sent** shows the exact report before it goes. It has:
 
-- For an error: its type and message, scrubbed of keys, tokens, email addresses, and your user name in folder paths, and where in OpenPencil's code it happened. Errors from AI providers, which can quote your prompts, are sent without a message.
+- For an error: its type and message, scrubbed of keys, tokens, email addresses, and your user name in folder paths, and where in Pena's code it happened. Errors from AI providers, which can quote your prompts, are sent without a message.
 - What you write, and an email address if you give one so we can reply.
 - The build fields above (<code>{{ buildFields }}</code>), and your install ID if you share usage stats.
 - If you leave **Include recent activity** on: the last 50 events from **Settings → Diagnostics**, such as errors, timings, and file formats. They never include chat messages or tool output.
@@ -88,26 +88,26 @@ Besides the build fields, a report has these fields:
 
 <SdkDataTable :columns="columns" :rows="reportRows" />
 
-Reports go to `feedback.openpencil.dev`, which passes them to PostHog's error tracking on its EU cloud, without your address, a person profile, or a location lookup, and keeps nothing of them itself. An attached design is stored in Cloudflare R2 in the EU, only the OpenPencil team can open it, and it is deleted after 90 days.
+Reports go to `feedback.openpencil.dev`, which passes them to PostHog's error tracking on its EU cloud, without your address, a person profile, or a location lookup, and keeps nothing of them itself. An attached design is stored in Cloudflare R2 in the EU, only the Pena team can open it, and it is deleted after 90 days.
 
 ## Turning it all off
 
 - **Settings → Privacy** has a switch for the ping and one for usage stats.
-- In the desktop app, starting OpenPencil with `OPENPENCIL_TELEMETRY=0` or `DO_NOT_TRACK=1` in its environment turns off both.
+- In the desktop app, starting Pena with `OPENPENCIL_TELEMETRY=0` or `DO_NOT_TRACK=1` in its environment turns off both.
 - Only official releases send anything. Development servers, self-built apps, and forks send nothing, because the switch that enables sending is set only when we build a release.
 
 ## Cloud waitlist
 
-If you join the OpenPencil Cloud waitlist on this site, we store your email address and the optional note you add. We send one email to confirm the address and write again only when Cloud is ready for you. Addresses that are not confirmed are deleted after seven days, and every email has a link that removes yours.
+If you join the Pena Cloud waitlist on this site, we store your email address and the optional note you add. We send one email to confirm the address and write again only when Cloud is ready for you. Addresses that are not confirmed are deleted after seven days, and every email has a link that removes yours.
 
 ## Other network requests
 
-OpenPencil is local-first, but some features reach the network. The desktop app checks for updates on its own; everything else below connects only when you use that feature, and only to the service named.
+Pena is local-first, but some features reach the network. The desktop app checks for updates on its own; everything else below connects only when you use that feature, and only to the service named.
 
 | Feature                 | Where it connects                                                                                                                                                                                       |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Update checks (desktop) | GitHub Releases, for the latest version number                                                                                                                                                          |
-| AI chat and image tools | The provider you configure, with your own key; the model list comes from models.dev. With **OpenPencil Cloud** as the provider, the AI service your Cloud server names, with a token for your workspace |
+| AI chat and image tools | The provider you configure, with your own key; the model list comes from models.dev. With **Pena Cloud** as the provider, the AI service your Cloud server names, with a token for your workspace |
 | Collaboration rooms     | Other people in the room directly; public brokers introduce peers, and a TURN relay carries traffic when a direct connection is not possible                                                            |
 | Cloud storage           | The storage provider you configure                                                                                                                                                                      |
 | Fonts                   | Google Fonts, which can supply a font a document uses that is not installed                                                                                                                             |

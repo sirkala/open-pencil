@@ -9,7 +9,7 @@ const main = defineCommand({
   meta: {
     name: 'openpencil',
     description:
-      'OpenPencil CLI — inspect, export, and lint design documents, and drive the running app',
+      'Pena CLI — inspect, export, and lint design documents, and drive the running app',
     version
   },
   subCommands: COMMANDS

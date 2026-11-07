@@ -5,7 +5,7 @@ description: Tworzenie własnego interfejsu edytora za pomocą provideEditor, Ca
 
 # Własny interfejs edytora
 
-Typowa aplikacja OpenPencil oparta na Vue składa się z trzech warstw:
+Typowa aplikacja Pena oparta na Vue składa się z trzech warstw:
 
 1. `@open-pencil/core` tworzy edytor;
 2. `@open-pencil/vue` łączy go z composables i komponentami Vue bez narzuconego wyglądu;
@@ -13,7 +13,7 @@ Typowa aplikacja OpenPencil oparta na Vue składa się z trzech warstw:
 
 ## Dlaczego warto rozdzielić te warstwy
 
-Gotowa aplikacja OpenPencil jest tylko jednym z możliwych interfejsów.
+Gotowa aplikacja Pena jest tylko jednym z możliwych interfejsów.
 
 Na podstawie SDK można utworzyć edytor osadzony w innym produkcie, wewnętrzne narzędzie do pracy z zasobami, edytor szablonów, interfejs do adnotacji albo wyspecjalizowany edytor z obsługą AI.
 

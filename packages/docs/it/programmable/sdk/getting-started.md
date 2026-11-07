@@ -11,7 +11,7 @@ description: Collega @open-pencil/vue, crea un editor e configura l'area di lavo
 bun add @open-pencil/core @open-pencil/vue canvaskit-wasm
 ```
 
-L'SDK si trova nel monorepo OpenPencil ed è pubblicato come pacchetto `@open-pencil/vue`.
+L'SDK si trova nel monorepo Pena ed è pubblicato come pacchetto `@open-pencil/vue`.
 
 ```ts
 import { createEditor } from '@open-pencil/core'
