@@ -2,7 +2,13 @@
 import { promiseTimeout } from '@vueuse/core'
 import { computed, onMounted, ref } from 'vue'
 
-import { ACP_AGENTS, AI_PROVIDERS, IS_TAURI, type AIProviderID } from '@open-pencil/core/constants'
+import {
+  ACP_AGENTS,
+  acpAgentFor,
+  AI_PROVIDERS,
+  IS_TAURI,
+  type AIProviderID
+} from '@open-pencil/core/constants'
 import { useAIMessages } from '@open-pencil/vue/i18n'
 
 import { OPENPENCIL_AI_PROVIDER } from '@/app/ai/providers/openpencil/provider'
@@ -64,10 +70,8 @@ const providerDef = computed(
 
 const displayName = computed(() => {
   if (providerID.value === 'harness:pi') return 'Pi'
-  if (providerID.value.startsWith('acp:')) {
-    const agentId = providerID.value.replace('acp:', '')
-    return ACP_AGENTS.find((agent) => agent.id === agentId)?.name ?? providerID.value
-  }
+  if (providerID.value.startsWith('acp:'))
+    return acpAgentFor(providerID.value)?.name ?? providerID.value
   return providerDef.value.name
 })
 
