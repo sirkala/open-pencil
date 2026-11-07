@@ -72,12 +72,7 @@ describe('unsupported engine guidance', () => {
       'Update Chrome to run Pena',
       'Chrome 105 detected. Pena needs Chrome 111 or later.'
     ],
-    [
-      'edge',
-      109,
-      'Update Edge to run Pena',
-      'Edge 109 detected. Pena needs Edge 111 or later.'
-    ],
+    ['edge', 109, 'Update Edge to run Pena', 'Edge 109 detected. Pena needs Edge 111 or later.'],
     [
       'firefox',
       115,

@@ -105,8 +105,7 @@ export const cloudPortalMessageDefaults = {
   deviceDescription: params('The Pena app asks to use your account, {email}.'),
   deviceCheckCode: 'Check that the app shows this code',
   deviceWarningTitle: 'Only approve a sign-in you started',
-  deviceWarningDescription:
-    'If you didn’t just sign in to Pena on a computer, deny this request.',
+  deviceWarningDescription: 'If you didn’t just sign in to Pena on a computer, deny this request.',
   approve: 'Approve',
   deny: 'Deny',
   deviceApprovedTitle: 'You’re signed in',

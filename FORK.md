@@ -38,4 +38,4 @@ git checkout --theirs path/to/file
 bun desktop/pena/rebrand.ts
 ```
 
-Run `bun desktop/pena/rebrand.ts` after every merge anyway, since new upstream text arrives spelled OpenPencil; `--check` only reports what it would change. Then run the usual gates (`bun run check`, `bun run test:unit`, `bun run test`).
+Run `bun desktop/pena/rebrand.ts` after every merge anyway, since new upstream text arrives spelled OpenPencil; `--check` only reports what it would change. The shorter name lets some strings fit on one line, so run `bun run format` after it. Then run the usual gates (`bun run check`, `bun run test:unit`, `bun run test`).

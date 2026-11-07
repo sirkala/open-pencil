@@ -83,6 +83,7 @@ const PROTECTED_LINES: RegExp[] = [
   /DIR_NAME_MACOS/,
   /MCP_RUNTIME_FOLDER \?\? 'OpenPencil'/,
   /Application Support\/OpenPencil/,
+  /'Application Support', 'OpenPencil'/,
   /OpenPencil contributors/,
   // Pena's own words about where it comes from.
   /the OpenPencil project/,

@@ -84,9 +84,7 @@ export function waitlistRoutes(services: FeedbackServices) {
         if (!token || !(await confirmSignup(db, token, services.now()))) {
           return c.html(invalidLink(), 404)
         }
-        return c.html(
-          page("You're on the list", 'We will write when Pena Cloud is ready for you.')
-        )
+        return c.html(page("You're on the list", 'We will write when Pena Cloud is ready for you.'))
       })
       .get(LEAVE_PATH, (c) => {
         const token = queryToken(c)
