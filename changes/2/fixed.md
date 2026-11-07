@@ -1,0 +1,1 @@
+- `.pen` files that pen.dev packed into a ZIP archive, such as its snapshot export, open with the images they hold instead of failing as invalid JSON.
