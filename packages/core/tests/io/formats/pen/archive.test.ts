@@ -50,9 +50,23 @@ describe('penFormat.readDocument — archives', () => {
     expect(asked).toEqual([])
   })
 
-  test('reads the document named as the archive over its libraries', async () => {
+  test('reads the document a renamed snapshot is named after', async () => {
+    for (const name of ['landing-snapshot.zip.pen', 'landing-snapshot.pen', 'landing.pen']) {
+      const { graph } = await io.readDocument({
+        name,
+        data: zipSync({
+          'other.pen': penJSON('Other', './a.png'),
+          'landing.pen': penJSON('Landing', './a.png'),
+          'a.png': PNG
+        })
+      })
+      expect(graph.getNode('photo')?.name).toBe('Landing')
+    }
+  })
+
+  test('reads a document over the libraries beside it', async () => {
     const { graph } = await io.readDocument({
-      name: 'landing-snapshot.zip.pen',
+      name: 'renamed.pen',
       data: zipSync({
         'shadcn.lib.pen': penJSON('Library', './a.png'),
         'landing.pen': penJSON('Landing', './a.png'),

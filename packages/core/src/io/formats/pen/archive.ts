@@ -43,7 +43,12 @@ function documentEntry(paths: readonly string[], archiveName: string | undefined
   const shallowest = Math.min(...pens.map(depth))
   // Not empty: the shallowest depth is some entry's.
   const candidates = pens.filter((path) => depth(path) === shallowest)
-  const stem = archiveName ? filename(archiveName)?.replace(/-snapshot$/, '') : undefined
+  // `landing-snapshot.zip` renamed to `landing-snapshot.zip.pen` holds `landing.pen`.
+  const stem = archiveName
+    ? filename(archiveName)
+        ?.replace(/(\.zip)+$/i, '')
+        .replace(/-snapshot$/i, '')
+    : undefined
   return (
     candidates.find((path) => filename(path) === stem) ??
     candidates.find((path) => !path.toLowerCase().endsWith('.lib.pen')) ??
