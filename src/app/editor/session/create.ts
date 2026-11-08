@@ -1,3 +1,4 @@
+import { TimeoutError } from 'es-toolkit/error'
 import { shallowReactive } from 'vue'
 
 import { createEditor } from '@open-pencil/core'
@@ -157,7 +158,7 @@ function buildEditorStore(initialGraph?: SceneGraph) {
         subject: page?.name ?? null
       })
     const ownsPreparation = options.preparation === undefined
-    let succeeded = false
+    let awaitingPresentation = false
     try {
       const prepared = await editor.preparePage(pageId, {
         signal: preparation.signal,
@@ -175,10 +176,10 @@ function buildEditorStore(initialGraph?: SceneGraph) {
         preparation.update({ phase: 'preparing-render', detail: page?.name ?? null })
         await options.beforePresentation?.()
         preparation.signal.throwIfAborted()
+        awaitingPresentation = true
         await preparationController.waitForPresentation(preparation.id, editor.state)
         preparation.signal.throwIfAborted()
       }
-      succeeded = true
     } catch (error) {
       if (preparation.signal.aborted) {
         // Another switch took over; its page is the one to show, so this one ends quietly.
@@ -186,26 +187,23 @@ function buildEditorStore(initialGraph?: SceneGraph) {
         if (ownsPreparation) return
         throw error
       }
-      if (ownsPreparation) {
-        const presentationTimedOut =
-          error instanceof Error && error.message === 'The operation was timed out'
+      const presentationTimedOut = awaitingPresentation && error instanceof TimeoutError
+      if (ownsPreparation || presentationTimedOut) {
+        const message = error instanceof Error ? error.message : String(error)
         preparation.fail({
           code: presentationTimedOut ? 'render-failed' : 'layout-failed',
-          message: error instanceof Error ? error.message : String(error),
+          message,
           retryable: true
         })
         if (presentationTimedOut) {
-          toast.error(
-            notificationMessages.get().operationFailed({
-              error: error instanceof Error ? error.message : String(error)
-            })
-          )
+          // A document that has opened can stay in its tab while the canvas finishes drawing.
+          if (!ownsPreparation) return
+          toast.error(notificationMessages.get().operationFailed({ error: message }))
         }
       }
       throw error
-    } finally {
-      if (ownsPreparation && succeeded) preparation.complete()
     }
+    if (ownsPreparation) preparation.complete()
   }
 
   const store = {

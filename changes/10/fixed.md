@@ -1,0 +1,1 @@
+- A loaded document stays open if the canvas takes longer than expected to draw its first frame.
