@@ -7,7 +7,7 @@ export function boardDriver(page: () => Page) {
     async open() {
       await page().evaluate(() => {
         const store = window.openPencil?.getStore?.()
-        if (!store) throw new Error('OpenPencil store not initialized')
+        if (!store) throw new Error('Pena store not initialized')
         store.setDocumentKind('board')
         store.state.pageColor = { r: 245 / 255, g: 245 / 255, b: 245 / 255, a: 1 }
         store.requestRender()
@@ -25,7 +25,7 @@ export function boardDriver(page: () => Page) {
     async showAt(zoom: number) {
       await page().evaluate((zoom) => {
         const store = window.openPencil?.getStore?.()
-        if (!store) throw new Error('OpenPencil store not initialized')
+        if (!store) throw new Error('Pena store not initialized')
         store.state.zoom = zoom
         store.state.panX = 0
         store.state.panY = 0
@@ -54,7 +54,7 @@ export function boardDriver(page: () => Page) {
       await page().evaluate(
         ({ type, x, y, width, height }) => {
           const store = window.openPencil?.getStore?.()
-          if (!store) throw new Error('OpenPencil store not initialized')
+          if (!store) throw new Error('Pena store not initialized')
           const id = store.createShape(type, x, y, width, height)
           if (type === 'TEXT') store.graph.updateNode(id, { text: 'Board text' })
           store.select([id])
@@ -68,7 +68,7 @@ export function boardDriver(page: () => Page) {
     async selectAll() {
       await page().evaluate(() => {
         const store = window.openPencil?.getStore?.()
-        if (!store) throw new Error('OpenPencil store not initialized')
+        if (!store) throw new Error('Pena store not initialized')
         store.select(store.graph.getChildren(store.state.currentPageId).map((node) => node.id))
       })
     },

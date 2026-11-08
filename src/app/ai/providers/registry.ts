@@ -20,7 +20,7 @@ const MODEL_PROVIDER_ADAPTERS = {
         apiKey: config.apiKey,
         fetch: runtime.fetch,
         headers: {
-          'X-OpenRouter-Title': 'OpenPencil',
+          'X-OpenRouter-Title': 'Pena',
           'HTTP-Referer': 'https://github.com/open-pencil/open-pencil'
         }
       })

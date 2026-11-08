@@ -139,7 +139,7 @@ describe('an ACP turn in the chat', () => {
     expect(parts[0]).toMatchObject({ text: 'Plan the grid' })
   })
 
-  test('OpenPencil’s own tools show as the built-in chat’s, with their arguments and result', async () => {
+  test('Pena’s own tools show as the built-in chat’s, with their arguments and result', async () => {
     const [call] = await transcript([
       codexCall('open-pencil', 'render', { jsx: '<Frame name="Calendar" />' }),
       codexDone(mcpText({ id: '1:2', name: 'Calendar' }))
@@ -190,7 +190,7 @@ describe('an ACP turn in the chat', () => {
     })
   })
 
-  test('Claude’s calls to OpenPencil’s tools show the same way, input arriving later', async () => {
+  test('Claude’s calls to Pena’s tools show the same way, input arriving later', async () => {
     const meta = { claudeCode: { toolName: 'mcp__open-pencil__render' } }
     const [call] = await transcript([
       {
@@ -224,7 +224,7 @@ describe('an ACP turn in the chat', () => {
     })
   })
 
-  test('Cursor’s calls to OpenPencil’s tools show the same way, named by their first update', async () => {
+  test('Cursor’s calls to Pena’s tools show the same way, named by their first update', async () => {
     const [call] = await transcript([
       cursorStart('MCP: tool', 'other'),
       cursorUpdate({
@@ -255,7 +255,7 @@ describe('an ACP turn in the chat', () => {
     })
   })
 
-  test('Grok Build’s calls to OpenPencil’s tools show the same way, with their result or error', async () => {
+  test('Grok Build’s calls to Pena’s tools show the same way, with their result or error', async () => {
     const [done, failed] = await transcript([
       grokCall('grok-1', 'open-pencil__get_node', { id: '1:2' }),
       grokDone('grok-1', { OkayOutput: JSON.stringify({ id: '1:2', name: 'Card' }) }),

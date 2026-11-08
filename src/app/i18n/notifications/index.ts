@@ -18,7 +18,7 @@ export const notificationMessageDefaults = {
   ),
   designTokensImported: params('Imported {count} design tokens.'),
   unsupportedVariableExpressions: params(
-    'OpenPencil can’t evaluate these variables yet, so layers keep the values saved in the file: {names}.'
+    'Pena can’t evaluate these variables yet, so layers keep the values saved in the file: {names}.'
   ),
   nodeID: 'node ID',
   nodeIDs: 'node IDs',
@@ -43,7 +43,7 @@ export const notificationMessageDefaults = {
   deepLinkPickerDismissed: 'Link cancelled: no file was chosen.',
   deepLinkCancelled: params('Link cancelled: expected a file ending in “{file}”.'),
   deepLinkNodeNotFound: params('Node “{node}” was not found in “{file}”.'),
-  openQueuedFilesFailed: params('Could not open the files handed to OpenPencil: {error}')
+  openQueuedFilesFailed: params('Could not open the files handed to Pena: {error}')
 } as const
 
 const localeLoaders = {

@@ -20,7 +20,7 @@ test('FIT avatar preserves the full clipboard fixture image', async () => {
   await editor.page.evaluate(
     (data) => {
       const store = window.openPencil?.getStore?.()
-      if (!store) throw new Error('OpenPencil store not initialized')
+      if (!store) throw new Error('Pena store not initialized')
       const hash = store.storeImage(new Uint8Array(data))
       store.graph.createNode('RECTANGLE', store.state.currentPageId, {
         name: 'Bitmap background',
@@ -69,7 +69,7 @@ test('gradients and image fill modes', async () => {
     const figURL = '/@id/@open-pencil/fig/node-change'
     const { convertFills, nodeChangeToProps }: typeof FigNodeChange = await import(figURL)
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     const pageId = store.state.currentPageId
 
     const imageCanvas = document.createElement('canvas')
@@ -322,7 +322,7 @@ test('a shader paint draws its saved frame, and its live frame while one plays',
   await editor.page.evaluate(
     ({ frame, preset, presetKey }) => {
       const store = window.openPencil?.getStore?.()
-      if (!store) throw new Error('OpenPencil store not initialized')
+      if (!store) throw new Error('Pena store not initialized')
       const node = store.graph.createNode('RECTANGLE', store.state.currentPageId, {
         name: 'Shader',
         x: 120,
@@ -359,7 +359,7 @@ test('a shader paint draws its saved frame, and its live frame while one plays',
   const live = await square('#22d3ee')
   await editor.page.evaluate(async (frame) => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     const node = [...store.graph.getAllNodes()].find((item) => item.name === 'Shader')
     const hash = node?.fills[0]?.imageHash
     if (!node || !hash) throw new Error('No shader paint')
@@ -372,7 +372,7 @@ test('a shader paint draws its saved frame, and its live frame while one plays',
 
   await editor.page.evaluate(() => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     const node = [...store.graph.getAllNodes()].find((item) => item.name === 'Shader')
     const hash = node?.fills[0]?.imageHash
     if (!node || !hash) throw new Error('No shader paint')

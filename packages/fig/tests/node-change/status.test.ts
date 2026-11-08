@@ -37,7 +37,7 @@ describe('section status in .fig records', () => {
     expect(extractNodeStatus(nc)).toBe('approved')
   })
 
-  test('a status changed in Figma wins over the one OpenPencil wrote', () => {
+  test('a status changed in Figma wins over the one Pena wrote', () => {
     expect(
       extractNodeStatus({ ...written('approved'), sectionStatusInfo: { status: 'COMPLETED' } })
     ).toBe('completed')

@@ -54,3 +54,10 @@ path = [
 precedence = "override"
 SPDX-FileCopyrightText = "2014 - 2022 Knut Sveidqvist"
 SPDX-License-Identifier = "MIT"
+
+# Pena's own files: its license, notices, fork guide, and desktop build overlay.
+[[annotations]]
+path = ["LICENSE-PENA", "NOTICE.md", "FORK.md", "desktop/pena/**"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Sirkala and Pena contributors"
+SPDX-License-Identifier = "MIT"

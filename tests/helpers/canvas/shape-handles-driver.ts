@@ -28,7 +28,7 @@ export function shapeHandlesDriver(page: () => Page) {
       return page().evaluate(
         ({ props, type }) => {
           const store = window.openPencil?.getStore?.()
-          if (!store) throw new Error('OpenPencil store not initialized')
+          if (!store) throw new Error('Pena store not initialized')
           const node = store.graph.createNode(type, store.state.currentPageId, {
             name: 'Card',
             x: 0,

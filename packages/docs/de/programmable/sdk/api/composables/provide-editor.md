@@ -1,6 +1,6 @@
 ---
 title: provideEditor
-description: Eine OpenPencil-Editor-Instanz über Vue dependency injection bereitstellen.
+description: Eine Pena-Editor-Instanz über Vue dependency injection bereitstellen.
 ---
 
 # provideEditor

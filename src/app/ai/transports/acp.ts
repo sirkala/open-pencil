@@ -119,7 +119,7 @@ function isMissingCommandError(message: string): boolean {
 function missingCommandMessage(agentDef?: ACPAgentDef): string {
   if (!agentDef) return 'ACP agent CLI is not installed.'
   if (!agentDef.installCommand) {
-    return `"${agentDef.command}" is not installed. Install it and restart OpenPencil.`
+    return `"${agentDef.command}" is not installed. Install it and restart Pena.`
   }
   return `"${agentDef.command}" is not installed. Install it with: ${agentDef.installCommand}`
 }
@@ -148,7 +148,7 @@ export function formatConnectionError(e: unknown, agentDef?: ACPAgentDef): strin
 /** The agent never opened its session with OpenPencil's MCP server, so it has no design tools. */
 function toolsUnreachableError(agentDef: ACPAgentDef, reason: string | null): Error {
   return new Error(
-    `${agentDef.name} couldn't reach OpenPencil's tools, so your message wasn't sent.` +
+    `${agentDef.name} couldn't reach Pena's tools, so your message wasn't sent.` +
       (reason ? ` ${agentDef.name} reported: ${reason}` : '')
   )
 }

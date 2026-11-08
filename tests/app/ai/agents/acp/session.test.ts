@@ -70,7 +70,7 @@ test('a chat without a saved session starts a new one', async () => {
   expect(fake.resumed).toEqual([])
 })
 
-test('a saved session resumes with the same folder and OpenPencil tools', async () => {
+test('a saved session resumes with the same folder and Pena tools', async () => {
   const fake = connection()
   const opened = await openAgentSession(fake, resuming, resumes, { ...request, resume: 'saved' })
   expect(opened).toEqual({ sessionId: 'saved', model: 'sonnet', resumed: true })

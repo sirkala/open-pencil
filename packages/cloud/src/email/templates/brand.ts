@@ -88,7 +88,7 @@ export function emailLayout(props: EmailLayoutProps): VNode {
     h(Preview, () => props.preview),
     h(Body, { style: styles.body }, () => [
       h(Container, { style: styles.card }, () => [
-        h(Img, { src: LOGO_URL, width: 44, height: 44, alt: 'OpenPencil', style: styles.logo }),
+        h(Img, { src: LOGO_URL, width: 44, height: 44, alt: 'Pena', style: styles.logo }),
         h(Heading, { as: 'h1', style: styles.heading }, () => props.heading),
         h(Text, { style: styles.text }, () => props.message),
         h(Section, () =>
@@ -97,7 +97,7 @@ export function emailLayout(props: EmailLayoutProps): VNode {
         note ? h(Text, { style: styles.note }, () => noteContent(note)) : null
       ]),
       h(Text, { style: styles.footer }, () => [
-        'OpenPencil, the open-source design editor · ',
+        'Pena, the open-source design editor · ',
         h(Link, { href: SITE_URL, style: { color: MUTED } }, () => 'openpencil.dev')
       ])
     ])

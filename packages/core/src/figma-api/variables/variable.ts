@@ -31,7 +31,7 @@ function figmaScope(scope: VariableScope): FigmaVariableScope[] {
 function documentScope(scope: FigmaVariableScope): VariableScope {
   if (scope === 'STROKE_COLOR') return 'STROKE'
   if (!(VARIABLE_SCOPES as readonly string[]).includes(scope)) {
-    throw new Error(`in set_scopes: OpenPencil does not support the ${scope as string} scope`)
+    throw new Error(`in set_scopes: Pena does not support the ${scope as string} scope`)
   }
   return scope
 }

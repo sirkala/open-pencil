@@ -22,7 +22,7 @@ async function startPreview() {
 async function createSwitch({ nested = false } = {}) {
   return editor.page.evaluate((inFrame) => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     const graph = store.graph
     const pageId = store.state.currentPageId
     const solid = (r: number, g: number, b: number) => [
@@ -151,7 +151,7 @@ test('a switch inside a frame, named after its variant, toggles both ways in pre
 async function createSlider() {
   return editor.page.evaluate(() => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     const graph = store.graph
     const pageId = store.state.currentPageId
     const solid = (r: number, g: number, b: number) => [
@@ -234,7 +234,7 @@ test('a slider instance in preview moves the range inside its track', async () =
 test('tabs whose triggers are Tab instances show the chosen one and skip a disabled one', async () => {
   const ids = await editor.page.evaluate(() => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     const graph = store.graph
     const pageId = store.state.currentPageId
     const solid = (r: number, g: number, b: number) => [
@@ -376,7 +376,7 @@ test('preview islands move with the frames the canvas draws, not ahead of them',
   // Hold the canvas's drawing, as a slow frame does, and move the view meanwhile.
   const held = await editor.page.evaluateHandle(() => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     const preparation = store.preparationController.begin({
       kind: 'document-open',
       phase: 'materializing'
@@ -407,7 +407,7 @@ test('preview islands move with the frames the canvas draws, not ahead of them',
 test('a Button behaviour maps its states and shows them in preview', async () => {
   const ids = await editor.page.evaluate(() => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     const graph = store.graph
     const pageId = store.state.currentPageId
     const values = ['Default', 'Hover', 'Pressed', 'Focus', 'Disabled']
@@ -489,7 +489,7 @@ test('a Button behaviour maps its states and shows them in preview', async () =>
 test('a Text field takes typing in preview without triggering shortcuts', async () => {
   const instanceId = await editor.page.evaluate(() => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     const graph = store.graph
     const pageId = store.state.currentPageId
     const component = graph.createNode('COMPONENT', pageId, {
@@ -550,7 +550,7 @@ test('a Text field takes typing in preview without triggering shortcuts', async 
 test('a rectangle made a Textarea gets its text layer from the panel and takes typing', async () => {
   const componentId = await editor.page.evaluate(() => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     const component = store.graph.createNode('COMPONENT', store.state.currentPageId, {
       name: 'Component',
       x: 120,

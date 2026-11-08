@@ -5,7 +5,7 @@ description: Créer une interface avec provideEditor, CanvasRoot, Menus, Panneau
 
 # Interface d’édition personnalisée
 
-Une application OpenPencil avec Vue comporte généralement trois couches :
+Une application Pena avec Vue comporte généralement trois couches :
 
 1. `@open-pencil/core` crée l’éditeur ;
 2. `@open-pencil/vue` le relie aux composables et composants sans styles de Vue ;
@@ -13,7 +13,7 @@ Une application OpenPencil avec Vue comporte généralement trois couches :
 
 ## Cas d’usage
 
-L’application OpenPencil n’est qu’une interface possible. Le SDK permet de créer un éditeur intégré à un autre produit, un outil interne pour les ressources, un éditeur de modèles, une interface d’annotation ou un éditeur spécialisé avec assistance AI.
+L’application Pena n’est qu’une interface possible. Le SDK permet de créer un éditeur intégré à un autre produit, un outil interne pour les ressources, un éditeur de modèles, une interface d’annotation ou un éditeur spécialisé avec assistance AI.
 
 ## Structure recommandée
 

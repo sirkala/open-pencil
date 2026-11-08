@@ -11,7 +11,7 @@ description: Подключение @open-pencil/vue, создание реда�
 bun add @open-pencil/core @open-pencil/vue canvaskit-wasm
 ```
 
-SDK находится в монорепозитории OpenPencil и опубликован как пакет `@open-pencil/vue`.
+SDK находится в монорепозитории Pena и опубликован как пакет `@open-pencil/vue`.
 
 ```ts
 import { createEditor } from '@open-pencil/core'

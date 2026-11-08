@@ -2,7 +2,7 @@
   "preserveUnsavedWork": "Conserver automatiquement le travail non enregistré",
   "preserveUnsavedWorkDescription": "Stockez des copies locales afin de restaurer les documents après un arrêt inattendu.",
   "sectionTitle": "Travail non enregistré",
-  "sectionDescription": "Modifications non enregistrées de documents fermés sans enregistrer ou ouverts à la fermeture d’OpenPencil. Ouvrez-en un pour continuer à travailler.",
+  "sectionDescription": "Modifications non enregistrées de documents fermés sans enregistrer ou ouverts à la fermeture de Pena. Ouvrez-en un pour continuer à travailler.",
   "crashNote": "Conservé après un plantage",
   "restoreFailed": "Impossible de restaurer ce document.",
   "discardFailed": "Impossible de supprimer cette copie.",

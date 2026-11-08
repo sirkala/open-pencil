@@ -163,7 +163,7 @@ function solidPaint(color: string | RGB | RGBA, overrides?: Partial<SolidPaint>)
 
 /** Figma normalizes for its rich-text editors, which OpenPencil does not have. */
 function normalizeMarkdown(): string {
-  throw new Error('in normalizeMarkdown: OpenPencil does not support rich-text Markdown')
+  throw new Error('in normalizeMarkdown: Pena does not support rich-text Markdown')
 }
 
 /** Figma's `figma.util`, whose functions a script may call detached (`const rgb = figma.util.rgb`). */

@@ -222,7 +222,7 @@ export function createWorkspaceMemberService(
           kind: 'workspace-invitation',
           recipientEmail: input.email,
           payload: {
-            inviterName: inviter?.name ?? 'An OpenPencil user',
+            inviterName: inviter?.name ?? 'A Pena user',
             workspaceName: workspace.name,
             role: input.role,
             expiresAt: expiresAt.toISOString(),
@@ -436,7 +436,7 @@ export function createWorkspaceMemberService(
         kind: 'workspace',
         workspaceName: invitation.workspaceName,
         role: invitation.role,
-        inviterName: inviter?.name ?? 'An OpenPencil user',
+        inviterName: inviter?.name ?? 'A Pena user',
         expiresAt: dateString(invitation.expiresAt) ?? '',
         recipientHint: recipientHint(invitation.emailNormalized)
       }

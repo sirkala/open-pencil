@@ -113,7 +113,7 @@ Pasa a la ranura únicamente las propiedades necesarias o utiliza el composable 
 
 ## Regla general
 
-Si un fragmento de código puede utilizarse en otro editor basado en OpenPencil sin arrastrar los estilos de la aplicación, probablemente debe formar parte de `@open-pencil/vue`.
+Si un fragmento de código puede utilizarse en otro editor basado en Pena sin arrastrar los estilos de la aplicación, probablemente debe formar parte de `@open-pencil/vue`.
 
 ## Véase también
 

@@ -129,7 +129,7 @@ export const OpenRouterWaiting: Story = {
 }
 export const OpenRouterVerifying: Story = { args: { signInStatus: 'verifying' } }
 export const OpenRouterSignedIn: Story = {
-  args: { account: { label: 'OpenPencil', freeTier: false } },
+  args: { account: { label: 'Pena', freeTier: false } },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     await expect(canvas.getByRole('status')).toHaveTextContent('Signed in to OpenRouter')
@@ -138,7 +138,7 @@ export const OpenRouterSignedIn: Story = {
   }
 }
 export const OpenRouterSignedInWithoutCredits: Story = {
-  args: { account: { label: 'OpenPencil', freeTier: true } }
+  args: { account: { label: 'Pena', freeTier: true } }
 }
 export const OpenRouterPopupBlocked: Story = { args: { signInStatus: 'blocked' } }
 export const OpenRouterFailed: Story = { args: { signInStatus: 'failed' } }
@@ -222,7 +222,7 @@ export const CodingAgentSignedIn: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     await expect(canvas.getByText(/Claude Max · ada@example\.com/)).toBeVisible()
-    await expect(canvas.getByText(/OpenPencil tools · connected/)).toBeVisible()
+    await expect(canvas.getByText(/Pena tools · connected/)).toBeVisible()
     await expect(canvas.queryByRole('button', { name: 'Sign in' })).toBeNull()
   }
 }
@@ -246,8 +246,8 @@ export const CodingAgentToolsUnreachable: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    await expect(canvas.getByText(/OpenPencil tools · not reachable/)).toBeVisible()
-    await expect(canvas.getByText(/Codex can’t reach OpenPencil’s tools/)).toBeVisible()
+    await expect(canvas.getByText(/Pena tools · not reachable/)).toBeVisible()
+    await expect(canvas.getByText(/Codex can’t reach Pena’s tools/)).toBeVisible()
     await expect(canvas.getByText(/already defines an MCP server/)).toBeVisible()
   }
 }
@@ -355,7 +355,7 @@ export const PiOutdatedMCPFromBun: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    await expect(canvas.getByText(/OpenPencil MCP server · update needed/)).toBeVisible()
+    await expect(canvas.getByText(/Pena MCP server · update needed/)).toBeVisible()
     await expect(canvas.getByRole('button', { name: 'Update MCP server' })).toBeVisible()
     await expect(canvas.getByText('bun add -g @open-pencil/mcp@0.15.1')).toBeVisible()
   }

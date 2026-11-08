@@ -9,7 +9,7 @@ export function eyedropperDriver(page: () => Page) {
     selectedId() {
       return page().evaluate(() => {
         const store = window.openPencil?.getStore?.()
-        if (!store) throw new Error('OpenPencil store not initialized')
+        if (!store) throw new Error('Pena store not initialized')
         return [...store.state.selectedIds][0] ?? null
       })
     },
@@ -19,7 +19,7 @@ export function eyedropperDriver(page: () => Page) {
       return page().evaluate(
         ([nodeId, key]) => {
           const store = window.openPencil?.getStore?.()
-          if (!store) throw new Error('OpenPencil store not initialized')
+          if (!store) throw new Error('Pena store not initialized')
           const paint = store.graph.getNode(nodeId)?.[key].at(-1)
           return paint?.type === 'SOLID' ? { color: paint.color } : null
         },
@@ -32,7 +32,7 @@ export function eyedropperDriver(page: () => Page) {
       return page().evaluate(
         ([nodeId, value]) => {
           const store = window.openPencil?.getStore?.()
-          if (!store) throw new Error('OpenPencil store not initialized')
+          if (!store) throw new Error('Pena store not initialized')
           store.updateNodeWithUndo(nodeId, {
             fills: [{ type: 'SOLID', color: value, opacity: 1, visible: true }]
           })

@@ -90,7 +90,7 @@ const header = computed(() => {
 
 /** Runs in the click handler, so the browser allows the sign-in popup. */
 function signIn(providerID: OnboardingAccess): void {
-  onboarding.signIn(providerID, { keyLabel: 'OpenPencil' })
+  onboarding.signIn(providerID, { keyLabel: 'Pena' })
 }
 
 function back(): void {

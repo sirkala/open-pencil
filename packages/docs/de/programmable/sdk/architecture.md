@@ -113,7 +113,7 @@ Beispiele:
 
 ## Faustregel
 
-Kann Code ohne die Gestaltung der Anwendung in einem anderen OpenPencil-basierten Editor wiederverwendet werden, gehört er wahrscheinlich in `@open-pencil/vue`.
+Kann Code ohne die Gestaltung der Anwendung in einem anderen Pena-basierten Editor wiederverwendet werden, gehört er wahrscheinlich in `@open-pencil/vue`.
 
 ## Siehe auch
 

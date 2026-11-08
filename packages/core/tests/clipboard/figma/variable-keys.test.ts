@@ -42,7 +42,7 @@ async function copied(graph: SceneGraph, rect: ReturnType<typeof boundRectangle>
   }
 }
 
-test('copies a variable made in OpenPencil by key, as Figma copies its own', async () => {
+test('copies a variable made in Pena by key, as Figma copies its own', async () => {
   const { graph, rect } = boundRectangle()
   const { swatch, variable, collection } = await copied(graph, rect)
 

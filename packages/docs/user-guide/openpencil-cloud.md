@@ -1,19 +1,19 @@
 ---
-title: OpenPencil Cloud
-description: Keep documents on OpenPencil Cloud or your team's own server, share them, and edit them together.
+title: Pena Cloud
+description: Keep documents on Pena Cloud or your team's own server, share them, and edit them together.
 ---
 
-# OpenPencil Cloud
+# Pena Cloud
 
-OpenPencil Cloud keeps documents on a server so they follow you across devices and several people can edit them at once. Use the hosted service at `cloud.openpencil.dev` or a server your team runs itself ([self-hosting guide](/reference/self-hosting-cloud)). Cloud is optional: documents on your device and in your own [storage bucket](./cloud-storage) work the same with or without it.
+Pena Cloud keeps documents on a server so they follow you across devices and several people can edit them at once. Use the hosted service at `cloud.openpencil.dev` or a server your team runs itself ([self-hosting guide](/reference/self-hosting-cloud)). Cloud is optional: documents on your device and in your own [storage bucket](./cloud-storage) work the same with or without it.
 
 ## Connect a Server
 
-Open **Settings → Cloud**. Until the hosted service opens, its card there takes your email for the waitlist; **Your team's server** asks for the address your team uses. OpenPencil checks that the address answers as an OpenPencil Cloud server before asking you to sign in, and says when nothing answers, when the address belongs to something else, or when the server runs a version this app doesn't support.
+Open **Settings → Cloud**. Until the hosted service opens, its card there takes your email for the waitlist; **Your team's server** asks for the address your team uses. Pena checks that the address answers as a Pena Cloud server before asking you to sign in, and says when nothing answers, when the address belongs to something else, or when the server runs a version this app doesn't support.
 
 The ways to sign in come from the server: Google, Apple, or email and password.
 
-- Email and password work right in the dialog, in the desktop app and in the web app at the server's own editor address. **Create an account** asks for your name, email, and a password of at least 8 characters, twice. The server emails you a link; open it, come back to OpenPencil, and signing in finishes by itself.
+- Email and password work right in the dialog, in the desktop app and in the web app at the server's own editor address. **Create an account** asks for your name, email, and a password of at least 8 characters, twice. The server emails you a link; open it, come back to Pena, and signing in finishes by itself.
 - Google and Apple, and accounts with two-step sign-in, finish in your browser: in the web app at the server's own editor address you come back to the same tab, and the desktop app shows a code to check against the browser's before you approve it.
 
 Servers that review new accounts say so before you sign up. Until an administrator approves you, Settings shows that your account is waiting.
@@ -21,7 +21,7 @@ Servers that review new accounts say so before you sign up. Until an administrat
 Each server in **Settings → Cloud** shows who is signed in to it:
 
 - **Sign-in expired** keeps your account, so **Sign in** goes back to the same one.
-- **Account and security** in the server's **…** menu opens the server's own account pages, as does **Account settings** in the **…** menu beside **OpenPencil Cloud** in Home's sidebar. See [Your Account](#your-account).
+- **Account and security** in the server's **…** menu opens the server's own account pages, as does **Account settings** in the **…** menu beside **Pena Cloud** in Home's sidebar. See [Your Account](#your-account).
 - **Sign out** ends the session on the server. If the server can't be reached, you stay signed in so you can try again. At the server's own editor address, signing out of that server goes back to its welcome page, unless the server lets you use its editor without an account and you chose to on this browser.
 - **Disconnect server** signs you out and forgets the server on this device; your documents stay on it, and you can connect again anytime. It warns you when documents still have changes that haven't reached the server, because disconnecting discards them.
 
@@ -39,13 +39,13 @@ The server emails you when your account is signed in from an address it has neve
 
 ## Find Documents on Home
 
-Home lists places in a sidebar: **Recent**, the workspaces of the server Home shows, **Shared with you**, and your storage bucket. On a phone the same places are in a menu above the documents. With more than one server connected, choose which one Home shows with **Show on Home** in Settings. At the server's own editor address, OpenPencil opens on Home, in your first workspace until you pick another place.
+Home lists places in a sidebar: **Recent**, the workspaces of the server Home shows, **Shared with you**, and your storage bucket. On a phone the same places are in a menu above the documents. With more than one server connected, choose which one Home shows with **Show on Home** in Settings. At the server's own editor address, Pena opens on Home, in your first workspace until you pick another place.
 
 A workspace lists its documents with where each one stands, how much of the workspace's storage they use, and your role in it. Every account starts with a workspace of its own. **New design** creates a document in the workspace you are looking at, and says which one; in **Shared with you** it creates in your own workspace, and in Recent, or a workspace you can only view, it creates a file on your device. **Shared with you** lists documents people invited you to in workspaces you are not a member of.
 
 ## Work in a Team Workspace
 
-Every account starts with a workspace of its own. To work with a team, select **+** beside **OpenPencil Cloud** in Home's sidebar, name the workspace, and you administer it. **Members** in the workspace's header has three tabs:
+Every account starts with a workspace of its own. To work with a team, select **+** beside **Pena Cloud** in Home's sidebar, name the workspace, and you administer it. **Members** in the workspace's header has three tabs:
 
 - **Members** lists who is in the workspace and when each person joined. Admins invite people by email as an admin, editor, or viewer, change roles, and remove people. Editors and admins change documents; viewers only look.
 - **Invited**, for admins, lists invitations nobody has accepted yet, with who sent each one and when it expires. An invitation arrives by email; if the server doesn't send email, copy the invitation link from the dialog and pass it on. Invitations expire after seven days. **Resend** sends one again with a new link, and the earlier link stops working; so does inviting the same address again.
@@ -108,7 +108,7 @@ The server keeps only a fingerprint of each link, so a link can be copied only o
 
 ## Open an Invitation
 
-An invitation link opens OpenPencil with who invited you, to which document, and on which server. If you have never used that server, OpenPencil warns you to sign in only if you trust it. Sign in with the address the invitation was sent to; if you are signed in as someone else, choose **Use another account**. Once you accept, the document opens and stays under **Shared with you** on Home.
+An invitation link opens Pena with who invited you, to which document, and on which server. If you have never used that server, Pena warns you to sign in only if you trust it. Sign in with the address the invitation was sent to; if you are signed in as someone else, choose **Use another account**. Once you accept, the document opens and stays under **Shared with you** on Home.
 
 Invitation and share links open in the browser. If you use the desktop app, choose **Open in the desktop app** in the invitation, or on the notice that appears after a shared document opens; your browser asks before it switches to the app.
 
@@ -116,10 +116,10 @@ Invitation and share links open in the browser. If you use the desktop app, choo
 
 Opening a Cloud document joins its live session: everyone who has it open sees each other's cursors and edits as they happen. One person's app saves the document for everyone, so editing together never makes your changes conflict with someone else's.
 
-People who open a link without an account, where the server allows it, join under the name OpenPencil gives them, or the one they chose. They edit when the link allows it, but their app never saves to the server; someone signed in who can edit saves for them.
+People who open a link without an account, where the server allows it, join under the name Pena gives them, or the one they chose. They edit when the link allows it, but their app never saves to the server; someone signed in who can edit saves for them.
 
 ## AI on Cloud
 
-When your workspace's plan includes AI and the server offers it, the AI assistant can use models through Cloud instead of a key of your own. In **Settings → Models**, add a model, choose **OpenPencil Cloud** as the provider, and pick the workspace whose plan pays for it; the models and their prices come from the server. **OpenPencil Cloud** is listed while you are signed in to the server Home shows.
+When your workspace's plan includes AI and the server offers it, the AI assistant can use models through Cloud instead of a key of your own. In **Settings → Models**, add a model, choose **Pena Cloud** as the provider, and pick the workspace whose plan pays for it; the models and their prices come from the server. **Pena Cloud** is listed while you are signed in to the server Home shows.
 
 Each request uses the workspace's AI credits for the month. When they run out, the assistant says so and, if the server bills, offers **Manage plan**. Self-hosted servers run their own AI service with their own models and limits ([self-hosting guide](/reference/self-hosting-cloud#ai)).

@@ -1,11 +1,11 @@
 ---
 title: useColorBindingProvider
-description: OpenPencil COLOR variable provider for BindableValue fields.
+description: Pena COLOR variable provider for BindableValue fields.
 ---
 
 # useColorBindingProvider
 
-`useColorBindingProvider()` adapts OpenPencil COLOR variables to the generic `BindingProvider<Color>`
+`useColorBindingProvider()` adapts Pena COLOR variables to the generic `BindingProvider<Color>`
 contract. It resolves current-mode colors, binds indexed paint paths, creates variables in a Colors
 collection, updates all collection modes when requested, and exposes editor undo transactions.
 

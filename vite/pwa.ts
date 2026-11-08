@@ -27,8 +27,8 @@ export function openPencilPwaPlugin() {
       navigateFallbackDenylist: NOT_EDITOR_PAGES
     },
     manifest: {
-      name: 'OpenPencil',
-      short_name: 'OpenPencil',
+      name: 'Pena',
+      short_name: 'Pena',
       description: 'Open-source design editor',
       display: 'standalone',
       orientation: 'any',

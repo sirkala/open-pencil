@@ -142,7 +142,7 @@ describe('node.effects', () => {
     )
   })
 
-  test('reports Figma effects OpenPencil does not model yet', () => {
+  test('reports Figma effects Pena does not model yet', () => {
     expect(() => assign([{ type: 'NOISE' }])).toThrow('NOISE effects are not supported')
     expect(() =>
       assign([{ type: 'LAYER_BLUR', blurType: 'PROGRESSIVE', radius: 4, visible: true }])

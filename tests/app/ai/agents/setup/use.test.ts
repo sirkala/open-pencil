@@ -287,7 +287,7 @@ describe('agent account in setup', () => {
     ...overrides
   })
 
-  test("shows whether a signed-in agent reached OpenPencil's tools", () => {
+  test("shows whether a signed-in agent reached Pena's tools", () => {
     const signedIn = { kind: 'account' as const, label: 'Claude Max' }
     const toolsOf = (overrides: Partial<AgentAccount>) =>
       agentSetupView(

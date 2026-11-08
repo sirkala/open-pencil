@@ -202,7 +202,7 @@ describe('shell scope', () => {
     }
   })
 
-  test('lets Bun install only the OpenPencil companions', () => {
+  test('lets Bun install only the Pena companions', () => {
     for (const userAgent of [WINDOWS_UA, MAC_UA]) {
       const allowed = resolvePlatformCommand(
         'bun',

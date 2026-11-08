@@ -55,7 +55,7 @@ export function waitlistRoutes(services: FeedbackServices) {
           const token = await signUp(createFeedbackDatabase(c.env.DB), signup, services.now())
           if (token) {
             await c.env.EMAIL.send({
-              from: { name: 'OpenPencil', email: c.env.EMAIL_FROM },
+              from: { name: 'Pena', email: c.env.EMAIL_FROM },
               to: signup.email,
               ...(await confirmationEmail({
                 confirmURL: linkTo(c, CONFIRM_PATH, token),
@@ -72,7 +72,7 @@ export function waitlistRoutes(services: FeedbackServices) {
         return c.html(
           actionPage({
             title: 'Join the waitlist',
-            message: 'Confirm your email to join the OpenPencil Cloud waitlist.',
+            message: 'Confirm your email to join the Pena Cloud waitlist.',
             action: 'Confirm',
             token
           })
@@ -84,9 +84,7 @@ export function waitlistRoutes(services: FeedbackServices) {
         if (!token || !(await confirmSignup(db, token, services.now()))) {
           return c.html(invalidLink(), 404)
         }
-        return c.html(
-          page("You're on the list", 'We will write when OpenPencil Cloud is ready for you.')
-        )
+        return c.html(page("You're on the list", 'We will write when Pena Cloud is ready for you.'))
       })
       .get(LEAVE_PATH, (c) => {
         const token = queryToken(c)
@@ -94,7 +92,7 @@ export function waitlistRoutes(services: FeedbackServices) {
         return c.html(
           actionPage({
             title: 'Leave the waitlist',
-            message: 'Remove your email from the OpenPencil Cloud waitlist.',
+            message: 'Remove your email from the Pena Cloud waitlist.',
             action: 'Remove my email',
             token
           })

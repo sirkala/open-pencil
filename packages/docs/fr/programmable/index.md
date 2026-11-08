@@ -6,7 +6,7 @@ description: AI, MCP, CLI, JSX et Figma Plugin API pour automatiser les designs.
 
 # Automatisation et API
 
-OpenPencil traite les fichiers de design comme des données structurées. Les opérations de l’éditeur — créer des formes, modifier des remplissages, configurer la disposition automatique ou exporter des ressources — sont aussi disponibles via la CLI, des agents AI et des API.
+Pena traite les fichiers de design comme des données structurées. Les opérations de l’éditeur — créer des formes, modifier des remplissages, configurer la disposition automatique ou exporter des ressources — sont aussi disponibles via la CLI, des agents AI et des API.
 
 ## Chat avec l’AI
 
@@ -32,7 +32,7 @@ La CLI se connecte aussi à l’application de bureau en cours d’exécution vi
 
 Une interface peut être décrite de manière déclarative en JSX. Un seul appel crée un arbre complet de cadres, textes, dispositions, remplissages et contours.
 
-Dans l’autre sens, OpenPencil exporte une sélection en JSX ou HTML avec des classes Tailwind, comme point de départ pour l’implémentation ou la revue de code.
+Dans l’autre sens, Pena exporte une sélection en JSX ou HTML avec des classes Tailwind, comme point de départ pour l’implémentation ou la revue de code.
 
 [Moteur JSX →](./jsx-renderer)
 
@@ -66,4 +66,4 @@ Ici, `file` est une URL `https:` absolue se terminant par `.pen` ou `.fig` — l
 
 Sous macOS, le schéma appartient au bundle de l’application installée : les liens atteignent donc une version installée et non un processus `tauri dev`. Sous Windows et Linux, le lien arrive par le plugin de liens profonds, y compris lorsque l’application n’est pas encore lancée : il est mis en file d’attente au démarrage et traité dès que l’éditeur est prêt.
 
-OpenPencil est sous licence MIT et conserve les documents localement. Les fichiers `.fig` peuvent être examinés, transformés, traités en CI ou fournis comme contexte à un modèle sans dépendre d’un hébergeur particulier.
+Pena est sous licence MIT et conserve les documents localement. Les fichiers `.fig` peuvent être examinés, transformés, traités en CI ou fournis comme contexte à un modèle sans dépendre d’un hébergeur particulier.

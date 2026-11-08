@@ -2,9 +2,9 @@
 
 ## Figma-Dateien
 
-OpenPencil öffnet und speichert `.fig`-Dateien direkt. Import und Export verwenden wie Figma den Kiwi-Binärcodec mit 194 Schemadefinitionen und rund 390 Feldern pro Objekt. Speichern: <kbd>⌘</kbd><kbd>S</kbd>, Speichern unter: <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd>.
+Pena öffnet und speichert `.fig`-Dateien direkt. Import und Export verwenden wie Figma den Kiwi-Binärcodec mit 194 Schemadefinitionen und rund 390 Feldern pro Objekt. Speichern: <kbd>⌘</kbd><kbd>S</kbd>, Speichern unter: <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd>.
 
-**Kopieren und Einfügen mit Figma:** Objekte in Figma auswählen, <kbd>⌘</kbd><kbd>C</kbd> drücken, zu OpenPencil wechseln und mit <kbd>⌘</kbd><kbd>V</kbd> einfügen. Füllungen, Konturen, automatische Anordnung, Text, Effekte, Eckenradien und Vektornetzwerke bleiben in beiden Richtungen erhalten.
+**Kopieren und Einfügen mit Figma:** Objekte in Figma auswählen, <kbd>⌘</kbd><kbd>C</kbd> drücken, zu Pena wechseln und mit <kbd>⌘</kbd><kbd>V</kbd> einfügen. Füllungen, Konturen, automatische Anordnung, Text, Effekte, Eckenradien und Vektornetzwerke bleiben in beiden Richtungen erhalten.
 
 ## Zeichnen und Bearbeiten
 
@@ -33,7 +33,7 @@ Die Registerkarten Design, Code, KI und Prüfen passen sich der aktuellen Auswah
 
 ## Darstellung
 
-Skia über CanvasKit WASM ist dieselbe Grafik-Engine, die auch Figma verwendet. OpenPencil unterstützt unter anderem:
+Skia über CanvasKit WASM ist dieselbe Grafik-Engine, die auch Figma verwendet. Pena unterstützt unter anderem:
 
 - lineare, radiale, Winkel- und Diamantverläufe;
 - Bildfüllungen mit verschiedenen Skalierungsarten;
@@ -104,4 +104,4 @@ Die Zusammenarbeit erfolgt direkt zwischen den Teilnehmern über WebRTC und ben�
 
 ## Ersatzweise Google Fonts laden
 
-Ist eine Schrift nicht lokal verfügbar, lädt OpenPencil sie automatisch von Google Fonts. Eine manuelle Installation ist nicht erforderlich.
+Ist eine Schrift nicht lokal verfügbar, lädt Pena sie automatisch von Google Fonts. Eine manuelle Installation ist nicht erforderlich.

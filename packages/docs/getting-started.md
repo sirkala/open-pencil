@@ -2,7 +2,7 @@
 
 ## Try Online
 
-OpenPencil runs in the browser — no installation required. Open [app.openpencil.dev](https://app.openpencil.dev) to start designing.
+Pena runs in the browser — no installation required. Open [app.openpencil.dev](https://app.openpencil.dev) to start designing.
 
 If you want to build on top of it instead of only using the default app, see the [Programmable](/programmable/) section and the [Vue SDK](/programmable/sdk/).
 
@@ -20,7 +20,7 @@ Pre-built binaries for macOS, Windows, and Linux are available on the [download 
 
 ## System Requirements
 
-OpenPencil renders with CanvasKit on WebGL and relies on current web platform features, so it needs a recent browser engine. The web app supports Chrome 111, Edge 111, Firefox 128, and Safari 16.4 or later; Chromium-based browsers such as Brave and Opera follow their Chrome version. The desktop app renders in the system WebView, so its floor is the operating system's engine:
+Pena renders with CanvasKit on WebGL and relies on current web platform features, so it needs a recent browser engine. The web app supports Chrome 111, Edge 111, Firefox 128, and Safari 16.4 or later; Chromium-based browsers such as Brave and Opera follow their Chrome version. The desktop app renders in the system WebView, so its floor is the operating system's engine:
 
 | Platform | Requirement |
 | -------- | ----------- |
@@ -28,7 +28,7 @@ OpenPencil renders with CanvasKit on WebGL and relies on current web platform fe
 | Windows | Windows 10 or later with the Microsoft Edge WebView2 Evergreen runtime, which updates itself. |
 | Linux | WebKitGTK 2.40 or later (`webkit2gtk-4.1`). |
 
-When the engine is too old, OpenPencil shows what to update instead of a blank window. If you see that notice on a system that meets the requirements, use its "Report a problem" link, which prefills the browser and engine details.
+When the engine is too old, Pena shows what to update instead of a blank window. If you see that notice on a system that meets the requirements, use its "Report a problem" link, which prefills the browser and engine details.
 
 ## macOS via Homebrew
 

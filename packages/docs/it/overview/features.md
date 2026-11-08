@@ -2,9 +2,9 @@
 
 ## File Figma
 
-OpenPencil apre e salva direttamente i file `.fig`. Import ed export usano lo stesso codec binario Kiwi di Figma: 194 definizioni dello schema e circa 390 campi per ogni nodo. Salva con <kbd>⌘</kbd><kbd>S</kbd> e salva con nome con <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd>.
+Pena apre e salva direttamente i file `.fig`. Import ed export usano lo stesso codec binario Kiwi di Figma: 194 definizioni dello schema e circa 390 campi per ogni nodo. Salva con <kbd>⌘</kbd><kbd>S</kbd> e salva con nome con <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd>.
 
-**Copia e incolla con Figma:** seleziona gli oggetti in Figma, premi <kbd>⌘</kbd><kbd>C</kbd>, passa a OpenPencil e premi <kbd>⌘</kbd><kbd>V</kbd>. Riempimenti, contorni, disposizione automatica, testo, effetti, raggi degli angoli e reti vettoriali vengono conservati in entrambe le direzioni.
+**Copia e incolla con Figma:** seleziona gli oggetti in Figma, premi <kbd>⌘</kbd><kbd>C</kbd>, passa a Pena e premi <kbd>⌘</kbd><kbd>V</kbd>. Riempimenti, contorni, disposizione automatica, testo, effetti, raggi degli angoli e reti vettoriali vengono conservati in entrambe le direzioni.
 
 ## Disegno e modifica
 
@@ -33,7 +33,7 @@ Le schede Design, Codice, AI e Verifica cambiano in base alla selezione.
 
 ## Rendering
 
-OpenPencil usa Skia tramite CanvasKit WASM, lo stesso motore grafico di Figma:
+Pena usa Skia tramite CanvasKit WASM, lo stesso motore grafico di Figma:
 
 - gradienti lineari, radiali, angolari e a diamante;
 - riempimenti immagine con diverse modalità di scala;
@@ -102,4 +102,4 @@ La connessione peer-to-peer WebRTC non richiede un server centrale. Condividi un
 
 ## Caricamento alternativo da Google Fonts
 
-Se un font non è disponibile localmente, OpenPencil lo scarica automaticamente da Google Fonts. Non è necessaria l’installazione manuale.
+Se un font non è disponibile localmente, Pena lo scarica automaticamente da Google Fonts. Non è necessaria l’installazione manuale.

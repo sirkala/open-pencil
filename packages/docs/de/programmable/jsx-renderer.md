@@ -5,7 +5,7 @@ description: Designs deklarativ mit JSX erstellen und als JSX oder HTML mit Tail
 
 # JSX-Renderer
 
-OpenPencil kann einen Designbaum aus JSX erstellen. Die deklarative Syntax eignet sich für AI-Agenten, Skripte und wiederholbare Erzeugung von Oberflächen.
+Pena kann einen Designbaum aus JSX erstellen. Die deklarative Syntax eignet sich für AI-Agenten, Skripte und wiederholbare Erzeugung von Oberflächen.
 
 JSX dient außerdem als lesbare Darstellung eines vorhandenen Designs. Änderungen erscheinen als gewöhnlicher Codevergleich und lassen sich prüfen und versionieren.
 
@@ -24,7 +24,7 @@ In Anwendungs- oder Headless-Bibliothekscode importieren Sie `Frame`, `Text` und
 
 ## Elemente
 
-JSX-Elemente wie `<Frame>`, `<Rectangle>`, `<Ellipse>`, `<Text>`, `<Line>`, `<Vector>`, `<Group>` und `<Section>` erzeugen die entsprechenden OpenPencil-Objekte.
+JSX-Elemente wie `<Frame>`, `<Rectangle>`, `<Ellipse>`, `<Text>`, `<Line>`, `<Vector>`, `<Group>` und `<Section>` erzeugen die entsprechenden Pena-Objekte.
 
 ## Eigenschaften
 

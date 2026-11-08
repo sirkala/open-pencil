@@ -15,7 +15,7 @@ describe('transactional email delivery', () => {
   test('renders matching HTML and plain-text invitations', async () => {
     const rendered = await renderTransactionalEmail({ kind: 'document-invitation', payload })
     expect(rendered.subject).toContain('Alice invited you to edit Homepage')
-    expect(rendered.html).toContain('OpenPencil invitation')
+    expect(rendered.html).toContain('Pena invitation')
     expect(rendered.html).toContain(payload.acceptanceURL.replaceAll('&', '&amp;'))
     expect(rendered.text).toContain(payload.acceptanceURL)
   })
@@ -33,7 +33,7 @@ describe('transactional email delivery', () => {
     expect(
       await transport.send({
         deliveryId: 'delivery-id',
-        from: 'OpenPencil <cloud@example.com>',
+        from: 'Pena <cloud@example.com>',
         to: 'recipient@example.com',
         subject: 'Invitation',
         html: '<p>Invitation</p>',
@@ -43,7 +43,7 @@ describe('transactional email delivery', () => {
     ).toMatchObject({ transportMessageId: 'message-id' })
     expect(sent).toHaveLength(1)
     expect(sent[0]).toMatchObject({
-      from: 'OpenPencil <cloud@example.com>',
+      from: 'Pena <cloud@example.com>',
       to: 'recipient@example.com',
       headers: { 'X-OpenPencil-Delivery-ID': 'delivery-id' }
     })

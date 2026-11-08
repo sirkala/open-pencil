@@ -2,9 +2,9 @@
 
 ## Pliki Figma
 
-OpenPencil otwiera i zapisuje pliki `.fig` bez wcześniejszej konwersji. Import i eksport korzystają z binarnego kodeka Kiwi używanego przez Figmę: 194 definicje schematu i około 390 pól dla każdego obiektu. Zapisz: <kbd>⌘</kbd><kbd>S</kbd>; Zapisz jako: <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd>.
+Pena otwiera i zapisuje pliki `.fig` bez wcześniejszej konwersji. Import i eksport korzystają z binarnego kodeka Kiwi używanego przez Figmę: 194 definicje schematu i około 390 pól dla każdego obiektu. Zapisz: <kbd>⌘</kbd><kbd>S</kbd>; Zapisz jako: <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd>.
 
-**Kopiowanie między Figmą a OpenPencil:** skopiuj obiekty w jednym edytorze i wklej w drugim. Zachowywane są zalewy, obwiednie, automatyczny układ, tekst, efekty, promienie narożników i sieci wektorowe. Wymiana działa w obie strony.
+**Kopiowanie między Figmą a Pena:** skopiuj obiekty w jednym edytorze i wklej w drugim. Zachowywane są zalewy, obwiednie, automatyczny układ, tekst, efekty, promienie narożników i sieci wektorowe. Wymiana działa w obie strony.
 
 ## Rysowanie i edycja
 
@@ -33,7 +33,7 @@ Zawartość kart „Design”, „Kod”, „AI” i „Sprawdź” zależy od z
 
 ## Renderowanie
 
-OpenPencil używa Skia przez CanvasKit WASM — tego samego silnika graficznego co Figma:
+Pena używa Skia przez CanvasKit WASM — tego samego silnika graficznego co Figma:
 
 - gradienty liniowe, radialne, kątowe i diamentowe;
 - zalewy obrazami z różnymi trybami skalowania;
@@ -102,4 +102,4 @@ Połączenie równorzędne WebRTC nie wymaga centralnego serwera. Udostępnij od
 
 ## Zastępcze ładowanie Google Fonts
 
-Jeśli czcionka nie jest dostępna lokalnie, OpenPencil automatycznie pobiera ją z Google Fonts. Ręczna instalacja nie jest potrzebna.
+Jeśli czcionka nie jest dostępna lokalnie, Pena automatycznie pobiera ją z Google Fonts. Ręczna instalacja nie jest potrzebna.

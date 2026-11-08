@@ -47,7 +47,7 @@ export const APP_MENU_SCHEMA = [
       {
         id: 'support-openpencil',
         feature: 'donation',
-        label: 'Support OpenPencil…',
+        label: 'Support Pena…',
         handler: 'shell',
         palette: { keywords: ['donate', 'donation', 'sponsor', 'fund', 'tip'] }
       },
@@ -571,8 +571,8 @@ export const APP_MENU_SCHEMA = [
  * sit between them. Only the labels and accelerators are shared here.
  */
 export const APP_MENU_APP_ITEMS = [
-  { id: 'about', label: 'About OpenPencil' },
+  { id: 'about', label: 'About Pena' },
   { id: 'check-updates', label: 'Check for Updates…' },
   SETTINGS_MENU_ITEM,
-  { id: 'quit', label: 'Quit OpenPencil', shortcut: 'MOD+Q' }
+  { id: 'quit', label: 'Quit Pena', shortcut: 'MOD+Q' }
 ] satisfies AppMenuActionItem[]

@@ -113,7 +113,7 @@ Ne transmettez à l’emplacement que les propriétés nécessaires ou utilisez 
 
 ## Règle générale
 
-Si du code peut être réutilisé dans un autre éditeur basé sur OpenPencil sans reprendre la présentation de l'application, il devrait probablement faire partie de `@open-pencil/vue`.
+Si du code peut être réutilisé dans un autre éditeur basé sur Pena sans reprendre la présentation de l'application, il devrait probablement faire partie de `@open-pencil/vue`.
 
 ## Voir aussi
 

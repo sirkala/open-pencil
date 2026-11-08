@@ -1,11 +1,11 @@
 ---
 title: MCP Server
-description: Connect Claude Code, Cursor, Windsurf, and other MCP clients to OpenPencil for AI-assisted design inspection and editing.
+description: Connect Claude Code, Cursor, Windsurf, and other MCP clients to Pena for AI-assisted design inspection and editing.
 ---
 
 # MCP Server
 
-OpenPencil includes an MCP (Model Context Protocol) server that lets AI coding tools — Claude Code, Cursor, Windsurf, etc. — read and modify designs through the running app.
+Pena includes an MCP (Model Context Protocol) server that lets AI coding tools — Claude Code, Cursor, Windsurf, etc. — read and modify designs through the running app.
 
 Two transports: **stdio** for MCP clients, and **Streamable HTTP** for browser extensions and scripts. On macOS and Linux, local clients prefer a private Unix domain socket; Windows and unavailable sockets fall back to localhost TCP.
 
@@ -29,13 +29,13 @@ WebMCP is **off by default**. Open **Settings → MCP → WebMCP** and choose **
 
 For local testing, use a Chrome version exposing `document.modelContext`, enable `chrome://flags/#enable-webmcp-testing`, and relaunch the browser. Open a document, enable access in Settings, and connect a WebMCP-capable browser agent or the [Model Context Tool Inspector](https://developer.chrome.com/docs/ai/webmcp). Settings shows browser support and registration status. See the [Chrome WebMCP guide](https://developer.chrome.com/docs/ai/webmcp) for current availability.
 
-In supported browsers, OpenPencil registers the selected reviewed set of tools directly in the workspace. Browser agents can inspect nodes, JSX, variables, components, and design patterns, and edit existing layer properties and variable values without installing or connecting an MCP server.
+In supported browsers, Pena registers the selected reviewed set of tools directly in the workspace. Browser agents can inspect nodes, JSX, variables, components, and design patterns, and edit existing layer properties and variable values without installing or connecting an MCP server.
 
 Tools target the document and page active when the call starts. Switching tabs does not redirect an in-flight call. Closing the workspace unregisters the tools. Tool inputs are validated and large inspection results require a narrower query. Oversized editing results are omitted with a committed-edit notice rather than reporting a successful edit as failed.
 
 Edits to geometry, paints, layout, text, and variable bindings/values commit synchronously as individual undoable operations. Failed edits roll back, and undo targets the original document/page even after a page switch. Cancellation prevents an edit from starting; cancellation after commit does not reverse it. Font loading finishes separately without holding a mutation transaction open. Atomic editing currently requires a document with at most 10,000 nodes and variables combined; this shared limit also applies when the same editing tools run through app AI/MCP.
 
-This surface does **not** expose structural creation/deletion, arbitrary JavaScript/JSX execution, image loading, filesystem operations, or credentials. Those tools retain their existing AI/MCP paths. WebMCP is an evolving browser proposal, not universally available; unsupported browsers continue to use OpenPencil normally. The stdio and HTTP integrations below remain independent.
+This surface does **not** expose structural creation/deletion, arbitrary JavaScript/JSX execution, image loading, filesystem operations, or credentials. Those tools retain their existing AI/MCP paths. WebMCP is an evolving browser proposal, not universally available; unsupported browsers continue to use Pena normally. The stdio and HTTP integrations below remain independent.
 
 ## Install
 
@@ -45,7 +45,7 @@ npm install -g @open-pencil/mcp
 
 ## Stdio (Claude Code, Cursor, etc.)
 
-The stdio server discovers the running OpenPencil app automatically. It prefers the app's Unix domain socket on macOS and Linux and falls back to localhost TCP when needed. Make sure the desktop app is open with a document loaded.
+The stdio server discovers the running Pena app automatically. It prefers the app's Unix domain socket on macOS and Linux and falls back to localhost TCP when needed. Make sure the desktop app is open with a document loaded.
 
 ### Claude Code
 
@@ -62,7 +62,7 @@ Check the connection:
 claude mcp list
 ```
 
-Claude Code asks before using each MCP tool unless you allow the server's tools. To auto-approve OpenPencil tools only, add this to `~/.claude/settings.json`:
+Claude Code asks before using each MCP tool unless you allow the server's tools. To auto-approve Pena tools only, add this to `~/.claude/settings.json`:
 
 ```json
 {
@@ -166,7 +166,7 @@ Most tools accept optional `document_id` and `page_id` fields. Pass them explici
 
 ## AI Agent Skill
 
-Teach your AI coding agent to use OpenPencil tools:
+Teach your AI coding agent to use Pena tools:
 
 ```sh
 npx skills add open-pencil/open-pencil
@@ -176,7 +176,7 @@ Works with Claude Code, Cursor, Windsurf, Codex, and any agent that supports [sk
 
 ## Tools
 
-OpenPencil currently registers 100+ shared design tools, plus MCP-only document and prompt operations when applicable.
+Pena currently registers 100+ shared design tools, plus MCP-only document and prompt operations when applicable.
 
 ### Document
 

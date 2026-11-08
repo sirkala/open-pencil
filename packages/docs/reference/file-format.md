@@ -1,14 +1,14 @@
 ---
 title: File Format
-description: Technical reference for OpenPencil .fig and .pen document formats, Kiwi binary structure, import pipeline, and export behavior.
+description: Technical reference for Pena .fig and .pen document formats, Kiwi binary structure, import pipeline, and export behavior.
 ---
 
 # File Format
 
 ::: warning Figma round-trip limitations
-Complex Figma documents can lose visual fidelity when saved by OpenPencil and reopened in Figma, even without edits. Component content, colors, and text may differ or appear missing. This is an existing compatibility limitation; preserving the layer count does not guarantee the same appearance.
+Complex Figma documents can lose visual fidelity when saved by Pena and reopened in Figma, even without edits. Component content, colors, and text may differ or appear missing. This is an existing compatibility limitation; preserving the layer count does not guarantee the same appearance.
 
-Keep the original `.fig`, use **Save As** for an OpenPencil copy, and inspect the exported copy in Figma before replacing your original.
+Keep the original `.fig`, use **Save As** for a Pena copy, and inspect the exported copy in Figma before replacing your original.
 :::
 
 ## .fig File Structure
@@ -41,7 +41,7 @@ SceneGraph → NodeChange[] → Kiwi encode → compress (Zstd)
   → write .fig file
 ```
 
-Export uses <kbd>⌘</kbd><kbd>S</kbd> (Save) and <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd> (Save As) with native OS dialogs on the desktop app. The exported file includes a `thumbnail.png` required by Figma for file preview. OpenPencil draws it from the first page named exactly `Cover` (case-insensitive), then the first page whose name contains `Cover`, then the first page, and writes a 1×1 placeholder when that page has nothing to draw. The CLI draws it too whenever it saves a `.fig`: `export --format fig`, `convert`, `import`, `lint --fix`, and `eval`, `tool call`, or `diff apply` with `--write` or `--output`. The desktop app also caches this Cover after opening a file so Recent Files can prefer the generated preview without modifying the source `.fig`.
+Export uses <kbd>⌘</kbd><kbd>S</kbd> (Save) and <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd> (Save As) with native OS dialogs on the desktop app. The exported file includes a `thumbnail.png` required by Figma for file preview. Pena draws it from the first page named exactly `Cover` (case-insensitive), then the first page whose name contains `Cover`, then the first page, and writes a 1×1 placeholder when that page has nothing to draw. The CLI draws it too whenever it saves a `.fig`: `export --format fig`, `convert`, `import`, `lint --fix`, and `eval`, `tool call`, or `diff apply` with `--write` or `--output`. The desktop app also caches this Cover after opening a file so Recent Files can prefer the generated preview without modifying the source `.fig`.
 
 Compression uses Zstd at the level the document asks for (see [Compression](#compression)): through a Tauri Rust command on desktop, Bun's own Zstd in the CLI, and a WebAssembly build in the browser.
 
@@ -85,4 +85,4 @@ Copy/paste uses the same Kiwi binary encoding:
 1. **Copy** — encode selected `NodeChange[]` to Kiwi binary, compress, write to clipboard as `application/x-figma-design` MIME type
 2. **Paste** — read clipboard, decompress, decode Kiwi binary, create nodes in scene graph
 
-Encoding happens synchronously in the copy event handler (not async Clipboard API) for browser compatibility. This enables bidirectional clipboard between OpenPencil and Figma.
+Encoding happens synchronously in the copy event handler (not async Clipboard API) for browser compatibility. This enables bidirectional clipboard between Pena and Figma.

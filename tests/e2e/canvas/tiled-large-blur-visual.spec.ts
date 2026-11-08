@@ -37,7 +37,7 @@ async function waitForTiledSettlement() {
 async function setLargeBlurRadius(radius: number) {
   await editor.page.evaluate((nextRadius) => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     const node = [...store.graph.getAllNodes()].find(
       (candidate) =>
         candidate.name === 'Group' &&
@@ -103,7 +103,7 @@ test('large blur remains seamless after tiled mutation and zoom reversal', async
   })
   await editor.page.evaluate(() => {
     const store = window.openPencil?.getStore?.()
-    if (!store) throw new Error('OpenPencil store not initialized')
+    if (!store) throw new Error('Pena store not initialized')
     store.zoomToFit()
   })
   await waitForTiledSettlement()

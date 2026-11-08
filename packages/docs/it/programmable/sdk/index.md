@@ -1,15 +1,15 @@
 ---
 title: Vue SDK
-description: Crea editor basati su OpenPencil con componenti senza stile e composable per Vue.
+description: Crea editor basati su Pena con componenti senza stile e composable per Vue.
 ---
 
 # Vue SDK
 
-`@open-pencil/vue` permette di utilizzare OpenPencil non solo come applicazione di design autonoma.
+`@open-pencil/vue` permette di utilizzare Pena non solo come applicazione di design autonoma.
 
-Puoi integrare OpenPencil in altri prodotti, strumenti interni o editor specializzati senza adottare l'interfaccia predefinita dell'applicazione.
+Puoi integrare Pena in altri prodotti, strumenti interni o editor specializzati senza adottare l'interfaccia predefinita dell'applicazione.
 
-L’app OpenPencil è soltanto una delle interfacce realizzate con questo insieme di strumenti. L’SDK permette di crearne una personalizzata.
+L’app Pena è soltanto una delle interfacce realizzate con questo insieme di strumenti. L’SDK permette di crearne una personalizzata.
 
 L'SDK fornisce:
 

@@ -6,7 +6,7 @@ description: AI, MCP, CLI, JSX y API de plugins de Figma para automatizar diseñ
 
 # Automatización y API
 
-OpenPencil trata los archivos de diseño como datos estructurados. Las operaciones del editor —crear formas, modificar rellenos, configurar la disposición automática o exportar recursos— también están disponibles mediante CLI, agentes de AI y API.
+Pena trata los archivos de diseño como datos estructurados. Las operaciones del editor —crear formas, modificar rellenos, configurar la disposición automática o exportar recursos— también están disponibles mediante CLI, agentes de AI y API.
 
 ## Chat con AI
 
@@ -32,7 +32,7 @@ La CLI también se conecta a la aplicación de escritorio en ejecución mediante
 
 Una interfaz puede describirse de forma declarativa con JSX. Una llamada crea un árbol completo con marcos, texto, disposición automática, rellenos y contornos.
 
-En sentido inverso, OpenPencil exporta una selección como JSX o HTML con clases Tailwind, útil como base para implementar, revisar código o continuar el trabajo con AI.
+En sentido inverso, Pena exporta una selección como JSX o HTML con clases Tailwind, útil como base para implementar, revisar código o continuar el trabajo con AI.
 
 [Renderizador JSX →](./jsx-renderer)
 
@@ -68,4 +68,4 @@ El navegador descarga el archivo entre orígenes distintos, así que el servidor
 
 En macOS el esquema pertenece al paquete de la aplicación instalada, por lo que los enlaces llegan a una versión instalada y no a un proceso de `tauri dev`. En Windows y Linux el enlace llega mediante el plugin de deep links, incluso cuando la aplicación aún no está en ejecución: el enlace se pone en cola al arrancar y se procesa cuando el editor está listo; en Linux, la entrada de escritorio incluida pasa el enlace mediante `%U`.
 
-OpenPencil tiene licencia MIT y guarda los documentos localmente. Los archivos `.fig` se pueden examinar, transformar, procesar en CI o proporcionar como contexto a un modelo sin depender de un proveedor de alojamiento concreto.
+Pena tiene licencia MIT y guarda los documentos localmente. Los archivos `.fig` se pueden examinar, transformar, procesar en CI o proporcionar como contexto a un modelo sin depender de un proveedor de alojamiento concreto.

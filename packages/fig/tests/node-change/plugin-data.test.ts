@@ -19,7 +19,7 @@ function withPluginValue(key: string, value: string, extra: NodeChange = {}): No
   return { ...extra, pluginData: [{ pluginID: OPEN_PENCIL_PLUGIN_ID, key, value }] }
 }
 
-describe('OpenPencil plugin data readers', () => {
+describe('Pena plugin data readers', () => {
   test('textPathBox requires finite numbers and a positive size', () => {
     const box = { x: 1, y: 2, width: 30, height: 40 }
     expect(

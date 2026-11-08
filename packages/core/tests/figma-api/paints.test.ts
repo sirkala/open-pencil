@@ -326,7 +326,7 @@ describe('an image paint', () => {
     expect(fill).not.toHaveProperty('rotation')
   })
 
-  test('refuses a missing or unknown scale mode, OpenPencil names, and a missing hash', () => {
+  test('refuses a missing or unknown scale mode, Pena names, and a missing hash', () => {
     const rectangle = api().figma.createRectangle()
     const scaleMode = 'Invalid option: expected one of "FILL"|"FIT"|"CROP"|"TILE" at [0].scaleMode'
     expect(() => setFills(rectangle, [{ type: 'IMAGE', imageHash: HASH }])).toThrow(

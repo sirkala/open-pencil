@@ -1,12 +1,12 @@
 ---
 layout: doc
 title: AI und Automatisierung
-description: OpenPencil über AI-Chat, CLI, JSX, MCP und APIs automatisieren.
+description: Pena über AI-Chat, CLI, JSX, MCP und APIs automatisieren.
 ---
 
 # AI und Automatisierung
 
-OpenPencil behandelt Designdateien als strukturierte Daten. Vorgänge aus dem Editor — Formen erstellen, Füllungen ändern, automatische Anordnung konfigurieren oder Ressourcen exportieren — stehen auch über CLI, AI-Agenten und APIs zur Verfügung.
+Pena behandelt Designdateien als strukturierte Daten. Vorgänge aus dem Editor — Formen erstellen, Füllungen ändern, automatische Anordnung konfigurieren oder Ressourcen exportieren — stehen auch über CLI, AI-Agenten und APIs zur Verfügung.
 
 Editor und Automatisierung verwenden denselben Kern. Ein Vorgang verhält sich daher gleich, ob er über die Oberfläche, ein Skript oder einen Agenten ausgelöst wird.
 
@@ -18,7 +18,7 @@ Der integrierte Assistent kann mehr als 90 Werkzeuge ausführen. Eine Anweisung 
 
 ## Zusammenarbeit
 
-OpenPencil synchronisiert Dokumente direkt zwischen Teilnehmern über WebRTC. Ein geteilter Raumlink genügt; ein zentraler Server und ein Konto sind nicht erforderlich. Teilnehmerzeiger und Ansichtsverfolgung zeigen die anderen Personen. Yjs CRDT führt gleichzeitige Änderungen zusammen.
+Pena synchronisiert Dokumente direkt zwischen Teilnehmern über WebRTC. Ein geteilter Raumlink genügt; ein zentraler Server und ein Konto sind nicht erforderlich. Teilnehmerzeiger und Ansichtsverfolgung zeigen die anderen Personen. Yjs CRDT führt gleichzeitige Änderungen zusammen.
 
 [Zusammenarbeit →](./collaboration)
 
@@ -26,7 +26,7 @@ OpenPencil synchronisiert Dokumente direkt zwischen Teilnehmern über WebRTC. Ei
 
 Eine Oberfläche kann deklarativ als JSX beschrieben werden. Ein Aufruf erstellt einen vollständigen Baum aus Rahmen, Text, automatischer Anordnung, Füllungen und Konturen.
 
-In der Gegenrichtung exportiert OpenPencil eine Auswahl als JSX oder HTML mit Tailwind-Klassen. Das Ergebnis kann als Ausgangspunkt für Umsetzung, Codeprüfung oder einen weiteren AI-Schritt dienen.
+In der Gegenrichtung exportiert Pena eine Auswahl als JSX oder HTML mit Tailwind-Klassen. Das Ergebnis kann als Ausgangspunkt für Umsetzung, Codeprüfung oder einen weiteren AI-Schritt dienen.
 
 [JSX-Renderer →](./jsx-renderer)
 
@@ -72,4 +72,4 @@ Unter macOS gehört das Schema dem installierten App-Bundle, Links erreichen dah
 
 ## Offene Plattform
 
-OpenPencil steht unter der MIT-Lizenz, speichert Dokumente lokal und macht seine Vorgänge programmatisch zugänglich. `.fig`-Dateien können untersucht, umgewandelt, in CI verarbeitet oder als Kontext an ein Sprachmodell übergeben werden, ohne an einen bestimmten Hostinganbieter gebunden zu sein.
+Pena steht unter der MIT-Lizenz, speichert Dokumente lokal und macht seine Vorgänge programmatisch zugänglich. `.fig`-Dateien können untersucht, umgewandelt, in CI verarbeitet oder als Kontext an ein Sprachmodell übergeben werden, ohne an einen bestimmten Hostinganbieter gebunden zu sein.

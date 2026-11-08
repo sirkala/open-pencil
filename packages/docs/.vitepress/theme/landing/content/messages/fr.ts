@@ -13,7 +13,7 @@ export const fr: LandingMessages = {
     figma: {
       title: 'Ouvrez ce que vous avez déjà',
       detail:
-        'OpenPencil lit directement les fichiers .fig : pages, composants, instances, variables et auto layout arrivent en calques modifiables, et vous pouvez réenregistrer en .fig. Collez du SVG ou ouvrez du HTML et du CSS, et ils deviennent aussi des calques, disposés comme un navigateur les dispose.',
+        'Pena lit directement les fichiers .fig : pages, composants, instances, variables et auto layout arrivent en calques modifiables, et vous pouvez réenregistrer en .fig. Collez du SVG ou ouvrez du HTML et du CSS, et ils deviennent aussi des calques, disposés comme un navigateur les dispose.',
       hint: 'Voici la visite de l’app elle-même, un vrai fichier .fig. Ouvrez un chapitre dans les calques et explorez.'
     },
     design: {
@@ -43,7 +43,7 @@ export const fr: LandingMessages = {
     linting: {
       title: 'Linting',
       detail:
-        'OpenPencil vérifie le design pendant que vous travaillez : contraste, texte trop petit, noms par défaut, calques masqués et vides, groupes superflus. Les problèmes sont signalés sur le canevas, beaucoup se corrigent en un clic, et les mêmes règles tournent dans la CLI et pour les agents.',
+        'Pena vérifie le design pendant que vous travaillez : contraste, texte trop petit, noms par défaut, calques masqués et vides, groupes superflus. Les problèmes sont signalés sur le canevas, beaucoup se corrigent en un clic, et les mêmes règles tournent dans la CLI et pour les agents.',
       hint: 'Cliquez sur un repère du canevas, ou appliquez une correction depuis la liste.'
     },
     ai: {
@@ -73,7 +73,7 @@ export const fr: LandingMessages = {
     sdk: {
       title: 'Intégrez-le à votre propre produit',
       detail:
-        'OpenPencil est autant une boîte à outils qu’une application : un moteur indépendant de tout framework, un SDK Vue sans interface et des paquets distincts pour le graphe de scène et les formats de fichier. Intégrez un canevas à votre produit, générez et vérifiez des designs en CI, ou construisez un autre éditeur sur le même moteur. Chaque canevas de cette page est ce SDK, exécuté dans un site de documentation.',
+        'Pena est autant une boîte à outils qu’une application : un moteur indépendant de tout framework, un SDK Vue sans interface et des paquets distincts pour le graphe de scène et les formats de fichier. Intégrez un canevas à votre produit, générez et vérifiez des designs en CI, ou construisez un autre éditeur sur le même moteur. Chaque canevas de cette page est ce SDK, exécuté dans un site de documentation.',
       hint: 'Le code à côté du canevas suffit pour en monter un.'
     }
   },
@@ -147,7 +147,7 @@ export const fr: LandingMessages = {
     next: {
       label: 'Ensuite',
       lead: {
-        title: 'OpenPencil auto-hébergé',
+        title: 'Pena auto-hébergé',
         detail:
           'Tout l’espace de travail dans votre propre réseau : synchronisation, partage, commentaires et bibliothèques d’équipe, sans envoyer un fichier à qui que ce soit.',
         features: [
@@ -176,7 +176,7 @@ export const fr: LandingMessages = {
         }
       ],
       cloud: {
-        title: 'OpenPencil Cloud',
+        title: 'Pena Cloud',
         detail:
           "L'espace hébergé pour les équipes : synchronisation en direct, partage, bibliothèques et IA, sans rien à faire tourner."
       }
@@ -197,7 +197,7 @@ export const fr: LandingMessages = {
   },
   cloud: {
     badge: 'Accès anticipé',
-    title: 'OpenPencil Cloud',
+    title: 'Pena Cloud',
     lede: "L'espace de design de votre équipe, hébergé pour vous. Tout le monde modifie les mêmes fichiers en direct, les partage par lien et conçoit avec l'IA, sans rien à installer ni à faire tourner. Vos fichiers restent ouverts : exportez-les en .fig quand vous voulez.",
     features: [
       {
@@ -232,14 +232,14 @@ export const fr: LandingMessages = {
     joined: 'Consultez votre boîte de réception',
     joinedDetail: 'Ouvrez le lien que nous vous avons envoyé pour confirmer votre adresse.',
     failed: 'Impossible de joindre la liste d’attente. Vérifiez votre connexion et réessayez.',
-    privacy: "Nous ne vous écrirons qu'au sujet d'OpenPencil Cloud.",
+    privacy: "Nous ne vous écrirons qu'au sujet de Pena Cloud.",
     refused: 'Nous n’avons pas pu confirmer que vous n’êtes pas un robot. Réessayez.',
     limited: 'Trop de tentatives. Réessayez dans une minute.',
     unavailable: 'Vous ne pouvez pas vous inscrire d’ici. Inscrivez-vous sur openpencil.dev.'
   },
   closing: {
     title: 'Emportez vos designs avec vous.',
-    download: 'Télécharger OpenPencil',
+    download: 'Télécharger Pena',
     docs: 'Lire la documentation',
     cloud: "Rejoindre la liste d'attente Cloud"
   },
@@ -277,7 +277,7 @@ export const fr: LandingMessages = {
     }
   },
   download: {
-    title: 'Télécharger OpenPencil',
+    title: 'Télécharger Pena',
     lede: 'L’app de bureau pour macOS, Windows et Linux. Gratuite et open source, sans inscription.',
     version: 'Version {version}, publiée le {date}',
     forPlatform: 'Télécharger pour {platform}',

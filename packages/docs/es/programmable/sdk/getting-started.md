@@ -11,7 +11,7 @@ description: Conecta @open-pencil/vue, crea un editor y configura el lienzo.
 bun add @open-pencil/core @open-pencil/vue canvaskit-wasm
 ```
 
-El SDK se encuentra en el monorepo de OpenPencil y se publica como paquete `@open-pencil/vue`.
+El SDK se encuentra en el monorepo de Pena y se publica como paquete `@open-pencil/vue`.
 
 ```ts
 import { createEditor } from '@open-pencil/core'

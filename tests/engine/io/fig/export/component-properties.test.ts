@@ -12,7 +12,7 @@ describe('Figma component property roundtrip', () => {
     await initCodec()
   })
 
-  test('retains OpenPencil library bindings and materialized identity', async () => {
+  test('retains Pena library bindings and materialized identity', async () => {
     const graph = new SceneGraph()
     const page = graph.getPages()[0]
     graph.enabledLibraries.set('design-system', {

@@ -1,11 +1,11 @@
 ---
 title: useEditor
-description: Доступ к экземпляру редактора OpenPencil, переданному через provideEditor.
+description: Доступ к экземпляру редактора Pena, переданному через provideEditor.
 ---
 
 # useEditor
 
-`useEditor()` возвращает экземпляр редактора OpenPencil, переданный ближайшим вызовом `provideEditor()`.
+`useEditor()` возвращает экземпляр редактора Pena, переданный ближайшим вызовом `provideEditor()`.
 
 Это основная точка входа для composables и компонентов без встроенного оформления, которым нужен редактор.
 

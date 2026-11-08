@@ -35,7 +35,7 @@ Lorsqu’un champ peut être lié à une variable ou à un jeton de design exter
 - Une action explicite de suppression de la liaison est préférable dans le sélecteur à un bouton facile à déclencher par erreur près du champ.
 - Regroupez changement de liaison, détachement pendant l’édition et mises à jour de plusieurs objets dans une seule opération groupée du fournisseur.
 
-L’application OpenPencil affiche le nom de la variable en violet lorsque le champ est inactif. Au début de l’édition, `NumberField` affiche la valeur numérique calculée. Une interface personnalisée peut présenter le même état différemment.
+L’application Pena affiche le nom de la variable en violet lorsque le champ est inactif. Au début de l’édition, `NumberField` affiche la valeur numérique calculée. Une interface personnalisée peut présenter le même état différemment.
 
 ## Exemple : position et taille
 

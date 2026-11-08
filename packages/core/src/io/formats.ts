@@ -176,7 +176,7 @@ export const DOCUMENT_EXTENSIONS: Readonly<Record<DocumentKind, 'fig' | 'jam'>> 
 
 export const figFormat: IOFormatAdapter<'fig'> = {
   id: 'fig',
-  label: 'OpenPencil Document',
+  label: 'Pena Document',
   role: 'native-document',
   category: 'document',
   extensions: ['fig', 'jam'],

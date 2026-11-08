@@ -399,7 +399,7 @@ export async function exportStorybook(
           // A gallery lays out static variants; a generated component's stories are its states.
           single: mode === 'single',
           design: design.flatMap((entry) =>
-            entry.type === 'link' ? [{ name: 'OpenPencil', type: 'link', url: entry.url }] : []
+            entry.type === 'link' ? [{ name: 'Pena', type: 'link', url: entry.url }] : []
           )
         })
       )

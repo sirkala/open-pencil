@@ -2,9 +2,9 @@
 
 ## Archivos de Figma
 
-OpenPencil abre y guarda archivos `.fig` directamente. La importación y exportación usan el mismo códec binario Kiwi que Figma: 194 definiciones de esquema y unos 390 campos por objeto. Guardar: <kbd>⌘</kbd><kbd>S</kbd>. Guardar como: <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd>.
+Pena abre y guarda archivos `.fig` directamente. La importación y exportación usan el mismo códec binario Kiwi que Figma: 194 definiciones de esquema y unos 390 campos por objeto. Guardar: <kbd>⌘</kbd><kbd>S</kbd>. Guardar como: <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd>.
 
-**Copiar y pegar con Figma:** selecciona objetos en Figma, pulsa <kbd>⌘</kbd><kbd>C</kbd>, cambia a OpenPencil y usa <kbd>⌘</kbd><kbd>V</kbd>. Los rellenos, contornos, la disposición automática, el texto, los efectos, los radios de esquina y las redes vectoriales se conservan en ambas direcciones.
+**Copiar y pegar con Figma:** selecciona objetos en Figma, pulsa <kbd>⌘</kbd><kbd>C</kbd>, cambia a Pena y usa <kbd>⌘</kbd><kbd>V</kbd>. Los rellenos, contornos, la disposición automática, el texto, los efectos, los radios de esquina y las redes vectoriales se conservan en ambas direcciones.
 
 ## Dibujo y edición
 
@@ -33,7 +33,7 @@ Las pestañas Diseño, Código, IA y Revisar se adaptan a la selección:
 
 ## Renderizado
 
-OpenPencil usa Skia mediante CanvasKit WASM, el mismo motor gráfico de Figma:
+Pena usa Skia mediante CanvasKit WASM, el mismo motor gráfico de Figma:
 
 - degradados lineales, radiales, angulares y diamante;
 - rellenos de imagen con varios modos de escala;
@@ -104,4 +104,4 @@ La colaboración funciona directamente entre participantes mediante WebRTC y no 
 
 ## Carga alternativa desde Google Fonts
 
-Si una fuente no está disponible localmente, OpenPencil la descarga automáticamente desde Google Fonts. No hace falta instalarla manualmente.
+Si una fuente no está disponible localmente, Pena la descarga automáticamente desde Google Fonts. No hace falta instalarla manualmente.

@@ -100,7 +100,7 @@ test('names local styles by the records it writes for them, whatever their ids',
   }
 })
 
-test('reopen layers and ranges with the styles made in OpenPencil they use', async () => {
+test('reopen layers and ranges with the styles made in Pena they use', async () => {
   const graph = new SceneGraph()
   const page = graph.getPages()[0]
   const fill = graph.createNode('RECTANGLE', page.id, {
@@ -131,7 +131,7 @@ test('reopen layers and ranges with the styles made in OpenPencil they use', asy
   expect(named('text', styled?.styleRuns[0]?.style.textStyleId)).toBe('Heading')
 })
 
-test('reopen a vector region with the paint style made in OpenPencil it uses', async () => {
+test('reopen a vector region with the paint style made in Pena it uses', async () => {
   const graph = new SceneGraph()
   const page = graph.getPages()[0]
   const red = { type: 'SOLID' as const, color: { r: 1, g: 0, b: 0, a: 1 }, opacity: 1, visible: true }

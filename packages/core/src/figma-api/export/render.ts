@@ -52,7 +52,7 @@ export async function exportLayer(
       return pdf.data
     }
     case 'JSON_REST_V1':
-      throw new Error('in exportAsync: OpenPencil does not export JSON_REST_V1')
+      throw new Error('in exportAsync: Pena does not export JSON_REST_V1')
     default:
       // Figma's words for a layer with nothing animated, which no OpenPencil layer has.
       throw new Error('Cannot export node as video')

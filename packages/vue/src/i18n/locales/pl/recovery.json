@@ -2,7 +2,7 @@
   "preserveUnsavedWork": "Automatycznie zachowuj niezapisaną pracę",
   "preserveUnsavedWorkDescription": "Przechowuj lokalne kopie, aby odtworzyć dokumenty po nieoczekiwanym zamknięciu.",
   "sectionTitle": "Niezapisana praca",
-  "sectionDescription": "Niezapisane zmiany z dokumentów zamkniętych bez zapisywania lub otwartych w chwili zamknięcia OpenPencil. Otwórz jeden, aby kontynuować pracę.",
+  "sectionDescription": "Niezapisane zmiany z dokumentów zamkniętych bez zapisywania lub otwartych w chwili zamknięcia Pena. Otwórz jeden, aby kontynuować pracę.",
   "crashNote": "Zachowano po awarii",
   "restoreFailed": "Nie udało się przywrócić tego dokumentu.",
   "discardFailed": "Nie udało się odrzucić tej kopii.",

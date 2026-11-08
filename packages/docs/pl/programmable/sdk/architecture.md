@@ -113,7 +113,7 @@ Przekazuj do slot tylko potrzebne props albo użyj composable bezpośrednio. Kom
 
 ## Prosta zasada
 
-Jeśli kod można bez stylów aplikacji wykorzystać w innym edytorze opartym na OpenPencil, prawdopodobnie powinien znaleźć się w `@open-pencil/vue`.
+Jeśli kod można bez stylów aplikacji wykorzystać w innym edytorze opartym na Pena, prawdopodobnie powinien znaleźć się w `@open-pencil/vue`.
 
 ## Zobacz też
 

@@ -11,7 +11,7 @@ description: Binden Sie @open-pencil/vue ein, erstellen Sie einen Editor und ric
 bun add @open-pencil/core @open-pencil/vue canvaskit-wasm
 ```
 
-Das SDK befindet sich im OpenPencil-Monorepo und wird als Paket `@open-pencil/vue` veröffentlicht.
+Das SDK befindet sich im Pena-Monorepo und wird als Paket `@open-pencil/vue` veröffentlicht.
 
 ```ts
 import { createEditor } from '@open-pencil/core'

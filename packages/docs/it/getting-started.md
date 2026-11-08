@@ -2,9 +2,9 @@
 
 ## Versione web
 
-OpenPencil funziona direttamente nel browser e non richiede installazione. Apri [app.openpencil.dev](https://app.openpencil.dev) per iniziare a progettare.
+Pena funziona direttamente nel browser e non richiede installazione. Apri [app.openpencil.dev](https://app.openpencil.dev) per iniziare a progettare.
 
-Se vuoi creare un prodotto basato su OpenPencil invece di utilizzare soltanto l'applicazione predefinita, consulta la sezione [Automazione](/programmable/) e la documentazione del [Vue SDK](/programmable/sdk/).
+Se vuoi creare un prodotto basato su Pena invece di utilizzare soltanto l'applicazione predefinita, consulta la sezione [Automazione](/programmable/) e la documentazione del [Vue SDK](/programmable/sdk/).
 
 ## Applicazione desktop
 
@@ -20,7 +20,7 @@ Le versioni pronte per macOS, Windows e Linux sono disponibili nella [pagina dei
 
 ## Requisiti di sistema {#system-requirements}
 
-OpenPencil esegue il rendering con CanvasKit su WebGL e usa funzionalità recenti della piattaforma web, quindi richiede un motore del browser aggiornato. L’app web supporta Chrome 111, Edge 111, Firefox 128 e Safari 16.4 o versioni successive; i browser basati su Chromium, come Brave e Opera, seguono la versione di Chrome. L’app desktop usa il WebView di sistema, quindi il requisito minimo dipende dal motore del sistema operativo:
+Pena esegue il rendering con CanvasKit su WebGL e usa funzionalità recenti della piattaforma web, quindi richiede un motore del browser aggiornato. L’app web supporta Chrome 111, Edge 111, Firefox 128 e Safari 16.4 o versioni successive; i browser basati su Chromium, come Brave e Opera, seguono la versione di Chrome. L’app desktop usa il WebView di sistema, quindi il requisito minimo dipende dal motore del sistema operativo:
 
 | Piattaforma | Requisito |
 | ----------- | --------- |
@@ -28,7 +28,7 @@ OpenPencil esegue il rendering con CanvasKit su WebGL e usa funzionalità recent
 | Windows | Windows 10 o successivo con il runtime Evergreen di Microsoft Edge WebView2, che si aggiorna da solo. |
 | Linux | WebKitGTK 2.40 o successivo (`webkit2gtk-4.1`). |
 
-Se il motore è troppo vecchio, OpenPencil mostra cosa aggiornare invece di una finestra vuota. Se vedi questo avviso su un sistema che soddisfa i requisiti, usa il link «Report a problem», che precompila i dettagli di browser e motore.
+Se il motore è troppo vecchio, Pena mostra cosa aggiornare invece di una finestra vuota. Se vedi questo avviso su un sistema che soddisfa i requisiti, usa il link «Report a problem», che precompila i dettagli di browser e motore.
 
 ## Installazione in macOS con Homebrew
 

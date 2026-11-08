@@ -40,7 +40,7 @@ const { updates, locale } = useI18n()
 const router = useRouter()
 
 useHead({
-  titleTemplate: (title) => (title ? `${title} — OpenPencil` : 'OpenPencil'),
+  titleTemplate: (title) => (title ? `${title} — Pena` : 'Pena'),
   htmlAttrs: {
     lang: locale,
     'data-interface-scale': interfaceScalePreference,

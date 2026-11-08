@@ -1,6 +1,6 @@
 ---
 title: useCanvas
-description: Подключение отрисовки CanvasKit к элементу canvas редактора OpenPencil.
+description: Подключение отрисовки CanvasKit к элементу canvas редактора Pena.
 ---
 
 # useCanvas

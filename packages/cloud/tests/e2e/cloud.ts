@@ -103,7 +103,7 @@ try {
     name: 'E2E.fig'
   })
 
-  const firstBytes = new TextEncoder().encode('OpenPencil Cloud full-stack E2E revision one')
+  const firstBytes = new TextEncoder().encode('Pena Cloud full-stack E2E revision one')
   const firstChecksum = checksum(firstBytes)
   const firstUpload = await client.createUpload(document.id, {
     baseRevisionId: null,

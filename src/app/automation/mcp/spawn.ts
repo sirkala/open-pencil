@@ -126,7 +126,7 @@ function toError(error: unknown): Error {
 
 function missingMCPError(searched: string[] = []): Error {
   return new MCPStartupError(
-    `MCP automation is not installed. Install ${MCP_INSTALL_TARGET} globally with your package manager, then restart OpenPencil.`,
+    `MCP automation is not installed. Install ${MCP_INSTALL_TARGET} globally with your package manager, then restart Pena.`,
     searched.length > 0
       ? mcpFailure('not-installed', searched.join(', '))
       : mcpFailure('not-installed')
@@ -367,7 +367,7 @@ function assertCompatibleMCPVersion(health: AutomationHealth): void {
   // The running server's own install command names its own version, so the fix always
   // comes from this app's version.
   throw new MCPStartupError(
-    `OpenPencil desktop v${APP_VERSION} requires ${MCP_PACKAGE_NAME} v${oursMajorMinor}.x ` +
+    `Pena desktop v${APP_VERSION} requires ${MCP_PACKAGE_NAME} v${oursMajorMinor}.x ` +
       `(major.minor compatibility), but the running MCP server is ${runningVersion}. ` +
       `Run: ${MCP_INSTALL_COMMAND}, then restart the MCP server.`,
     mcpFailure('outdated', health.version)

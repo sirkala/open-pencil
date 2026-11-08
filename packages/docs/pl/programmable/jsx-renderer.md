@@ -5,7 +5,7 @@ description: Deklaratywne tworzenie projektu w JSX i eksport z powrotem do JSX l
 
 # Renderer JSX
 
-OpenPencil używa JSX jako deklaratywnego języka tworzenia projektu. Nadaje się on do agentów AI, skryptów i powtarzalnego budowania interfejsów.
+Pena używa JSX jako deklaratywnego języka tworzenia projektu. Nadaje się on do agentów AI, skryptów i powtarzalnego budowania interfejsów.
 
 JSX służy też jako czytelna reprezentacja istniejącego projektu. Zmiany wyglądają jak zwykła różnica w kodzie, którą można sprawdzić i zachować w systemie kontroli wersji.
 
@@ -49,7 +49,7 @@ Nazwy właściwości pozostają zgodne z API JSX, natomiast ich znaczenie jest n
 ## Eksport do JSX
 
 ```sh
-openpencil export design.fig -f jsx                   # Format OpenPencil
+openpencil export design.fig -f jsx                   # Format Pena
 openpencil export design.fig -f jsx --style tailwind  # Klasy Tailwind
 ```
 

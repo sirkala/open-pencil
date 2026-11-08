@@ -1,28 +1,27 @@
-# OpenPencil
+# Pena
 
-[![MIT license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
-[![npm](https://img.shields.io/npm/v/@open-pencil/cli?label=%40open-pencil%2Fcli)](https://www.npmjs.com/package/@open-pencil/cli)
-[![Discord](https://img.shields.io/badge/Discord-join-5865F2?logo=discord&logoColor=white)](https://discord.gg/4wXc9fuZfm)
-[![GitHub Discussions](https://img.shields.io/github/discussions/open-pencil/open-pencil?logo=github&label=Discussions)](https://github.com/open-pencil/open-pencil/discussions)
-[![Ko-fi](https://img.shields.io/badge/Ko--fi-support-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/dannote)
+[![MIT license](https://img.shields.io/badge/license-MIT-blue)](LICENSE-PENA)
+
+Pena is a fork of [the OpenPencil project](https://github.com/open-pencil/open-pencil) by Sirkala. It goes its own way, keeps merging upstream changes while the code stays compatible, and keeps the OpenPencil project's licenses and copyright; see [NOTICE.md](NOTICE.md) and [FORK.md](FORK.md).
 
 Open-source design editor. Opens `.fig` and `.pen` design files, includes built-in AI, and ships as a programmable toolkit with a headless Vue SDK for building custom editors.
 
 > **Status:** Active development. Usable today, with some rough edges as features evolve.
 
-**[Try it online →](https://app.openpencil.dev/demo)** · [Download](https://github.com/open-pencil/open-pencil/releases/latest) · [Documentation](https://openpencil.dev) · [Roadmap](https://openpencil.dev/development/roadmap) · [llms.txt](https://openpencil.dev/llms.txt)
+[Source](https://github.com/sirkala/pena) · [Issues](https://github.com/sirkala/pena/issues) · [Upstream documentation](https://openpencil.dev)
 
-![OpenPencil](packages/docs/public/screenshot.png)
+![Pena](packages/docs/public/screenshot.png)
 
 ## Installation
 
-**macOS (Homebrew):**
+Pena has no published builds yet. Build the macOS app (Apple Silicon) and its DMG from a checkout:
 
 ```sh
-brew install --cask openpencil
+bun install
+desktop/pena/build.sh
 ```
 
-Or download from the [releases page](https://github.com/open-pencil/open-pencil/releases/latest), or [use the web app](https://app.openpencil.dev) — no install needed.
+Pena answers `pena://` links and runs its MCP server on its own port and folder, so it can sit beside an installed copy of the OpenPencil project's app.
 
 Requires macOS 13 or later with current Safari updates, Windows 10 or later, or Linux with WebKitGTK 2.40+; the web app needs Chrome 111, Edge 111, Firefox 128, or Safari 16.4 or later. See [system requirements](https://openpencil.dev/getting-started#system-requirements).
 
@@ -38,9 +37,9 @@ Official builds send one anonymous ping a day and share usage stats only if you 
 - **Working controls** — give a component a Reka UI behaviour (switch, slider, tabs, text field, …) and preview it live over the canvas, with real inputs, focus, and keyboard
 - **Image vectorization** — convert image layers into editable vector layers with Recraft or fal.ai
 - **Design-to-code export** — export selections as JSX/Tailwind, generate token outputs, and map designs into component-oriented code workflows
-- **Vue SDK for custom editors** — headless components and composables for embedding OpenPencil into other apps or building workflow-specific editing surfaces. [Read the SDK docs →](https://openpencil.dev/programmable/sdk/)
+- **Vue SDK for custom editors** — headless components and composables for embedding Pena into other apps or building workflow-specific editing surfaces. [Read the SDK docs →](https://openpencil.dev/programmable/sdk/)
 - **Real-time collaboration** — share a peer-to-peer room over WebRTC with no server or account, or edit Cloud documents together. Cursors, presence, follow mode, voice calls
-- **Optional Cloud** — keep documents on your team's own [OpenPencil Cloud](https://openpencil.dev/user-guide/openpencil-cloud) server, or on the hosted service once it opens, and share them by invitation
+- **Optional Cloud** — keep documents on your team's own [Pena Cloud](https://openpencil.dev/user-guide/openpencil-cloud) server, or on the hosted service once it opens, and share them by invitation
 - **Auto layout & CSS Grid** — flex and grid layout via Yoga WASM, with gap, padding, alignment, track sizing
 - **~15 MB desktop app** — Tauri v2 for macOS, Windows, Linux. Also runs in the browser as a PWA
 
@@ -144,7 +143,7 @@ Not every provider works in the browser, and not every model streams tool calls 
 
 Use Claude Code, Codex, Gemini CLI, or Pi as the design agent in the chat panel. It runs with your own subscription and reaches the canvas through the editor's MCP server. Requires the desktop app.
 
-Install the agent's ACP program and `@open-pencil/mcp`, then open **Settings → Models → Run guided setup**. It checks that both are installed, signs the agent in, and confirms a session reaches OpenPencil's tools. Pi runs through the `@open-pencil/harness` companion, which guided setup installs with one click. See [Coding agents](https://openpencil.dev/programmable/coding-agents) for each agent's install command.
+Install the agent's ACP program and `@open-pencil/mcp`, then open **Settings → Models → Run guided setup**. It checks that both are installed, signs the agent in, and confirms a session reaches Pena's tools. Pi runs through the `@open-pencil/harness` companion, which guided setup installs with one click. See [Coding agents](https://openpencil.dev/programmable/coding-agents) for each agent's install command.
 
 ### MCP server
 
@@ -179,7 +178,7 @@ Set `OPENPENCIL_MCP_ROOT` to limit file access to one directory; it defaults to 
 
 ### [AI agent skill](skills/open-pencil/SKILL.md)
 
-Teach your AI coding agent to use OpenPencil — inspect designs, export assets, analyze tokens, modify .fig files:
+Teach your AI coding agent to use Pena — inspect designs, export assets, analyze tokens, modify .fig files:
 
 ```sh
 npx skills add open-pencil/open-pencil
@@ -203,19 +202,14 @@ Share a link to co-edit in real time. No server, no account — peers connect di
 
 Figma is a closed platform that resists programmatic access: its MCP server is read-only, and automation outside the Plugin API breaks when it ships a point release. Your design files are in a proprietary binary format that only its software can fully read.
 
-OpenPencil is the alternative: open source (MIT), local-first, reads .fig files natively, and every operation is scriptable.
+Pena is the alternative: open source (MIT), local-first, reads .fig files natively, and every operation is scriptable.
 
 See the [roadmap](https://openpencil.dev/development/roadmap) for product direction and current Figma compatibility gaps.
 
 ## Community
 
-- **[Discord](https://discord.gg/4wXc9fuZfm)** — chat, quick questions, and showing a problem live
-- **[GitHub Discussions](https://github.com/open-pencil/open-pencil/discussions)** — [Q&A](https://github.com/open-pencil/open-pencil/discussions/categories/q-a) for help, [Ideas](https://github.com/open-pencil/open-pencil/discussions/categories/ideas) for feature proposals, [Show and tell](https://github.com/open-pencil/open-pencil/discussions/categories/show-and-tell) for what you built; maintainers post [Announcements](https://github.com/open-pencil/open-pencil/discussions/categories/announcements) there
-- **[Issues](https://github.com/open-pencil/open-pencil/issues)** — reproducible bugs; report security problems through a [private advisory](https://github.com/open-pencil/open-pencil/security/advisories/new)
-
-## Support
-
-OpenPencil is free and open source. Donations help speed up its development and cover the servers and services it runs on. You can [donate on Ko-fi](https://ko-fi.com/dannote).
+- **[Issues](https://github.com/sirkala/pena/issues)** — bugs and feature requests for Pena; report security problems through a [private advisory](https://github.com/sirkala/pena/security/advisories/new)
+- Problems that also occur in the OpenPencil project belong [upstream](https://github.com/open-pencil/open-pencil/issues), where a fix reaches both
 
 ## Contributing
 
@@ -241,14 +235,13 @@ bun run tauri dev     # Desktop app (requires Rust)
 
 ## Acknowledgments
 
-Thanks to [@sld0Ant](https://github.com/sld0Ant) (Anton Soldatov), who pushed for OpenPencil to be published, has backed and promoted it since, and built the first version of the [documentation site](https://openpencil.dev).
-
-Thanks to everyone who has [contributed](https://github.com/open-pencil/open-pencil/graphs/contributors) code, translations, bug reports, and feedback.
-
-Thanks to [Anthropic](https://www.anthropic.com) for supporting the project through its open source program, and to [CodeRabbit](https://www.coderabbit.ai) for reviewing every pull request for free.
+Pena is built on the work of the OpenPencil project by [Danila Poyarkov](https://github.com/dannote) and [its contributors](https://github.com/open-pencil/open-pencil/graphs/contributors). Thank you. If Pena is useful to you, consider [supporting the OpenPencil project on Ko-fi](https://ko-fi.com/dannote).
 
 ## License
 
-OpenPencil is licensed under the [MIT License](./LICENSE), except OpenPencil Cloud, which is licensed under the [Apache License 2.0](./LICENSES/Apache-2.0.txt). [`REUSE.toml`](./REUSE.toml) lists the exact paths.
+Pena's own changes are licensed under the [MIT License](./LICENSE-PENA), copyright Sirkala and Pena contributors.
+
+The code from the OpenPencil project keeps its original licenses: the [MIT License](./LICENSE), and for Cloud the [Apache License 2.0](./LICENSES/Apache-2.0.txt). [`REUSE.toml`](./REUSE.toml) lists the exact paths, and [NOTICE.md](NOTICE.md) explains how the licenses fit together.
 
 Copyright (c) 2026 Danila Poyarkov and OpenPencil contributors.
+Copyright (c) 2026 Sirkala and Pena contributors.

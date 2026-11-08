@@ -399,7 +399,7 @@ export const AI_PROVIDERS: AIProviderDef[] = [
   },
   {
     id: 'openpencil',
-    name: 'OpenPencil Cloud',
+    name: 'Pena Cloud',
     keyPlaceholder: '',
     keyURL: '',
     defaultModel: '',

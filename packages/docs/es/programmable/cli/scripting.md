@@ -13,7 +13,7 @@ description: Ejecutar JavaScript con una API compatible con plugins de Figma par
 openpencil eval design.fig -c "return figma.currentPage.children.length"
 ```
 
-`-c` acepta JavaScript. Si el código no empieza por `return`, OpenPencil lo ejecuta dentro de una función asíncrona y devuelve el resultado cuando existe.
+`-c` acepta JavaScript. Si el código no empieza por `return`, Pena lo ejecuta dentro de una función asíncrona y devuelve el resultado cuando existe.
 
 ```sh
 openpencil eval design.fig -c "
@@ -64,7 +64,7 @@ En entornos no interactivos, `eval` usa JSON de forma predeterminada. `--json` l
 
 ## API compatible
 
-La API sigue el modelo de Figma Plugin API, pero actúa sobre SceneGraph y los formatos de OpenPencil.
+La API sigue el modelo de Figma Plugin API, pero actúa sobre SceneGraph y los formatos de Pena.
 
 ### Documento y páginas
 

@@ -5,7 +5,7 @@ description: Creare un’interfaccia con provideEditor, CanvasRoot, menu, pannel
 
 # Interfaccia di editing personalizzata
 
-Un’applicazione OpenPencil con Vue comprende normalmente tre livelli:
+Un’applicazione Pena con Vue comprende normalmente tre livelli:
 
 1. `@open-pencil/core` crea l’editor;
 2. `@open-pencil/vue` lo collega a composable e componenti Vue senza stile;
@@ -13,7 +13,7 @@ Un’applicazione OpenPencil con Vue comprende normalmente tre livelli:
 
 ## Casi d’uso
 
-L’applicazione OpenPencil è solo una possibile interfaccia. Il SDK permette di creare un editor integrato in un altro prodotto, uno strumento interno per risorse, un editor di modelli, un’interfaccia di annotazione o un editor specializzato assistito dall’AI.
+L’applicazione Pena è solo una possibile interfaccia. Il SDK permette di creare un editor integrato in un altro prodotto, uno strumento interno per risorse, un editor di modelli, un’interfaccia di annotazione o un editor specializzato assistito dall’AI.
 
 ## Struttura consigliata
 

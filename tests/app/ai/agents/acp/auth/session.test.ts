@@ -197,7 +197,7 @@ function toolsProbe(outcome: OwnToolsOutcome) {
   return { probe, linked }
 }
 
-describe("checking a signed-in agent reaches OpenPencil's tools", () => {
+describe("checking a signed-in agent reaches Pena's tools", () => {
   test('starts a session as a chat does, sends no prompt, and reports the outcome', async () => {
     const agent = fakeAgent({ status: SIGNED_IN, startsSessions: true })
     const { probe } = toolsProbe({ connected: true })

@@ -11,7 +11,7 @@ description: Podłącz @open-pencil/vue, utwórz edytor i skonfiguruj obszar rob
 bun add @open-pencil/core @open-pencil/vue canvaskit-wasm
 ```
 
-SDK znajduje się w monorepo OpenPencil i jest publikowany jako pakiet `@open-pencil/vue`.
+SDK znajduje się w monorepo Pena i jest publikowany jako pakiet `@open-pencil/vue`.
 
 ```ts
 import { createEditor } from '@open-pencil/core'

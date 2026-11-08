@@ -53,7 +53,7 @@ afterEach(() => {
   replaceAIModelSettings(original)
 })
 
-describe('OpenPencil Cloud model connections', () => {
+describe('Pena Cloud model connections', () => {
   test('keep the workspace that pays for them through a save and a reload', () => {
     expect(parseAIModelSettings(settingsFixture())?.connections[0]?.cloudWorkspaceId).toBe(
       WORKSPACE_A

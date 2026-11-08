@@ -2,7 +2,7 @@
   "preserveUnsavedWork": "未保存の作業を自動的に保持",
   "preserveUnsavedWorkDescription": "予期しない終了後にドキュメントを復元できるよう、ローカルコピーを保存します。",
   "sectionTitle": "未保存の作業",
-  "sectionDescription": "保存せずに閉じたドキュメントや、OpenPencil の終了時に開いていたドキュメントの未保存の変更です。開くと作業を続けられます。",
+  "sectionDescription": "保存せずに閉じたドキュメントや、Pena の終了時に開いていたドキュメントの未保存の変更です。開くと作業を続けられます。",
   "crashNote": "クラッシュ後に保持",
   "restoreFailed": "このドキュメントを復元できませんでした。",
   "discardFailed": "このコピーを破棄できませんでした。",
