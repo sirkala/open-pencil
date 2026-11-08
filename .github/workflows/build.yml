@@ -23,6 +23,8 @@ env:
 
 jobs:
   plan:
+    # OpenPencil's own release; forks such as Pena publish theirs another way (FORK.md).
+    if: github.repository == 'open-pencil/open-pencil'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     outputs:

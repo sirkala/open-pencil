@@ -32,6 +32,15 @@ if grep -q PENA_UPDATER_PUBKEY desktop/pena/tauri.conf.json; then
   exit 1
 fi
 
+# Pena's own version and release repository, both from the overlay. The app's code version,
+# which names the npm packages it installs, stays package.json's.
+version=$(bun -e 'console.log(require("./desktop/pena/tauri.conf.json").version)')
+repository=$(bun -e '
+  const config = require("./desktop/pena/tauri.conf.json")
+  console.log(new URL(config.plugins.updater.endpoints[0]).pathname.split("/").slice(1, 3).join("/"))
+')
+
+export VITE_OPENPENCIL_DESKTOP_REPOSITORY="$repository"
 export VITE_OPENPENCIL_LINK_SCHEME=pena
 export VITE_OPENPENCIL_MCP_PORT=7610
 export VITE_OPENPENCIL_MCP_FOLDER=Pena
@@ -41,10 +50,11 @@ export APPLE_SIGNING_IDENTITY=-
 target=aarch64-apple-darwin
 # Tauri bundles the sidecar named for the target it builds.
 bun desktop/pena/mcp.ts "$target" "desktop/pena/bin/pena-mcp-http-$target"
+# Bun's compile leaves its staging copy of the runtime in the working directory.
+rm -f ./.*.bun-build
 bun run tauri build -c desktop/pena/tauri.conf.json --target "$target" "$@"
 
 bundle="desktop/target/$target/release/bundle"
-version=$(bun -e 'console.log(require("./package.json").version)')
 release="desktop/target/$target/release/pena-release"
 bun desktop/pena/updater.ts "$target" "$bundle" "$version" "$release"
 

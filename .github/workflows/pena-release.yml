@@ -1,0 +1,74 @@
+name: Pena release
+
+# Builds Pena for Apple Silicon from a v<version> tag, signs its updater archive, and publishes
+# it as the newest release, which installed apps update from (FORK.md, Releases). The tag must
+# name the version in desktop/pena/tauri.conf.json. A dispatch retries an existing tag whose
+# release failed to publish.
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing tag to build and publish (v<version> from desktop/pena/tauri.conf.json).
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pena-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    # Pena's own release; OpenPencil's is build.yml.
+    if: github.repository == 'sirkala/pena'
+    runs-on: macos-15
+    timeout-minutes: 60
+    permissions:
+      contents: write
+    env:
+      TAG: ${{ inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: refs/tags/${{ env.TAG }}
+          persist-credentials: false
+
+      - name: Check the tag names Pena's version
+        run: |
+          version=$(node -p 'require("./desktop/pena/tauri.conf.json").version')
+          if [ "v$version" != "$TAG" ]; then
+            echo "::error::$TAG does not match desktop/pena/tauri.conf.json, which is at $version."
+            exit 1
+          fi
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-apple-darwin
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: desktop -> target
+          shared-key: pena-release
+
+      - uses: ./.github/actions/setup-bun
+        with:
+          cache-scope: pena-release
+
+      - name: Build workspace packages
+        run: bun run build:packages
+
+      - name: Build and sign Pena
+        env:
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+        run: desktop/pena/build.sh
+
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: desktop/pena/release.sh

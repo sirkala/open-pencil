@@ -13,6 +13,8 @@ interface ImportMetaEnv {
   readonly VITE_OPENPENCIL_MCP_FOLDER?: string
   /** Tauri sidecar of a build that ships its own MCP server. */
   readonly VITE_OPENPENCIL_MCP_SIDECAR?: string
+  /** `owner/name` of the GitHub repository whose releases a fork's desktop build links to. */
+  readonly VITE_OPENPENCIL_DESKTOP_REPOSITORY?: string
 }
 
 declare const __OPENPENCIL_APP_VERSION__: string

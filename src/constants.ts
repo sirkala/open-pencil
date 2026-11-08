@@ -110,8 +110,13 @@ export const MCP_RUNTIME_FOLDER = import.meta.env.VITE_OPENPENCIL_MCP_FOLDER || 
  */
 export const MCP_SIDECAR = import.meta.env.VITE_OPENPENCIL_MCP_SIDECAR || null
 
+/**
+ * The GitHub releases of this desktop build, which hold its installers and full release notes
+ * and feed its updater. Defaults are OpenPencil's; a fork's build names its own repository.
+ */
+const DESKTOP_RELEASES_URL = `https://github.com/${import.meta.env.VITE_OPENPENCIL_DESKTOP_REPOSITORY || 'open-pencil/open-pencil'}/releases`
 /** Where the desktop app's installers are published. */
-export const DESKTOP_DOWNLOAD_URL = 'https://github.com/open-pencil/open-pencil/releases/latest'
+export const DESKTOP_DOWNLOAD_URL = `${DESKTOP_RELEASES_URL}/latest`
 export const NODE_DOWNLOAD_URL = 'https://nodejs.org/en/download'
 
 /**
@@ -129,7 +134,7 @@ export const PI_GUIDE_URL = `${CODING_AGENTS_GUIDE_URL}#pi`
 
 /** The published release page, with its full notes, for a desktop version. */
 export function releaseNotesURL(version: string): string {
-  return `https://github.com/open-pencil/open-pencil/releases/tag/v${version}`
+  return `${DESKTOP_RELEASES_URL}/tag/v${version}`
 }
 
 export function getShareURL(roomId: string): string {

@@ -16,7 +16,8 @@ jobs:
   build:
     # Pre-releases (vX.Y.Z-beta.N) ship desktop and npm builds only, never production,
     # including when dispatched manually on their tag.
-    if: ${{ !(startsWith(github.ref, 'refs/tags/v') && contains(github.ref_name, '-')) }}
+    # Deploys OpenPencil's own site, which a fork such as Pena cannot reach (FORK.md).
+    if: ${{ github.repository == 'open-pencil/open-pencil' && !(startsWith(github.ref, 'refs/tags/v') && contains(github.ref_name, '-')) }}
     runs-on: ubuntu-latest
     permissions:
       contents: read

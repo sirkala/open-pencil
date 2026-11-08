@@ -35,14 +35,29 @@ bun tauri signer generate -w ~/.tauri/pena.key
 
 Put the contents of `~/.tauri/pena.key.pub` in `plugins.updater.pubkey`, and keep the private key and its password in a password manager. The repository's `TAURI_SIGNING_PRIVATE_KEY` and `TAURI_SIGNING_PRIVATE_KEY_PASSWORD` secrets hold them for CI. Locally, `build.sh` reads both from the environment or from `desktop/pena/.env`, which git ignores; copy [`desktop/pena/.env.example`](desktop/pena/.env.example) to start it.
 
-To release, bump the version in `package.json`, `desktop/tauri.conf.json`, and `desktop/Cargo.toml`, push the commit, then build and publish:
+### Versions
+
+Pena numbers its releases itself: `version` in `desktop/pena/tauri.conf.json` is what the updater compares, macOS shows, and the release tag names, and upstream merges never touch it. The app's code version, `__OPENPENCIL_APP_VERSION__` from `package.json`, stays upstream's, because it names the `@open-pencil/*` npm packages the app installs and the MCP server it accepts. Each release adds its notes under its version in [`desktop/pena/CHANGELOG.md`](desktop/pena/CHANGELOG.md), naming the OpenPencil version it is built on. The updater only offers a version newer than the installed one, and GitHub's latest link skips pre-releases, so every release raises the version and stays a full release.
+
+### Releasing
+
+Raise `version` in `desktop/pena/tauri.conf.json`, add its section to `desktop/pena/CHANGELOG.md`, merge that to `master`, then push its tag:
+
+```sh
+git tag v1.0.1 origin/master
+git push origin v1.0.1
+```
+
+[`pena-release.yml`](.github/workflows/pena-release.yml) checks that the tag names that version, builds on an Apple Silicon runner with the signing secrets, and publishes the release; installed apps see it the next time they check. Running it again from the Actions tab with the tag retries a release that failed to publish. OpenPencil's own release, deploy, and image workflows run only in `open-pencil/open-pencil`, so a Pena tag starts nothing else.
+
+The same steps run locally, with the key from `desktop/pena/.env`:
 
 ```sh
 desktop/pena/build.sh
 desktop/pena/release.sh
 ```
 
-[`build.sh`](desktop/pena/build.sh) gathers the DMG, the signed `Pena_<version>_aarch64.app.tar.gz`, and `latest.json` in `desktop/target/aarch64-apple-darwin/release/pena-release`; [`updater.ts`](desktop/pena/updater.ts) refuses an archive signed by another key or for another version. The notes are the version's `CHANGELOG.md` section, or the Markdown file `PENA_RELEASE_NOTES` names. [`release.sh`](desktop/pena/release.sh) tags `v<version>` and publishes it as the latest release (`--draft` keeps it unpublished, and so out of reach of the apps). The updater only offers a version newer than the installed one, and GitHub's latest link skips pre-releases, so every release needs a higher version and stays a full release.
+[`build.sh`](desktop/pena/build.sh) gathers the DMG, the signed `Pena_<version>_aarch64.app.tar.gz`, and `latest.json` in `desktop/target/aarch64-apple-darwin/release/pena-release`, and points the app's release links at the repository in the updater endpoint. [`updater.ts`](desktop/pena/updater.ts) refuses an archive signed by another key or for another version; the notes are the version's `desktop/pena/CHANGELOG.md` section, or the Markdown file `PENA_RELEASE_NOTES` names. [`release.sh`](desktop/pena/release.sh) publishes `v<version>` as the latest release, on the pushed tag when there is one and otherwise tagging this pushed commit; `--draft` keeps it unpublished, and so out of reach of the apps.
 
 The app is signed ad hoc, so macOS treats each build as a new app: after an update people may be asked again to allow Pena into the keychain. A Developer ID certificate in `bundle.macOS.signingIdentity` removes that.
 

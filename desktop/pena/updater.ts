@@ -3,18 +3,18 @@
 // archive must be signed by the key in desktop/pena/tauri.conf.json for this version, or the
 // apps would refuse the update, so this checks the signature before writing anything.
 // Usage: bun desktop/pena/updater.ts <target triple> <bundle dir> <version> <output dir>
-// PENA_RELEASE_NOTES names a Markdown file with the notes; without it, the version's
-// CHANGELOG.md section is used.
+// The notes are the version's section of desktop/pena/CHANGELOG.md, Pena's own changelog, or
+// the Markdown file PENA_RELEASE_NOTES names.
 import { createHash, createPublicKey, verify } from 'node:crypto'
 import { copyFile, mkdir, readFile, rm, writeFile } from 'node:fs/promises'
-import { join, resolve } from 'node:path'
+import { join } from 'node:path'
 
 import { parseChangelog } from 'changelog-parser'
 import { decode, isValid, toUint8Array } from 'js-base64'
 import * as v from 'valibot'
 
-const ROOT = resolve(import.meta.dir, '../..')
 const CONFIG = join(import.meta.dir, 'tauri.conf.json')
+const CHANGELOG = join(import.meta.dir, 'CHANGELOG.md')
 
 /** Tauri's updater platform key and the architecture in the asset name, per target triple. */
 const TARGETS: Record<string, { platform: string; arch: string }> = {
@@ -128,12 +128,13 @@ function verifiedVersion(archive: Uint8Array, signature: string): string {
 async function releaseNotes(): Promise<string> {
   const file = process.env.PENA_RELEASE_NOTES
   if (file) return `${(await readFile(file, 'utf8')).trim()}\n`
-  const changelog = await parseChangelog({
-    filePath: join(ROOT, 'CHANGELOG.md'),
-    removeMarkdown: false
-  })
+  const changelog = await parseChangelog({ filePath: CHANGELOG, removeMarkdown: false })
   const notes = changelog.versions.find((entry) => entry.version === version)?.body.trim()
-  if (!notes) throw new Error(`CHANGELOG.md has no notes for ${version}; set PENA_RELEASE_NOTES`)
+  if (!notes) {
+    throw new Error(
+      `desktop/pena/CHANGELOG.md has no notes for ${version}; add them or set PENA_RELEASE_NOTES`
+    )
+  }
   return `${notes}\n`
 }
 
