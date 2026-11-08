@@ -223,7 +223,8 @@ jobs:
     timeout-minutes: 8
     runs-on: ubuntu-24.04
     container:
-      image: ghcr.io/open-pencil/native-contracts-ci@sha256:64e6b1b50a988c1cefe2b69ac9d58076fd743b18391fa2dbd1d153eba2be9521
+      # Forks cannot pull upstream's package; they publish their own and set NATIVE_CONTRACTS_IMAGE.
+      image: ${{ vars.NATIVE_CONTRACTS_IMAGE || 'ghcr.io/open-pencil/native-contracts-ci@sha256:64e6b1b50a988c1cefe2b69ac9d58076fd743b18391fa2dbd1d153eba2be9521' }}
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
