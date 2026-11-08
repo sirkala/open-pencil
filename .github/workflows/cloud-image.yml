@@ -27,6 +27,8 @@ concurrency:
 jobs:
   image:
     name: Build Cloud image
+    # Pull requests only build it; publishing pushes to OpenPencil's own registry (FORK.md).
+    if: github.event_name == 'pull_request' || github.repository == 'open-pencil/open-pencil'
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     permissions:
