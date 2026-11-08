@@ -1,5 +1,7 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'bun:test'
 
+import { TimeoutError } from 'es-toolkit/error'
+
 import * as figModule from '@open-pencil/core/io/formats/fig'
 import * as layoutModule from '@open-pencil/core/layout'
 import { SceneGraph } from '@open-pencil/scene-graph'
@@ -9,12 +11,17 @@ import type { DocumentSourceIdentity } from '@/app/document/io/types'
 import { getRecoveryStore, resetRecoveryStoreForTests } from '@/app/document/recovery'
 import { createMemoryRecoveryStore } from '@/app/document/recovery/memory'
 import {
+  createMemoryLocalCanvasStore,
+  resetLocalCanvasStoreForTests
+} from '@/app/storage/local-store'
+import {
   closeTab,
   createHomeTab,
   createTab,
   getActiveStore,
   getTabsSnapshot,
   openFileInNewTab,
+  openStorageDocumentInNewTab,
   showNewTab,
   restoreRecoverySnapshot,
   switchAdjacentTab,
@@ -276,6 +283,45 @@ describe('openFileInNewTab deduplication', () => {
     expect([after.kind, after.store]).toEqual(['home', home.store])
     // Home was in front when the open began, so it is again, not the other design.
     expect(getActiveStore()).toBe(home.store)
+  })
+
+  test('keeps a Cloud document open when its first frame takes too long', async () => {
+    createHomeTab()
+    const count = tabCount()
+    const document = {
+      id: 'slow-canvas',
+      name: 'Slow canvas',
+      updatedAt: '2026-10-19T00:00:00.000Z'
+    }
+    const location = { providerId: 'openpencil-cloud' }
+    const cache = createMemoryLocalCanvasStore()
+    await cache.writeCanvas({
+      ...document,
+      ...location,
+      figBytes: new Uint8Array([1]),
+      syncStatus: 'synced'
+    })
+    const failed = vi.fn()
+    vi.spyOn(figModule, 'readFigFile').mockImplementationOnce(async () => {
+      const store = getActiveStore()
+      store.onPreparationEvent('preparation:failed', failed)
+      vi.spyOn(store.preparationController, 'waitForPresentation').mockRejectedValueOnce(
+        new TimeoutError()
+      )
+      return new SceneGraph()
+    })
+    resetLocalCanvasStoreForTests(cache)
+    try {
+      const store = await openStorageDocumentInNewTab(document, location)
+
+      expect(tabCount()).toBe(count + 1)
+      expect(getActiveStore()).toBe(store)
+      expect(store.getStorageBinding()?.documentId).toBe(document.id)
+      expect(store.state.preparation).toBeNull()
+      expect(failed).toHaveBeenCalledWith(expect.objectContaining({ code: 'render-failed' }))
+    } finally {
+      resetLocalCanvasStoreForTests()
+    }
   })
 
   test('activates the existing tab when the same path is opened again', async () => {

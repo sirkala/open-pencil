@@ -3,7 +3,7 @@
   "productName": "Pena",
   "mainBinaryName": "Pena",
   "identifier": "id.sirkala.pena",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "build": {
     "beforeBuildCommand": "bun run generate:tauri-menu && bun run build:packages && vite build"
   },
