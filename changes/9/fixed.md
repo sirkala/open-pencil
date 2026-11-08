@@ -1,0 +1,1 @@
+- The macOS desktop app connects to Cloud servers whose HTTPS certificates are trusted in Keychain.
