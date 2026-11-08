@@ -33,12 +33,20 @@ jobs:
 
       - uses: docker/setup-buildx-action@e468171a9de216ec08956ac3ada2f0791b6bd435
 
+      # Publishes under the repository owner, lowercased as image names require, so forks get their own.
+      - uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302
+        id: meta
+        with:
+          images: ghcr.io/${{ github.repository_owner }}/native-contracts-ci
+          tags: |
+            type=raw,value=ubuntu-24.04
+            type=sha,format=long,prefix=
+          flavor: latest=false
+
       - uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83
         with:
           context: tools/ci/images/native-contracts
           push: true
-          tags: |
-            ghcr.io/${{ github.repository_owner }}/native-contracts-ci:ubuntu-24.04
-            ghcr.io/${{ github.repository_owner }}/native-contracts-ci:${{ github.sha }}
+          tags: ${{ steps.meta.outputs.tags }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
