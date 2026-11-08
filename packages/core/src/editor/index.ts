@@ -27,7 +27,7 @@ export {
   pickEditorViewState
 } from './state/view'
 export { createDefaultEditorState, createEditor } from './create'
-export { executeAtomicTool } from './history/atomic-tool'
+export { executeAtomicTool, type AtomicToolOptions } from './history/atomic-tool'
 export { isEmptyDocumentChange, type DocumentChange } from './history/document-change'
 export type { RecordEditOptions } from './history/edit'
 export type { PageSnapshot } from './history/snapshot/page'
@@ -78,6 +78,7 @@ export type {
   EditorContext,
   EditorEventName,
   EditorEvents,
+  RenderVersions,
   EditorOptions,
   EditorState,
   EditorSharedState,

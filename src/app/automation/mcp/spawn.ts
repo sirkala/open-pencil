@@ -6,7 +6,6 @@ import { promiseTimeout } from '@vueuse/core'
 import { compact } from 'es-toolkit/array'
 import * as v from 'valibot'
 
-import { AUTOMATION_HTTP_PORT } from '@open-pencil/core/constants'
 import type { DiscoveryInfo } from '@open-pencil/mcp/discovery'
 import {
   parseToolDescriptor,
@@ -19,6 +18,7 @@ import { APP_VERSION } from '@/app/runtime/version'
 import { decodeTauriStderr } from '@/app/shell/ui'
 import { resolvePlatformCommand } from '@/app/tauri/command'
 import { isTauri } from '@/app/tauri/env'
+import { MCP_HTTP_PORT, MCP_RUNTIME_FOLDER, MCP_SIDECAR } from '@/constants'
 
 import { DEV_MCP_RESTART_PATH, type DevMCPConfiguration } from './dev-control'
 import {
@@ -56,7 +56,7 @@ export interface AutomationServerHandle {
 
 const DEV_AUTOMATION_HTTP_URL = import.meta.env.DEV
   ? __OPENPENCIL_LOCAL_AUTOMATION_HTTP_URL__
-  : `http://127.0.0.1:${AUTOMATION_HTTP_PORT}`
+  : `http://127.0.0.1:${MCP_HTTP_PORT}`
 export function getMCPServerURL(): string {
   return `${DEV_AUTOMATION_HTTP_URL}/mcp`
 }
@@ -92,7 +92,10 @@ export interface MCPStartupTiming {
   /** How long to keep polling while the child runs before giving up on it. */
   healthDeadlineMs?: number
 }
-const DEFAULT_STARTUP_TIMING: MCPStartupTiming = { earlyExitMs: 250, healthPollMs: 1000 }
+const DEFAULT_STARTUP_TIMING: MCPStartupTiming = {
+  earlyExitMs: 250,
+  healthPollMs: 1000
+}
 
 let runtimeAutomationAuthToken: string | null = DEV_AUTOMATION_AUTH_TOKEN
 let runtimeAutomationStartupError: Error | null = null
@@ -174,26 +177,41 @@ async function discoveryFileExists(discoveryPath: string): Promise<boolean> {
  * endpoint's discoveryPath field.
  */
 async function computeExpectedDiscoveryPath(): Promise<string> {
+  return join(await mcpRuntimeDirectory(), 'mcp.json')
+}
+
+async function mcpRuntimeDirectory(): Promise<string> {
   const home = await homeDir()
   if (!home) throw new Error('homeDir() returned an empty string')
 
   const isMac = navigator.platform.includes('Mac')
   const isWindows = navigator.platform.includes('Win')
+  const folder = MCP_RUNTIME_FOLDER ?? 'OpenPencil'
   // Must match the server's getPlatformDir() in packages/mcp/src/transport/paths.ts.
   // On Windows, LOCALAPPDATA usually equals <home>\AppData\Local, so this fallback
   // matches the server's path in the common case. When it doesn't (custom
   // LOCALAPPDATA), resolveDiscoveryPath() falls back to the /health endpoint.
   if (isMac) {
-    return join(home, 'Library', 'Application Support', 'OpenPencil', 'mcp.json')
+    return join(home, 'Library', 'Application Support', folder)
   }
   if (isWindows) {
-    return join(home, 'AppData', 'Local', 'OpenPencil', 'mcp.json')
+    return join(home, 'AppData', 'Local', folder)
   }
   // Linux: $XDG_RUNTIME_DIR/openpencil/mcp.json or ~/.openpencil/mcp.json.
   // In Tauri we don't have direct env access, so we use the home-directory
   // fallback. The server may use XDG_RUNTIME_DIR if set — when the paths
   // differ, resolveDiscoveryPath() falls back to the /health endpoint.
-  return join(home, '.openpencil', 'mcp.json')
+  return join(home, `.${folder.toLowerCase()}`)
+}
+
+/** A build with its own MCP folder hands it to the server, which would otherwise use OpenPencil's. */
+async function mcpRuntimeEnvironment(): Promise<Record<string, string>> {
+  if (!MCP_RUNTIME_FOLDER) return {}
+  const directory = await mcpRuntimeDirectory()
+  return {
+    OPENPENCIL_MCP_DISCOVERY_PATH: await join(directory, 'mcp.json'),
+    OPENPENCIL_MCP_SOCKET: await join(directory, 'mcp.sock')
+  }
 }
 
 /**
@@ -515,8 +533,10 @@ async function startMCPIfNeeded(timing: MCPStartupTiming): Promise<AutomationSer
     return existing
   }
 
-  const lookup = await invoke<MCPLookup>('mcp_lookup')
-  if (!lookup.available) return rememberStartupError(missingMCPError(lookup.searched))
+  if (!MCP_SIDECAR) {
+    const lookup = await invoke<MCPLookup>('mcp_lookup')
+    if (!lookup.available) return rememberStartupError(missingMCPError(lookup.searched))
+  }
 
   const authToken = mcpAuthenticationEnabled.value ? randomHex(32) : null
   // Cache only after MCP startup is confirmed healthy.
@@ -525,10 +545,11 @@ async function startMCPIfNeeded(timing: MCPStartupTiming): Promise<AutomationSer
   // The app bundle directory (Tauri executableDir) is read-only and cannot be
   // used as a safe fallback for open_file, save_file, or export tools.
   const mcpRoot = mcpRootDirectory.value.trim() || (await resolveTauriHomeDir())
-  const resolved = resolvePlatformCommand(MCP_EXECUTABLE)
-  const command = Command.create(resolved.command, resolved.args, {
+  const runtimeEnvironment = await mcpRuntimeEnvironment()
+  const options = {
     env: {
-      PORT: String(AUTOMATION_HTTP_PORT),
+      ...runtimeEnvironment,
+      PORT: String(MCP_HTTP_PORT),
       OPENPENCIL_MCP_AUTH_TOKEN: authToken ?? '',
       OPENPENCIL_MCP_CORS_ORIGIN: window.location.origin,
       OPENPENCIL_MCP_TCP: '1',
@@ -540,7 +561,11 @@ async function startMCPIfNeeded(timing: MCPStartupTiming): Promise<AutomationSer
       OPENPENCIL_MCP_DISABLED_TOOLS: serializeDisabledTools(disabledMCPTools.value),
       OPENPENCIL_MCP_SCOPE: mcpScope()
     }
-  })
+  }
+  const resolved = resolvePlatformCommand(MCP_EXECUTABLE)
+  const command = MCP_SIDECAR
+    ? Command.sidecar(MCP_SIDECAR, [], options)
+    : Command.create(resolved.command, resolved.args, options)
 
   let startupStderr = ''
   command.stderr.on('data', (raw: Uint8Array | number[] | string) => {
@@ -553,7 +578,10 @@ async function startMCPIfNeeded(timing: MCPStartupTiming): Promise<AutomationSer
 
   let spawnedToken: string | null = null
   let child: Awaited<ReturnType<typeof command.spawn>>
-  const childClosed = new Promise<{ code: number | null; signal: number | null }>((resolve) => {
+  const childClosed = new Promise<{
+    code: number | null
+    signal: number | null
+  }>((resolve) => {
     command.on('close', (event) => {
       resolve(event)
       if (spawnedToken && runtimeAutomationAuthToken === spawnedToken) {

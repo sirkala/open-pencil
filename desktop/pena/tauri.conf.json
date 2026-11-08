@@ -15,7 +15,30 @@
         "dragDropEnabled": false,
         "create": false
       }
-    ]
+    ],
+    "security": {
+      "capabilities": [
+        "default",
+        "updater",
+        {
+          "identifier": "pena-mcp",
+          "description": "Starts the MCP server Pena ships, at Pena's own version.",
+          "windows": ["main"],
+          "permissions": [
+            {
+              "identifier": "shell:allow-spawn",
+              "allow": [
+                {
+                  "name": "pena/bin/pena-mcp-http",
+                  "sidecar": true,
+                  "args": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
   },
   "bundle": {
     "targets": ["app"],
@@ -29,9 +52,15 @@
     ],
     "macOS": {
       "signingIdentity": "-"
-    }
+    },
+    "externalBin": ["pena/bin/pena-mcp-http"]
   },
   "plugins": {
+    "deep-link": {
+      "desktop": {
+        "schemes": ["pena"]
+      }
+    },
     "updater": {
       "endpoints": []
     }

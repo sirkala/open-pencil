@@ -1,4 +1,4 @@
-import { IS_BROWSER, IS_TAURI } from '@open-pencil/core/constants'
+import { AUTOMATION_HTTP_PORT, IS_BROWSER, IS_TAURI } from '@open-pencil/core/constants'
 
 export {
   IS_BROWSER,
@@ -92,6 +92,24 @@ export const OFFICIAL_CLOUD_URL =
 /** Whether this is the editor a Cloud server serves on its own address (`bun run build:cloud`). */
 export const IS_CLOUD_SITE =
   typeof __OPENPENCIL_CLOUD_SITE__ === 'boolean' && __OPENPENCIL_CLOUD_SITE__
+/**
+ * What sets this desktop build apart from another one installed beside it: the scheme of the
+ * links it answers, the port of its MCP server, and the folder of that server's discovery file
+ * and socket. Defaults are OpenPencil's; a fork's build names its own (`desktop/pena/build.sh`),
+ * and the scheme must match the build's deep-link config and `desktop/src/launch/links.rs`.
+ */
+export const DESKTOP_LINK_SCHEME = import.meta.env.VITE_OPENPENCIL_LINK_SCHEME || 'openpencil'
+export const MCP_HTTP_PORT = Number(
+  import.meta.env.VITE_OPENPENCIL_MCP_PORT || AUTOMATION_HTTP_PORT
+)
+/** Unset keeps the MCP server's own platform folder (`packages/mcp/src/transport/paths.ts`). */
+export const MCP_RUNTIME_FOLDER = import.meta.env.VITE_OPENPENCIL_MCP_FOLDER || null
+/**
+ * The Tauri sidecar of a build that ships its own MCP server, so it starts that one at its own
+ * version and needs none installed; unset, the app starts the `@open-pencil/mcp` on the PATH.
+ */
+export const MCP_SIDECAR = import.meta.env.VITE_OPENPENCIL_MCP_SIDECAR || null
+
 /** Where the desktop app's installers are published. */
 export const DESKTOP_DOWNLOAD_URL = 'https://github.com/open-pencil/open-pencil/releases/latest'
 export const NODE_DOWNLOAD_URL = 'https://nodejs.org/en/download'

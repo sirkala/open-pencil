@@ -19,6 +19,7 @@ import { prepareGraphFonts } from '#core/text/prepare'
 
 import type { DrawIOExportTarget } from './formats/drawio/export'
 import { exportFigFile, parseFigFile } from './formats/fig'
+import { penSource } from './formats/pen/archive'
 import type { PPTXExportOptions } from './formats/pptx'
 import { headlessRenderNodes, renderNodesToImage, type RasterExportFormat } from './formats/raster'
 import { extractExportGraph, findPageId } from './subgraph'
@@ -315,10 +316,12 @@ export const penFormat: IOFormatAdapter<'pen'> = {
     return lowerExt(fileName) === 'pen' || mimeType === 'application/json'
   },
   async readDocument(input, context) {
-    const doc = parsePenDocument(new TextDecoder().decode(input.data))
+    // A plain document, or one pen.dev packed into a ZIP archive with the files it names.
+    const source = penSource(input)
+    const doc = parsePenDocument(new TextDecoder().decode(source.json))
     const assets = penAssets(doc)
     const [images, icons] = await Promise.all([
-      loadPenImages(assets.images, input),
+      loadPenImages(assets.images, source.input),
       loadPenIcons(assets.icons, context?.icons ?? defaultIcons)
     ])
     // Its text takes fonts from variables and components too, so the fonts it uses are read

@@ -2,6 +2,7 @@ import { isEqual, noop } from 'es-toolkit'
 
 import type { SceneNode, SceneGraph, Fill, Stroke } from '@open-pencil/scene-graph'
 import type { RenderColorSpace, ResolvedRenderColor } from '@open-pencil/scene-graph/color'
+import { drawnBlurRadius } from '@open-pencil/scene-graph/geometry'
 import type { Mat3 } from '@open-pencil/scene-graph/matrix'
 import type { Color, Rect, Vector } from '@open-pencil/scene-graph/primitives'
 import { slotPropertyId } from '@open-pencil/scene-graph/slots'
@@ -350,7 +351,7 @@ export class SkiaRenderer {
     let expand = 0
     for (const e of node.effects) {
       if (!e.visible) continue
-      const blur = e.radius
+      const blur = drawnBlurRadius(e.radius)
       const spread = e.spread
       const ox = Math.abs(e.offset.x)
       const oy = Math.abs(e.offset.y)
@@ -408,10 +409,21 @@ export class SkiaRenderer {
     return RendererFonts.prepareForExport(this, graph, pageId, nodeIds)
   }
 
-  replaceSurface(surface: Surface): void {
-    this.tiledScene.destroy()
-    // Live textures belong to the old surface's context, so they go before it does.
-    releaseLiveImages(this)
+  /**
+   * Draws into `surface` from now on. A surface on the same GPU context, such as the canvas
+   * resized, keeps the rendered tiles and live textures, which belong to the context; only
+   * newly exposed tiles render. A new context starts them over.
+   */
+  replaceSurface(surface: Surface, { sameContext = false }: { sameContext?: boolean } = {}): void {
+    if (sameContext) {
+      for (const live of this.images.live.values()) {
+        if (live.surface === this.surface) live.surface = surface
+      }
+    } else {
+      this.tiledScene.destroy()
+      // Live textures belong to the old surface's context, so they go before it does.
+      releaseLiveImages(this)
+    }
     this.surface.delete()
     this.surface = surface
     this.invalidateScenePicture()

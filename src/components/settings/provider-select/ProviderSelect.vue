@@ -4,8 +4,8 @@ import { computed, onMounted, ref } from 'vue'
 
 import {
   ACP_AGENTS,
+  acpAgentFor,
   AI_PROVIDERS,
-  AUTOMATION_HTTP_PORT,
   IS_TAURI,
   type AIProviderID
 } from '@open-pencil/core/constants'
@@ -15,6 +15,7 @@ import { OPENPENCIL_AI_PROVIDER } from '@/app/ai/providers/openpencil/provider'
 import { cloudAIAvailable } from '@/app/cloud/integration'
 import AppSelect from '@/components/ui/select/AppSelect.vue'
 import type { AppSelectGroup } from '@/components/ui/select/select'
+import { MCP_HTTP_PORT } from '@/constants'
 
 const ai = useAIMessages()
 const mcpAvailable = ref(false)
@@ -22,7 +23,7 @@ const mcpAvailable = ref(false)
 async function checkMCPHealth(retries = 3, delayMs = 1000) {
   for (let i = 0; i < retries; i++) {
     try {
-      const res = await fetch(`http://127.0.0.1:${AUTOMATION_HTTP_PORT}/health`, {
+      const res = await fetch(`http://127.0.0.1:${MCP_HTTP_PORT}/health`, {
         signal: AbortSignal.timeout(2000)
       })
       if (res.ok) {
@@ -69,10 +70,8 @@ const providerDef = computed(
 
 const displayName = computed(() => {
   if (providerID.value === 'harness:pi') return 'Pi'
-  if (providerID.value.startsWith('acp:')) {
-    const agentId = providerID.value.replace('acp:', '')
-    return ACP_AGENTS.find((agent) => agent.id === agentId)?.name ?? providerID.value
-  }
+  if (providerID.value.startsWith('acp:'))
+    return acpAgentFor(providerID.value)?.name ?? providerID.value
   return providerDef.value.name
 })
 
