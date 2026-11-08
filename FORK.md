@@ -23,6 +23,29 @@ Pushing to `upstream` is disabled locally (`git remote set-url --push upstream D
 
 The Pena desktop app is built from the overlay in [`desktop/pena/`](desktop/pena): its own name, icon, bundle identifier (`id.sirkala.pena`), `pena://` link scheme, and MCP port, so it runs beside OpenPencil. The base `desktop/tauri.conf.json` stays upstream's.
 
+## Releases and updates
+
+Installed Pena apps update themselves through the Tauri updater: they read `latest.json` from the newest release of `sirkala/pena` (`plugins.updater.endpoints` in [`desktop/pena/tauri.conf.json`](desktop/pena/tauri.conf.json)), download the archive it names, check its signature against the public key beside that endpoint, and replace the app in place. No server is involved; GitHub Releases serves the files.
+
+The signing key is made once and kept out of the repository. Losing it means installed apps can never update again; leaking it lets anyone ship them an update.
+
+```sh
+bun tauri signer generate -w ~/.tauri/pena.key
+```
+
+Put the contents of `~/.tauri/pena.key.pub` in `plugins.updater.pubkey`, and keep the private key and its password in a password manager. The repository's `TAURI_SIGNING_PRIVATE_KEY` and `TAURI_SIGNING_PRIVATE_KEY_PASSWORD` secrets hold them for CI. Locally, `build.sh` reads both from the environment or from `desktop/pena/.env`, which git ignores; copy [`desktop/pena/.env.example`](desktop/pena/.env.example) to start it.
+
+To release, bump the version in `package.json`, `desktop/tauri.conf.json`, and `desktop/Cargo.toml`, push the commit, then build and publish:
+
+```sh
+desktop/pena/build.sh
+desktop/pena/release.sh
+```
+
+[`build.sh`](desktop/pena/build.sh) gathers the DMG, the signed `Pena_<version>_aarch64.app.tar.gz`, and `latest.json` in `desktop/target/aarch64-apple-darwin/release/pena-release`; [`updater.ts`](desktop/pena/updater.ts) refuses an archive signed by another key or for another version. The notes are the version's `CHANGELOG.md` section, or the Markdown file `PENA_RELEASE_NOTES` names. [`release.sh`](desktop/pena/release.sh) tags `v<version>` and publishes it as the latest release (`--draft` keeps it unpublished, and so out of reach of the apps). The updater only offers a version newer than the installed one, and GitHub's latest link skips pre-releases, so every release needs a higher version and stays a full release.
+
+The app is signed ad hoc, so macOS treats each build as a new app: after an update people may be asked again to allow Pena into the keychain. A Developer ID certificate in `bundle.macOS.signingIdentity` removes that.
+
 ## Merging upstream
 
 ```sh

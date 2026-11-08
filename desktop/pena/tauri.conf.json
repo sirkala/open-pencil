@@ -42,7 +42,7 @@
   },
   "bundle": {
     "targets": ["app"],
-    "createUpdaterArtifacts": false,
+    "createUpdaterArtifacts": true,
     "icon": [
       "pena/icons/32x32.png",
       "pena/icons/128x128.png",
@@ -62,7 +62,8 @@
       }
     },
     "updater": {
-      "endpoints": []
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEFDRjVGNTE2Qzg3NTU4OEEKUldTS1dIWElGdlgxck03bkV2cEJuV0Jzd1FlZEhxUkYyeE02OFFjaUxJcWFGODRpS1BPckk5WmgK",
+      "endpoints": ["https://github.com/sirkala/pena/releases/latest/download/latest.json"]
     }
   }
 }
